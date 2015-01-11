@@ -2,13 +2,13 @@
 class SinistresController extends BaseController {
 
     /**
-     * Gère les sinistres.
+     * Lister les sinistres par catégorie.
+     * Lister les sinistres de toutes les catégories si aucune spécifiée.
      */
     public function lister($categorie_id = 0)
     {
         // Set titre page générée
         $proprietesPage = array('titre' => 'Sinistres');
-
 
         if ($categorie_id > 0)
         {
@@ -21,7 +21,6 @@ class SinistresController extends BaseController {
           $sinistres = Sinistre::paginate(15);
         }
 
-
         // Get all categories (pour sidebar)
         $categories = CategorieSinistre::all();
 
@@ -29,10 +28,63 @@ class SinistresController extends BaseController {
         return 
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
-                   'sinistres.afficher-sinistres',
+                   'sinistres.lister',
                     array('sinistres' => $sinistres,
                           'categories' => $categories,
                           'categorie_id' => $categorie_id));
+    }
+
+    public function ajouterGet()
+    {
+      return "NIY";
+    }
+
+    public function modifierGet($id)
+    {
+        // Set titre page générée
+        $proprietesPage = array('titre' => '(GET) Modifier un sinistres');
+
+        // Get sinistres de categorie_id
+        $sinistre = Sinistre::where('id',$id)->firstOrFail();
+
+        // Get all categories (pour sidebar)
+        $categories = CategorieSinistre::lists('etiquette','id');
+
+
+        // Enboite vue sinistres dans vue design
+        return 
+          View::make('faireface', $proprietesPage)
+            ->nest('contenu',
+                   'sinistres.modifier',
+                    array('sinistre' => $sinistre,
+                          'categories' => $categories));
+    }
+
+    public function modifierPost($id)
+    {
+
+      // Set titre page générée
+      $proprietesPage = array('titre' => '(POST) Modifier un sinistres');
+
+      if (!(Input::has('titre') &&
+          Input::has('rapport') &&
+          Input::has('categorie_id'))){
+
+        return $this->afficherErreur("pas de données");
       }
+
+      $sinistre = Sinistre::findOrFail($id);
+
+      $sinistre->titre = Input::get('titre');
+      $sinistre->rapport = Input::get('rapport');
+      $sinistre->categorie_id = Input::get('categorie_id');
+
+      $sinistre->save();
+
+      return 
+        View::make('faireface', $proprietesPage)
+          ->nest('contenu',
+                 'succes');
+    }
 }
 ?>

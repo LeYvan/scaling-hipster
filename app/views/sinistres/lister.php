@@ -37,7 +37,7 @@
             <div class="media">
 
               <div class="media-body">
-                <h2 class="media-heading"><?= $sinistre->titre ?></h2>
+                <h2 class="media-heading"><?= $sinistre->titre . $sinistre->id ?></h2>
                 <h4>
                   <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span>
                 </h4>

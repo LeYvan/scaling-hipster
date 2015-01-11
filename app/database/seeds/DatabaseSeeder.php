@@ -53,6 +53,17 @@ class DatabaseSeeder extends Seeder {
                                 )
                               );
 
+        for ($i = 1; $i <= 666; $i++)
+        {
+          Utilisateur::create(array('nomUtilisateur' => 'utilisateur' . $i,
+                                   'nom' => 'Utilisateur Fantôme Nb' . $i,
+                                   'email' => mt_rand(1,99999) . '@faireface.com',
+                                   'niveau' => 1,
+                                   'password' => hash('sha256','utilisateur'.$i)
+                                  )
+                                );
+        }
+
         $this->command->info('Table utilisateurs germée!');
 
 

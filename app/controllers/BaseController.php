@@ -15,4 +15,17 @@ class BaseController extends Controller {
 		}
 	}
 
+    public function afficherErreur($message = null)
+    {
+      $proprietesPage = array('titre' => 'Modifier un sinistres');
+
+        // Enboite vue sinistres dans vue design
+        return 
+          View::make('faireface', $proprietesPage)
+            ->nest('contenu',
+                   'erreur',
+                   array('message' => $message));
+    }
+
+
 }
