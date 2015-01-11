@@ -4,14 +4,12 @@ class Sinistre extends Eloquent {
 
   public function categorie()
   {
-    return $this->hasOne('CategorieSinistre');
-    //return CategorieSinistre::findOrFail($this->categorie);
+    return CategorieSinistre::findOrFail($this->categorie_id);
   }
 
   public function utilisateur()
   {
-    return $this->hasOne('Utilisateur');
-    //return Utilisateur::findOrFail($this->getAttribute('id-createur'));
+    return Utilisateur::findOrFail($this->utilisateur_id);
   }
 
   public function elements()
