@@ -5,7 +5,7 @@ class CategorieSinistre extends Eloquent {
 
   public function sinistres()
   {
-    return $this->hasMany('Sinistre','idCategorie','id');
+    return $this->hasMany('Sinistre');
   }
 }
 

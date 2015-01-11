@@ -11,26 +11,7 @@
 |
 */
 
-/* Route Sinistres */
-Route::get('/sinistres/', function()
-{
-
-  // Setter titre page à générer.
-  $proprietesPage = array('titre' => 'Sinistres');
-
-  // Get all sinistres
-  $sinistres = Sinistre::all();
-  $categories = CategorieSinistre::all();
-
-  // Enboite la vue des sinistres dans le design global
-  // et passe les sinistres.
-  return 
-    View::make('faireface', $proprietesPage)
-      ->nest('contenu',
-             'sinistres.afficher-sinistres',
-              array('sinistres' => $sinistres,
-                    'categories' => $categories));
-});
+Route::get('/sinistres/{categorie_id?}', 'SinistresController@lister');
 
 /* Route Page Accueil */
 Route::get('/', function()

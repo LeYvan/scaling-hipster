@@ -14,7 +14,7 @@ class Sinistre extends Eloquent {
 
   public function elements()
   {
-    return $this->hasMany('ElementSinistre');
+    return ElementSinistre::where('sinistre_id','=',$this->id)->get(); 
   }
 
 }

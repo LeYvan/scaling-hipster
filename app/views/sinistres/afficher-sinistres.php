@@ -11,14 +11,13 @@
         <!-- Liste des catégories de sinistres -->
         <div class="col-md-3 col-md-push-9">
           <div class="list-group">
-            <a href="/" class="list-group-item active">
-              Toutes les catégories
-            </a>
+            <a href="/sinistres/" class="list-group-item <?= $categorie_id == 0 ? "active" : ""; ?>">Toutes les catégories</a>
             <?php
 
               foreach($categories as $categorie)
               {
-                print("<a href=\"/sinistres/\" class=\"list-group-item\">" . $categorie->etiquette . "</a>");
+                $active = $categorie->id == $categorie_id ? "active" : "";
+                print("<a href=\"/sinistres/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
               }
 
             ?>
@@ -27,6 +26,10 @@
         <!-- Fin liste des catégories de sinistres -->
 
         <div class="col-md-9 col-md-pull-3">
+
+          <div>
+            <?= $sinistres->links(); ?>
+          </div>
 
             <!-- Début d'un sinistre -->
             <?php foreach($sinistres as $sinistre) { ?>
@@ -39,40 +42,51 @@
                   <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span>
                 </h4>
                 <h4>
-                  <div><span class="label label-primary">Créateur:</span>  <?= $sinistre->utilisateur()->nom ?></div>
+                  <span><span class="label label-primary">Créateur:</span>  <?= $sinistre->utilisateur()->nom ?></span>
                 </h4>
                 <div class="well"><?= $sinistre->rapport ?></div>
               </div>
 
               <a class="media-right" href="javascript:alert('Carte')">
-                <canvas height="100%" width="100%" style="background-color:#F47B2D;"></canvas>
+                <canvas height="100" width="100" style="background-color:#F47B2D;"></canvas>
               </a>
 
               <div class="row">
-
+              <?php  
+                foreach($sinistre->elements() as $element)
+                {
+                ?>
                 <div class="col-xs-6 col-sm-4 col-lg-3">
                   <a href="#" class="thumbnail" data-toggle="modal" data-target="#mediaModal">
-                    <!-- <img alt="Image envoyée par un utilisateur" src="http://validator.w3.org/images/w3c.png"> -->
-                    <pre>Ici les médias.</pre>
+                  <?php
+                    if ($element->type == 'image')
+                    {
+                      //print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://validator.w3.org/images/w3c.png\">");
+                      print("$element->fichier");
+                    } 
+                    else 
+                    {
+                      ?>
+                      <video width="100%" controls>
+                        <source src="<?= $element->fichier ?>" type="video/mp4">
+                      </video>
+                      <?php
+                    }
+                    ?>
                   </a>
-
                 </div>
-                <div class="col-xs-6 col-sm-4 col-lg-3">
-                  <a href="#" class="thumbnail" data-toggle="modal" data-target="#mediaModal">
-                    <!--
-                    <video width="100%" controls>
-                      <source src="images/videoplayback.mp4" type="video/mp4">
-                    </video>
-                    -->
-                    <pre>Ici les médias.</pre>
-                  </a>
-                </div>
-
+                <?php
+                }
+              ?>
               </div>
 
             </div>
             <?php } ?>
             <!-- Fin d'un sinistre -->
+
+          <div>
+            <?= $sinistres->links(); ?>
+          </div>
 
           <!-- Fenêtre modal de visionnement d'images -->
           <div class="modal fade" id="mediaModal" tabindex="-1" role="dialog" aria-labelledby="mediaModalLabel" aria-hidden="true">
