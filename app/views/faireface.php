@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/faireface.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,11 +42,11 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-faireface-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="alertes">Alertes <sup><span class="badge">420</span></sup></a></li>
-          <li><a href="nouvelles">Nouvelles <sup><span class="badge">42</span></sup></a></li>
-          <li><a href="capsules">Capsules <sup><span class="badge"></span></sup></a></li>
-          <li><a href="plan">Plan Familial</a></li>
-          <li><a href="sinistres">Sinistres <sup><span class="badge">4</span></sup></a></li>
+          <li><a href="/alertes">Alertes <sup><span class="badge">420</span></sup></a></li>
+          <li><a href="/nouvelles">Nouvelles <sup><span class="badge">42</span></sup></a></li>
+          <li><a href="/capsules">Capsules <sup><span class="badge"></span></sup></a></li>
+          <li><a href="/plan">Plan Familial</a></li>
+          <li><a href="/sinistres">Sinistres <sup><span class="badge">4</span></sup></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Connexion</a></li>

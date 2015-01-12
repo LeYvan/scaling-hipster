@@ -34,22 +34,14 @@
             <!-- Début d'un sinistre -->
             <?php foreach($sinistres as $sinistre) { ?>
 
-            <div class="media">
+            <article>
 
-              <div class="media-body">
-                <h2 class="media-heading"><?= $sinistre->titre . $sinistre->id ?></h2>
-                <h4>
-                  <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span>
-                </h4>
-                <h4>
-                  <span><span class="label label-primary">Créateur:</span>  <?= $sinistre->utilisateur()->nom ?></span>
-                </h4>
-                <div class="well"><?= $sinistre->rapport ?></div>
-              </div>
-
-              <a class="media-right" href="javascript:alert('Carte')">
-                <canvas height="100" width="100" style="background-color:#F47B2D;"></canvas>
-              </a>
+              <h2><?= $sinistre->titre . $sinistre->id ?></h2>
+              <h4>
+                <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span> <?= $sinistre->utilisateur()->nom ?>
+              </h4>
+              <?= date('d/m/Y à g:ia', strtotime($sinistre->updated_at)) ?>
+              <div class="well"><?= $sinistre->rapport ?></div>
 
               <div class="row">
               <?php  
@@ -80,7 +72,7 @@
               ?>
               </div>
 
-            </div>
+            </article>
             <?php } ?>
             <!-- Fin d'un sinistre -->
 
