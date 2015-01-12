@@ -16,12 +16,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/js/bootstrap.min.js"></script>
   </head>
   <body>
   <nav class="navbar navbar-inverse navbar-static-top">
@@ -42,18 +36,42 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-faireface-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/alertes">Alertes <sup><span class="badge">420</span></sup></a></li>
-          <li><a href="/nouvelles">Nouvelles <sup><span class="badge">42</span></sup></a></li>
-          <li><a href="/capsules">Capsules <sup><span class="badge"></span></sup></a></li>
+          <li><a href="/alertes">Alertes<!--  <sup><span class="badge">420</span></sup> --></a></li>
+          <li><a href="/nouvelles">Nouvelles<!--  <sup><span class="badge">42</span></sup> --></a></li>
+          <li><a href="/capsules">Capsules<!--  <sup><span class="badge"></span></sup> --></a></li>
           <li><a href="/plan">Plan Familial</a></li>
-          <li><a href="/sinistres">Sinistres <sup><span class="badge">4</span></sup></a></li>
+          <li><a href="/sinistres">Sinistres<!--  <sup><span class="badge">4</span></sup> --></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Connexion</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#connexionModal">Connexion</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
   <?php echo $contenu ?>
+
+    <!-- Fenêtre modal de visionnement d'images -->
+    <div class="modal fade" id="connexionModal" tabindex="-1" role="dialog" aria-labelledby="connexionModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="connexionModalLabel">Connexion</h4>
+          </div>
+          <div class="modal-body"><?php //echo $connexion ?></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Fenêtre modal de visionnement d'images -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/faireface.js"></script>
   </body>
 </html>

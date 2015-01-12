@@ -100,39 +100,5 @@
           <!-- Fin Fenêtre modal de visionnement d'images -->
 
         </div>
-
       </div>
 </div>
-
-<script>
-$('#mediaModal').on('show.bs.modal', function (event) {
-  var lien = $(event.relatedTarget) // Button that triggered the modal
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text(lien.parents("article").find('h2').text())
-  modal.find('.modal-body').html(lien.html())
-})
-
-var canvas = document.getElementsByTagName("canvas");
-for (var i = 0; i < canvas.length; i++) {
-  var c = canvas[i];
-  var size = c.height;
-    var ctx = c.getContext("2d");
-
-    var x = Math.random()*size;
-    var y = Math.random()*size;
-    // ctx.moveTo(x,0);
-    // ctx.lineTo(x,size);
-    // ctx.stroke();
-
-    // ctx.moveTo(0,y);
-    // ctx.lineTo(size,y);
-    // ctx.stroke();
-
-    ctx.font="30px Arial";
-    // ctx.arc(x,y,size/50,0,2*Math.PI);
-    ctx.fillText("📍",x, y);
-    // ctx.fill();
-}
-</script>
