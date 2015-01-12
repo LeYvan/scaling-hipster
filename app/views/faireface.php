@@ -43,11 +43,27 @@
           <li><a href="/sinistres">Sinistres<!--  <sup><span class="badge">4</span></sup> --></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <?php if(Session::get('connecte')){?>
+          <li><a href="/deconnexion/">Déconnexion</a></li>          
+          <?php }else{?>
           <li><a href="#" data-toggle="modal" data-target="#connexionModal">Compte</a></li>
+          <?php }?>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+  <?php
+  $event = Session::pull('evenement');
+  if($event)
+  {
+    if($event['reussi']){
+      ?>
+    <div class="panel panel-success"><div class="panel-heading"><div class="panel-title"><?= $event['message'] ?></div></div></div>
+    <?php } else { ?>
+    <div class="panel panel-danger"><div class="panel-heading"><div class="panel-title"><?= $event['message'] ?></div></div></div>
+    <?php }
+  }?>
+
   <?php echo $contenu ?>
 
     <!-- Fenêtre modal de visionnement d'images -->
@@ -61,7 +77,7 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-md-6">
-                <form class="form-horizontal">
+                <form class="form-horizontal" accept-charset="UTF-8" action="/connexion/" method="POST">
                   <fieldset>
 
                     <!-- Form Name -->
@@ -98,7 +114,7 @@
               </div>
               <!-- Inscription-->
               <div class="col-md-6">
-                <form class="form-horizontal">
+                <form class="form-horizontal" accept-charset="UTF-8" action="/inscription/" method="POST">
                   <fieldset>
 
                     <!-- Form Name -->

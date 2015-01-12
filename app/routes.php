@@ -29,3 +29,25 @@ Route::get('/', function()
   $message = array('titre' => 'Accueil');
   return View::make('faireface', $message)->nest('contenu','accueil');
 });
+
+
+
+Route::post('/connexion/', function(){
+	$reussi = Auth::attempt(array('nomUtilisateur' => Input::get("nomUtilisateur"), 'password' => Input::get("motPasse")));
+	Session::put('connecte', $reussi);
+
+	if ($reussi)
+	{
+		$params = array("reussi" => true, "message" => 'Connexion réussie!');
+	} else {
+		$params = array("reussi" => false, "message" => 'La connexion a échouée!');		
+	}
+	return Redirect::to('/')->with('evenement', $params);
+});
+
+
+
+Route::get('/deconnexion/', function(){
+	Session::forget('connecte');
+	return Redirect::to('/')->with(array("reussi" => true, "message" => 'Connexion réussie!'));
+});
