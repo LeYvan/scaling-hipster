@@ -2,3 +2,19 @@ article
 {
 	width:100%;
 }
+.modal img
+{
+	display: block;
+	margin: auto;
+	max-width: 100%;
+}
+body
+{
+	background-color: #ddd;
+}
+#page
+{
+	margin-top:-1em;
+	padding-top: 1em;
+	background-color: #fff;
+}
