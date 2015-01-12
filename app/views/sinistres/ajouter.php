@@ -1,3 +1,4 @@
+<div id="page" class="container">
 <h1>Modifier un sinistre</h1>
 <?php
   if ($mode == 'ajout') {
@@ -63,3 +64,4 @@
 <?php
   echo Form::close();
 ?>
+</div>

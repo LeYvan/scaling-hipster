@@ -54,8 +54,6 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <div id="page" class="container">
-    <?php echo $contenu ?>
-  </div>
+  <?php echo $contenu ?>
   </body>
 </html>

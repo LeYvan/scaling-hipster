@@ -1,3 +1,4 @@
+<div id="page" class="container">
 <h1>Sinistres</h1>
 <?php
   echo Form::model($sinistre, array('url' => array('/sinistres/modifier', $sinistre->id), 'class'=>'form-horizontal'));
@@ -88,3 +89,4 @@
 <?php
   echo Form::close();
 ?>
+</div>
