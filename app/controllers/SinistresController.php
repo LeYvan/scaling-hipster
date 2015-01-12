@@ -47,7 +47,7 @@ class SinistresController extends BaseController {
         // Get sinistres de categorie_id
         $sinistre = Sinistre::where('id',$id)->firstOrFail();
 
-        // Get all categories (pour sidebar)
+        // Get all categories
         $categories = CategorieSinistre::lists('etiquette','id');
 
 
