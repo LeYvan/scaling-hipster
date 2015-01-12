@@ -15,11 +15,6 @@ class BaseController extends Controller {
 		}
 	}
 
-	public function afficherConnexion()
-	{
-        return View::make('form-connexion');
-	}
-	
     public function afficherErreur($message = null)
     {
       $proprietesPage = array('titre' => 'Modifier un sinistres');

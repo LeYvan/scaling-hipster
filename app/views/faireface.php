@@ -43,7 +43,7 @@
           <li><a href="/sinistres">Sinistres<!--  <sup><span class="badge">4</span></sup> --></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" data-toggle="modal" data-target="#connexionModal">Connexion</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#connexionModal">Compte</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -56,9 +56,9 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="connexionModalLabel">Connexion</h4>
+            <h4 class="modal-title" id="connexionModalLabel">Comptes</h4>
           </div>
-          <div class="modal-body"><?php //echo $connexion ?></div>
+          <div class="modal-body"><?php include('form-connexion.php'); ?></div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
