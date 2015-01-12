@@ -1,5 +1,3 @@
-<div id="page" class="container">
-
     <h1>Sinistres</h1>
 
       <div class="panel">
@@ -102,8 +100,6 @@
         </div>
 
       </div>
-</div>
-
 <script>
 $('#mediaModal').on('show.bs.modal', function (event) {
   var lien = $(event.relatedTarget) // Button that triggered the modal
