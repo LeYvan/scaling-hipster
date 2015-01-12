@@ -39,8 +39,8 @@
               <h2><?= $sinistre->titre . $sinistre->id ?></h2>
               <h4>
                 <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span> <?= $sinistre->utilisateur()->nom ?>
-              </h4>
-              <?= date('d/m/Y à g:ia', strtotime($sinistre->updated_at)) ?>
+              <small><?= date('d/m/Y à g:ia', strtotime($sinistre->updated_at)) ?></small></h4>
+
               <div class="well"><?= $sinistre->rapport ?></div>
 
               <div class="row">
@@ -53,8 +53,10 @@
                   <?php
                     if ($element->type == 'image')
                     {
-                      //print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://validator.w3.org/images/w3c.png\">");
-                      print("$element->fichier");
+                      $rand1 = rand(0,1000);
+                      $rand2 = rand($rand1*16/9,$rand1*9/16);
+                      print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2."\">");
+                      // print("$element->fichier");
                     } 
                     else 
                     {
@@ -108,7 +110,7 @@ $('#mediaModal').on('show.bs.modal', function (event) {
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
-  modal.find('.modal-title').text(lien.parents(".media").find('.media-heading').text())
+  modal.find('.modal-title').text(lien.parents("article").find('h2').text())
   modal.find('.modal-body').html(lien.html())
 })
 
