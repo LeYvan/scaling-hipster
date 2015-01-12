@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'faireface',
 			'username'  => 'root',
-			'password'  => 'diesel',
+			'password'  => 'caca123',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
