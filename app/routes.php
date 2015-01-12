@@ -20,6 +20,17 @@ Route::get('/elements-sinistres/supp/{id}',
 Route::post('/elements-sinistres/supp/',
           'ElementsSinistreController@supprimer');
 
+
+//Utilisateur
+
+Route::get('/utilisateurs/',
+           'UtilisateursController@lister');
+Route::get('/utilisateurs/{id}',
+           'UtilisateursController@modifierGet');
+Route::post('/utilisateurs/{id}',
+           'UtilisateursController@ModifierPost');
+
+
 // Accueil
 Route::get('/', function()
 {
