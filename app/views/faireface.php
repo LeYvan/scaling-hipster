@@ -58,7 +58,96 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="connexionModalLabel">Comptes</h4>
           </div>
-          <div class="modal-body"><?php include('form-connexion.php'); ?></div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <form class="form-horizontal">
+                  <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Connexion</legend>
+
+                    <!-- Text input-->
+                    <div class="control-group">
+                      <label class="control-label" for="nomUtilisateur">Nom d'utilisateur</label>
+                      <div class="controls">
+                        <input id="nomUtilisateur" name="nomUtilisateur" type="text" placeholder="Nom d'utilisateur" class="form-control" required="required">
+                        
+                      </div>
+                    </div>
+
+                    <!-- Password input-->
+                    <div class="control-group">
+                      <label class="control-label" for="motPasse">Mot de passe</label>
+                      <div class="controls">
+                        <input id="motPasse" name="motPasse" type="password" placeholder="Mot de passe" class="form-control" required="required">
+                        
+                      </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="control-group">
+                      <label class="control-label" for="btnSubmit"></label>
+                      <div class="controls">
+                        <button id="btnSubmit" name="btnSubmit" class="btn btn-primary">Connexion</button>
+                      </div>
+                    </div>
+
+                  </fieldset>
+                </form>
+              </div>
+              <!-- Inscription-->
+              <div class="col-md-6">
+                <form class="form-horizontal">
+                  <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Inscription</legend>
+
+                    <!-- Text input-->
+                    <div class="control-group">
+                      <label class="control-label" for="txtNom">Nom complet</label>
+                      <div class="controls">
+                        <input id="txtNom" name="txtNom" type="text" placeholder="Nom complet" class="form-control" required="required">
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="control-group">
+                      <label class="control-label" for="txtUtilisateur">Nom d'utilisateur</label>
+                      <div class="controls">
+                        <input id="txtUtilisateur" name="txtUtilisateur" type="text" placeholder="Nom d'utilisateur" class="form-control" required="required">
+                      </div>
+                    </div>
+
+                    <!-- Password input-->
+                    <div class="control-group">
+                      <label class="control-label" for="txtMotPasse">Mot de passe</label>
+                      <div class="controls">
+                        <input id="txtMotPasse" name="txtMotPasse" type="password" placeholder="Mot de passe" class="form-control" required="required">
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="control-group">
+                      <label class="control-label" for="txtEmail">Adresse courriel</label>
+                      <div class="controls">
+                        <input id="txtEmail" name="txtEmail" type="text" placeholder="Courriel" class="form-control" required="required">
+                      </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="control-group">
+                      <label class="control-label" for="btnInscription"></label>
+                      <div class="controls">
+                        <button id="btnInscription" name="btnInscription" class="btn btn-primary">Inscription!</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
