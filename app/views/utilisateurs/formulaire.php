@@ -1,15 +1,15 @@
-<form class="form-horizontal">
+ <?= Form::model($utilisateur, array('url' => array('/utilisateurs',$utilisateur->id), 'class'=>'form-horizontal')) ?>
 <fieldset>
 
 <!-- Form Name -->
-<legend>Form Name</legend>
+<legend>Modifier l'utilisateur</legend>
 
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="Nom">Votre nom complet :</label>  
   <div class="col-md-5">
-  <input id="Nom" name="Nom" type="text" placeholder="Votre nom complet" class="form-control input-md" required="">
-    
+  <!-- <input id="Nom" name="Nom" type="text" placeholder="Votre nom complet" class="form-control input-md" required=""> -->
+    <?= Form::text('nom',Input::old('nom'),array('class'=>'form-control input-md')) ?>
   </div>
 </div>
 
@@ -17,7 +17,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Email">Votre adresse courriel :</label>  
   <div class="col-md-5">
-  <input id="Email" name="Email" type="text" placeholder="Votre adresse courriel" class="form-control input-md" required="">
+  <?= Form::text('email',Input::old('email'),array('class'=>'form-control input-md')) ?>
     
   </div>
 </div>
@@ -26,29 +26,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="niveau">Niveau</label>
   <div class="col-md-5">
-    <select id="niveau" name="niveau" class="form-control">
-      <option value="Utilisateur">Utilisateur</option>
-      <option value="Conseiller">Conseiller</option>
-      <option value="Administrateur">Administrateur</option>
-    </select>
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="NomUtilisateur">Nom Utilisateur :</label>  
-  <div class="col-md-5">
-  <input id="NomUtilisateur" name="NomUtilisateur" type="text" placeholder="Nom Utilisateur" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
-<!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Password">Votre mot de passe :</label>
-  <div class="col-md-5">
-    <input id="Password" name="Password" type="password" placeholder="mot de passe" class="form-control input-md" required="">
-    
+  <?=Form::select('niveau', array('1' => 'Utilisateur', '2' => 'Conseiller', '99' => 'Administrateur'), Input::old('niveau'),array('class'=>'form-control input-md')); ?>
   </div>
 </div>
 
@@ -61,4 +39,4 @@
 </div>
 
 </fieldset>
-</form>
+<?= Form::close() ?>

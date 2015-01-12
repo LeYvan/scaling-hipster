@@ -42,7 +42,7 @@ class SinistresController extends BaseController {
     public function modifierGet($id)
     {
         // Set titre page générée
-        $proprietesPage = array('titre' => '(GET) Modifier un sinistres');
+        $proprietesPage = array('titre' => '(GET) Modifier un sinistre');
 
         // Get sinistres de categorie_id
         $sinistre = Sinistre::where('id',$id)->firstOrFail();

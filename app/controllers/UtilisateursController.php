@@ -19,6 +19,75 @@ class UtilisateursController extends BaseController {
                    'utilisateurs.lister',
                     array('utilisateurs' => $utilisateurs));
     }
+    public function modifierGet($id)
+    {
+      // Set titre page générée
+        $proprietesPage = array('titre' => '(GET) Modifier un Utilisateur');
 
+        // Get utilisateur
+        $Utilisateur = utilisateur::where('id',$id)->firstOrFail();
+
+        // Enboite vue formulaire dans vue design
+        return 
+          View::make('faireface', $proprietesPage)
+            ->nest('contenu',
+                   'utilisateurs.formulaire',
+                    array('utilisateur' => $Utilisateur));
+    }
+    public function modifierPost($id)
+    {
+            // Set titre page générée
+      $proprietesPage = array('titre' => '(POST) Modifier un Utilisateur');
+
+      if (!(Input::has('nom') &&
+          Input::has('email') &&
+          Input::has('niveau'))){
+
+        return $this->afficherErreur("pas de données");
+      }
+
+      $Utilisateur = Utilisateur::findOrFail($id);
+
+      $Utilisateur->nom = Input::get('nom');
+      $Utilisateur->email = Input::get('email');
+      $Utilisateur->niveau = Input::get('niveau');
+
+      $Utilisateur->save();
+
+      return 
+        View::make('faireface', $proprietesPage)
+          ->nest('contenu',
+                 'succes');
+    }
+    
+    public function confirmationSupprimer($id)
+    {
+        // Set titre page générée
+        $proprietesPage = array('titre' => 'Utilisateur');
+
+        $Utilisateur = Utilisateur::findOrFail($id);
+
+        // Enboite vue sinistres dans vue design
+        return 
+          View::make('faireface', $proprietesPage)
+            ->nest('contenu',
+                   'utilisateurs.supp-utilisateur',
+                    array('utilisateur' => $Utilisateur));
+    }
+
+    public function supprimer()
+    {
+      // Set titre page générée
+      $proprietesPage = array('titre' => 'fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
+
+
+      $Utilisateur = Utilisateur::findOrFail(Input::get("id"));
+      $Utilisateur->delete();
+
+       return 
+        View::make('faireface', $proprietesPage)
+          ->nest('contenu',
+                 'succes');
+    }
   }
 ?>
