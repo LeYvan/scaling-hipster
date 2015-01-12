@@ -16,7 +16,6 @@ class Sinistre extends Eloquent {
   {
     return ElementSinistre::where('sinistre_id','=',$this->id)->get(); 
   }
-
 }
 
 ?>

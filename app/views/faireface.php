@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <base href="/">
     <title>FaireFace - <?php echo $titre ?></title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/faireface.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </head>
   <body>
   <nav class="navbar navbar-inverse navbar-static-top">
@@ -35,18 +35,18 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">
-          <img alt="Brand" src="images/faireface.png" />
+          <img alt="Brand" src="/images/faireface.png" />
         </a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-faireface-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="alertes">Alertes <sup><span class="badge">420</span></sup></a></li>
-          <li><a href="nouvelles">Nouvelles <sup><span class="badge">42</span></sup></a></li>
-          <li><a href="capsules">Capsules <sup><span class="badge"></span></sup></a></li>
-          <li><a href="plan">Plan Familial</a></li>
-          <li><a href="sinistres">Sinistres <sup><span class="badge">4</span></sup></a></li>
+          <li><a href="/alertes">Alertes <sup><span class="badge">420</span></sup></a></li>
+          <li><a href="/nouvelles">Nouvelles <sup><span class="badge">42</span></sup></a></li>
+          <li><a href="/capsules">Capsules <sup><span class="badge"></span></sup></a></li>
+          <li><a href="/plan">Plan Familial</a></li>
+          <li><a href="/sinistres">Sinistres <sup><span class="badge">4</span></sup></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Connexion</a></li>
