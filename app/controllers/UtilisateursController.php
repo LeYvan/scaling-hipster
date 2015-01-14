@@ -34,6 +34,7 @@ class UtilisateursController extends BaseController {
                    'utilisateurs.formulaire',
                     array('utilisateur' => $Utilisateur));
     }
+
     public function modifierPost($id)
     {
             // Set titre page générée
@@ -63,7 +64,7 @@ class UtilisateursController extends BaseController {
     public function confirmationSupprimer($id)
     {
         // Set titre page générée
-        $proprietesPage = array('titre' => 'Utilisateur');
+        $proprietesPage = array('titre' => 'Utilisateur - Confirmer supression');
 
         $Utilisateur = Utilisateur::findOrFail($id);
 
@@ -78,11 +79,14 @@ class UtilisateursController extends BaseController {
     public function supprimer()
     {
       // Set titre page générée
-      $proprietesPage = array('titre' => 'fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
+      $proprietesPage = array('titre' => 'Supression');
 
-
-      $Utilisateur = Utilisateur::findOrFail(Input::get("id"));
-      $Utilisateur->delete();
+      try {
+        $Utilisateur = Utilisateur::findOrFail(Input::get("id"));
+        $Utilisateur->delete();
+      } catch (Exception $e) {
+        return $this->afficherErreur("Utilisateur introuvable.");
+      }
 
        return 
         View::make('faireface', $proprietesPage)

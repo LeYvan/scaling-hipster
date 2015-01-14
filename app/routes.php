@@ -2,7 +2,7 @@
 
 
 // Sinistres
-/*
+
 Route::get('/sinistres/{categorie_id?}',
            'SinistresController@lister');
 
@@ -21,7 +21,7 @@ Route::get('/elements-sinistres/supp/{id}',
 Route::post('/elements-sinistres/supp/',
           'ElementsSinistreController@supprimer');
 
-*/
+
 //Utilisateur
 
 Route::get('/utilisateurs/',
@@ -36,7 +36,8 @@ Route::post('/utilisateurs/{id}',
 Route::get('/utilisateurs/supprimer/{id}',
           'UtilisateursController@confirmationSupprimer');
 
-Route::post('/utilisateurs/supprimer/',
+
+Route::post('/utilisateurs/{id}/supprimer/',
            'UtilisateursController@supprimer');
 
 

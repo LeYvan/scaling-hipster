@@ -17,7 +17,7 @@ class BaseController extends Controller {
 
     public function afficherErreur($message = null)
     {
-      $proprietesPage = array('titre' => 'Modifier un sinistres');
+      $proprietesPage = array('titre' => 'BaseController');
 
         // Enboite vue sinistres dans vue design
         return 

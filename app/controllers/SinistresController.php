@@ -64,13 +64,13 @@ class SinistresController extends BaseController {
     {
 
       // Set titre page générée
-      $proprietesPage = array('titre' => '(POST) Modifier un sinistres');
+      $proprietesPage = array('titre' => 'Sinistre - Modifier');
 
       if (!(Input::has('titre') &&
           Input::has('rapport') &&
           Input::has('categorie_id'))){
 
-        return $this->afficherErreur("pas de données");
+        return $this->afficherErreur("Introuvable");
       }
 
       $sinistre = Sinistre::findOrFail($id);
