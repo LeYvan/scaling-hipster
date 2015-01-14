@@ -29,7 +29,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">
-          <img alt="Brand" src="/images/faireface.png" />
+          <img alt="Brand" src="/images/faireface.png" height="20" />
         </a>
       </div>
 

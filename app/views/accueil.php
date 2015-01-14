@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <div class="container">
-      <h1>FaireFace</h1>
+      <h1 class="nom-faireface">FAIRE<span class="face">FACE</span></h1>
       <p>Wow, comme c'est beau et bien fait!</p>
   </div>
 </div>

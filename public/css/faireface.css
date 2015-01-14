@@ -27,3 +27,15 @@ body
 {
 	text-align: justify;
 }
+.nom-faireface
+{
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+.face
+{
+	margin-left: 5px;
+	color:#fff;
+	display: inline-block;
+	font-style: italic;
+}
