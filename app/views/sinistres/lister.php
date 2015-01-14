@@ -16,7 +16,7 @@
               foreach($categories as $categorie)
               {
                 $active = $categorie->id == $categorie_id ? "active" : "";
-                print("<a href=\"/sinistres/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
+                print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
               }
             ?>
           </div>
