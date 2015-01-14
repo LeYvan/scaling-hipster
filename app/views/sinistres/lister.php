@@ -27,10 +27,6 @@
 
         <div class="col-md-9 col-md-pull-3">
 
-          <div>
-            <?= $sinistres->links(); ?>
-          </div>
-
             <!-- Début d'un sinistre -->
             <?php foreach($sinistres as $sinistre) { ?>
 
