@@ -36,7 +36,46 @@ class SinistresController extends BaseController {
 
     public function ajouterGet()
     {
-      return "NIY";
+        // Set titre page générée
+        $proprietesPage = array('titre' => '(GET) Ajouter un sinistre');
+
+        // Get all categories
+        $categories = CategorieSinistre::lists('etiquette','id');
+        return 
+          View::make('faireface', $proprietesPage)
+            ->nest('contenu',
+                   'sinistres.ajouter',
+                    array('mode' => "ajout",
+                          'categories' => $categories));
+    }
+
+
+    public function ajouterPost()
+    {
+      // Set titre page générée
+      $proprietesPage = array('titre' => Input::get('id'));
+
+      if (!(Input::has('titre') &&
+          Input::has('rapport') &&
+          Input::has('categorie_id'))){
+
+        return $this->afficherErreur("Introuvable");
+      }
+
+      $sinistre = new Sinistre;
+
+      $sinistre->titre = Input::get('titre');
+      $sinistre->rapport = Input::get('rapport');
+      $sinistre->categorie_id = Input::get('categorie_id');
+      $sinistre->utilisateur_id = Auth::user()->id;
+
+      $sinistre->save();
+
+      return 
+        View::make('faireface', $proprietesPage)
+          ->nest('contenu',
+                 'succes');
+
     }
 
     public function modifierGet($id)
