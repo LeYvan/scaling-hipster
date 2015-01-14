@@ -46,6 +46,17 @@
   </div>
 </div>
 
+<div class="form-group">
+  <div>
+    <?php
+      $infoGeo = unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip=206.167.109.51'));//.$_SERVER['REMOTE_ADDR']));
+      $long = $infoGeo['geoplugin_longitude'];
+      $lat = $infoGeo['geoplugin_latitude'];
+    ?>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?=$lat.",".$long?>&zoom=14&size=250x250">
+  </div>
+</div>
+
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-2 control-label" for="cmdEnvoyer">Publication</label>
