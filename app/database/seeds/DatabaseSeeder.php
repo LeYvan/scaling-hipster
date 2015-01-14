@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder {
                                  'nom' => 'Roger Gauthier',
                                  'email' => 'bob@faireface.com',
                                  'niveau' => 99,
-                                 'password' => hash('sha256','caca')
+                                 'password' => Hash::make('caca')
                                 )
                             );
 
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder {
                                  'nom' => 'Geneviève Tremblay',
                                  'email' => 'gen69@faireface.com',
                                  'niveau' => 2,
-                                 'password' => hash('sha256','pipi')
+                                 'password' => Hash::make('pipi')
                                 )
                              );
 
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder {
                                  'nom' => 'Stéphane Bobinette',
                                  'email' => 'stephentabarnaque@faireface.com',
                                  'niveau' => 1,
-                                 'password' => hash('sha256','vagin')
+                                 'password' => Hash::make('vagin')
                                 )
                               );
 
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder {
                                  'nom' => 'José Terminal',
                                  'email' => 'jose@faireface.com',
                                  'niveau' => 1,
-                                 'password' => hash('sha256','vagin')
+                                 'password' => Hash::make('vagin')
                                 )
                               );
 
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder {
                                    'nom' => 'Utilisateur Fantôme Nb' . $i,
                                    'email' => mt_rand(1,99999) . '@faireface.com',
                                    'niveau' => 1,
-                                   'password' => hash('sha256','utilisateur'.$i)
+                                   'password' => Hash::make('utilisateur'.$i)
                                   )
                                 );
         }

@@ -36,10 +36,29 @@ Route::get('/utilisateurs/supprimer/{id}',
 Route::post('/utilisateurs/{id}/supprimer/',
            'UtilisateursController@supprimer');
 
-
 // Accueil
 Route::get('/', function()
 {
   $message = array('titre' => 'Accueil');
   return View::make('faireface', $message)->nest('contenu','accueil');
+});
+
+
+
+Route::post('/connexion/', function(){
+	$reussi = Auth::attempt(array('nomUtilisateur' => Input::get("nomUtilisateur"), 'password' => Input::get("motPasse")));
+	if ($reussi)
+	{
+		$params = array("reussi" => true, "message" => 'Connexion réussie!');
+	} else {
+		$params = array("reussi" => false, "message" => 'La connexion a échouée!');		
+	}
+	return Redirect::back()->with('evenement', $params);
+});
+
+
+
+Route::get('/deconnexion/', function(){
+	Auth::logout();
+	return Redirect::back()->with(array("reussi" => true, "message" => 'Connexion réussie!'));
 });

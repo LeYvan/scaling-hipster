@@ -4574,6 +4574,13 @@ a.label:focus {
 .label-danger[href]:focus {
   background-color: #c9302c;
 }
+.label-faireface {
+  background-color: #F47B2D;
+}
+.label-faireface[href]:hover,
+.label-faireface[href]:focus {
+  background-color: #f36c15;
+}
 .badge {
   display: inline-block;
   min-width: 10px;
@@ -5391,6 +5398,24 @@ a.list-group-item-danger.active:focus {
 }
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ebccd1;
+}
+.panel-faireface {
+  border-color: #ddd;
+}
+.panel-faireface > .panel-heading {
+  color: #333;
+  background-color: #eee;
+  border-color: #ddd;
+}
+.panel-faireface > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ddd;
+}
+.panel-faireface > .panel-heading .badge {
+  color: #eee;
+  background-color: #333;
+}
+.panel-faireface > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ddd;
 }
 .embed-responsive {
   position: relative;
