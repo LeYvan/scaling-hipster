@@ -51,3 +51,8 @@ body
 {
 	/*text-align: right;*/
 }
+.liste-navigation>div>div
+{
+	display: inline-block;
+	margin: 20px 0 10px 0;
+}

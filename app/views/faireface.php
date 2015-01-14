@@ -80,9 +80,11 @@
         </div>
     <?php
   }?>
-
   <?php echo $contenu ?>
-
+  <footer class="text-center">
+    <div>Faire<i>Face</i>, une application formidable.</div>
+    <div>®2015 Équipe tamia</div>
+  </footer>
     <!-- Fenêtre modal de visionnement d'images -->
     <div class="modal fade" id="connexionModal" tabindex="-1" role="dialog" aria-labelledby="connexionModalLabel" aria-hidden="true">
       <div class="modal-dialog">

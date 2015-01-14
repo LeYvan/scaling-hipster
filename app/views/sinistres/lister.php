@@ -1,15 +1,12 @@
 <div id="page" class="container">
 
-    <h1>Sinistres</h1>
-
-      <div>
-        <h4><a href="/sinistres/ajouter.php" class="label label-faireface"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Publier un noueau rapport</a></h4>
+      <div id="title-sinistres" class="">
+        <h4 class="pull-right"><a href="/sinistres/ajouter.php" class="label label-faireface"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Publier un nouveau rapport</a></h4>
+        <h1>Sinistres</h1>
       </div>
-
       <div class="row">
-
         <!-- Liste des catégories de sinistres -->
-        <div class="col-md-3 col-md-push-9">
+ <!--       <div class="col-md-3 col-md-push-9">
           <div class="list-group">
             <a href="/sinistres/" class="list-group-item <?= $categorie_id == 0 ? "active" : ""; ?>">Toutes les catégories</a>
             <?php
@@ -20,10 +17,39 @@
               }
             ?>
           </div>
-        </div>
+        </div>-->
         <!-- Fin liste des catégories de sinistres -->
 
-        <div class="col-md-9 col-md-pull-3">
+        <div class="col-md-12">
+          <div class="row liste-navigation">
+            <div class="col-sm-4">
+              <div>Catégorie:</div>
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <?= $categorie_id == 0 ? "Toutes" : $categorie->etiquette ?>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation" class="<?= $categorie_id == 0 ? "active" : "" ?>"><a role="menuitem" tabindex="-1" href="/sinistres/">Toutes les catégories</a></li>
+                  <?php
+                    foreach($categories as $categorie)
+                    {
+                      $active = $categorie->id == $categorie_id ? "active" : "";
+                      ?>
+                      <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/<?= $categorie->id ?>"><?= $categorie->etiquette ?></a></li>
+                      <?php
+                      // print("<a href=\"/sinistres/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
+                    }
+                  ?>
+  <!--                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> -->
+                  </ul>
+                </div>
+              </div>
+            <div class="col-sm-8 text-right"><?= $sinistres->links(); ?></div>
+          </div>
 
             <!-- Début d'un sinistre -->
             <?php foreach($sinistres as $sinistre) { ?>
@@ -85,11 +111,9 @@
             </div>
             <?php } ?>
             <!-- Fin d'un sinistre -->
-
           <div>
             <?= $sinistres->links(); ?>
           </div>
-
           <!-- Fenêtre modal de visionnement d'images -->
           <div class="modal fade" id="mediaModal" tabindex="-1" role="dialog" aria-labelledby="mediaModalLabel" aria-hidden="true">
             <div class="modal-dialog">
