@@ -56,12 +56,24 @@
   $event = Session::pull('evenement');
   if($event)
   {
-    if($event['reussi']){
-      ?>
-    <div class="panel panel-success"><div class="panel-heading"><div class="panel-title"><?= $event['message'] ?></div></div></div>
-    <?php } else { ?>
-    <div class="panel panel-danger"><div class="panel-heading"><div class="panel-title"><?= $event['message'] ?></div></div></div>
-    <?php }
+    ?>
+    <div class="container">
+      <?php
+      $al = array();
+      if($event['reussi']) {
+        $al['class'] = 'alert-success';
+      } else {
+        $al['class'] = 'alert-danger';
+      }
+        ?>
+        <div class="alert <?= $al['class'] ?> fade in">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <?= $event['message'] ?>
+        </div>
+    </div>
+    <?php
   }?>
 
   <?php echo $contenu ?>
