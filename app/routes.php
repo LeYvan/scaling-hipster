@@ -3,14 +3,17 @@
 
 // Sinistres
 
-Route::get('/sinistres/{categorie_id?}',      // Lister
+Route::get('/sinistres/',      // Lister
+           'SinistresController@lister');
+
+Route::get('/sinistres/categorie/{categorie_id?}',      // Lister
            'SinistresController@lister');
 
 Route::get('/sinistres/ajouter/',             // Ajouter GET
-           'SinistresController@ajouterGet');
+           'SinistresController@ajouterGet');     
 
-Route::get('/sinistres/ajouter/',             // Ajouter POST
-           function(){return "NIY";});        // À FAIRE
+Route::post('/sinistres/ajouter/',             // Ajouter POST
+           'SinistresController@ajouterPost');
 
 Route::get('/sinistres/modifier/{id}',        // Modifier GET
            'SinistresController@modifierGet');
