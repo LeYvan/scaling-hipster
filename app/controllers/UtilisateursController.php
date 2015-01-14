@@ -10,7 +10,7 @@ class UtilisateursController extends BaseController {
         $proprietesPage = array('titre' => 'Utilisateurs');
 
         // Get all utilisateurs (pour sidebar)
-        $utilisateurs = Utilisateur::paginate(15);
+        $utilisateurs = Utilisateur::paginate(20);
 
         // Enboite vue sinistres dans vue design
         return 
