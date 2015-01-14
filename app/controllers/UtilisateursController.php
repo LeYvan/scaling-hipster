@@ -78,16 +78,22 @@ class UtilisateursController extends BaseController {
     public function supprimer()
     {
       // Set titre page générée
-      $proprietesPage = array('titre' => 'fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
+      $proprietesPage = array('titre' => 'Utilisateur - Suppression');
 
 
-      $Utilisateur = Utilisateur::findOrFail(Input::get("id"));
-      $Utilisateur->delete();
+      try {
+        $Utilisateur = Utilisateur::findOrFail(Input::get("id"));
+        $nom = $Utilisateur->nom;
+        $Utilisateur->delete();
 
-       return 
-        View::make('faireface', $proprietesPage)
-          ->nest('contenu',
-                 'succes');
+
+        $message = '<p>Supression de ' . $nom . ' réussi.</p>';
+        $message = $message . "<a href=\"/utilisateurs/\">Retour à la liste des utilisateurs.</a>";
+
+        return $this->afficherSucces($message);
+      } catch (Exception $e) {
+        return $this->afficherErreur('Introuvable');
+      }
     }
   }
 ?>

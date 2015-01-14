@@ -6,7 +6,7 @@
         
 
           <?php 
-            echo Form::open(array('url'=>'/utilisateurs/supprimer'));
+            echo Form::open(array('url'=>'/utilisateurs/' . $utilisateur->id . '/supprimer'));
             echo Form::submit('Oui');
             echo Form::button('Non');
             echo Form::hidden('id',$utilisateur->id);
