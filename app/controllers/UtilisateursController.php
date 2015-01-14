@@ -94,17 +94,58 @@ class UtilisateursController extends BaseController {
       } catch (Exception $e) {
         return $this->afficherErreur("Utilisateur introuvable.");
       }
-
     }
 
-    public function ajouterGet()
+    public function inscription()
     {
+      // Set titre page générée
+      $proprietesPage = array('titre' => 'Utilisateur - Inscription');
 
-    }
+      // Variable pour les infos de l'utilisateur
+      if (Input::has ('txtNom') && Input::has ('txtUtilisateur') &&
+            Input::has ('txtMotPasse') && Input::has ('txtEmail'))
+      {
+        $nom = Input::get('txtNom');
+        $login = Input::get('txtUtilisateur');
+        $mdp = Input::get('txtMotPasse');
+        $email = Input::get('txtEmail');
 
-    public function ajouterPost($id)
-    {
+        if ($nom != "" && $login !="" && $mdp != "" && $email != "")
+        {
+          $user = Utilisateur::where('nomUtilisateur',Input::get('txtUtilisateur'))->get();
+          if(is_null($user))
+          {
+            $Utilisateur = new Utilisateur;      
 
+            $Utilisateur->nomUtilisateur = $login;
+            $Utilisateur->nom = $nom;
+            $Utilisateur->password = Hash::Make($mdp);
+            $Utilisateur->email = $email;
+            $Utilisateur->niveau = 1;
+
+            $Utilisateur->save();
+
+            return $this->afficherSucces("Bienvenu ". $login. "!");
+          }
+          else
+          {
+            return $this->afficherErreur("Nom d'utilisateur déjà utilisé.");
+          }
+        }
+        else
+        {
+          return $this->afficherErreur("Tous les champs sont obligatoires");         
+        }
+      }
+      else
+      {
+        return $this->afficherErreur("Il manque des champs");
+      }      
+
+      return 
+        View::make('faireface', $proprietesPage)
+          ->nest('contenu',
+                 'succes');
     }
   }
 ?>
