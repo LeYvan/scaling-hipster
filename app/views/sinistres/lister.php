@@ -53,8 +53,8 @@
                     <?php
                       if ($element->type == 'image')
                       {
-                        $rand1 = rand(0,1000);
-                        $rand2 = rand($rand1*16/9,$rand1*9/16);
+                        $rand1 = rand(200,800);
+                        $rand2 = rand($rand1*1334/750,$rand1*750/1334);
                         print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2."\">");
                         // print("$element->fichier");
                       } 

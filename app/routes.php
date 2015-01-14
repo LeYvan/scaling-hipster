@@ -40,12 +40,12 @@ Route::post('/connexion/', function(){
 	} else {
 		$params = array("reussi" => false, "message" => 'La connexion a échouée!');		
 	}
-	return Redirect::to('/')->with('evenement', $params);
+	return Redirect::back()->with('evenement', $params);
 });
 
 
 
 Route::get('/deconnexion/', function(){
 	Auth::logout();
-	return Redirect::to('/')->with(array("reussi" => true, "message" => 'Connexion réussie!'));
+	return Redirect::back()->with(array("reussi" => true, "message" => 'Connexion réussie!'));
 });
