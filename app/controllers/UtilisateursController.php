@@ -79,11 +79,16 @@ class UtilisateursController extends BaseController {
     public function supprimer()
     {
       // Set titre page générée
-      $proprietesPage = array('titre' => 'Supression');
+      $proprietesPage = array('titre' => 'Suppression');
 
       try {
+
         $Utilisateur = Utilisateur::findOrFail(Input::get("id"));
-        $Utilisateur->delete();
+        $nom = $Utilisateur->nom;
+        $message = "Suppression de $nom réussie.";
+        $Utilisateur->delete($message);
+        return $this->afficherSucces($message);
+
       } catch (Exception $e) {
         return $this->afficherErreur("Utilisateur introuvable.");
       }
