@@ -22,7 +22,7 @@ class UtilisateursController extends BaseController {
     public function modifierGet($id)
     {
       // Set titre page générée
-        $proprietesPage = array('titre' => '(GET) Modifier un Utilisateur');
+        $proprietesPage = array('titre' => 'Utilisateur - Modifier');
 
         // Get utilisateur
         $Utilisateur = utilisateur::where('id',$id)->firstOrFail();
@@ -38,13 +38,13 @@ class UtilisateursController extends BaseController {
     public function modifierPost($id)
     {
             // Set titre page générée
-      $proprietesPage = array('titre' => '(POST) Modifier un Utilisateur');
+      $proprietesPage = array('titre' => 'Utilisateur - Modifier');
 
       if (!(Input::has('nom') &&
           Input::has('email') &&
           Input::has('niveau'))){
 
-        return $this->afficherErreur("pas de données");
+        return $this->afficherErreur("Introuvable");
       }
 
       $Utilisateur = Utilisateur::findOrFail($id);
@@ -79,24 +79,22 @@ class UtilisateursController extends BaseController {
     public function supprimer()
     {
       // Set titre page générée
-      $proprietesPage = array('titre' => 'Suppression');
+      $proprietesPage = array('titre' => 'Utilisateur - Suppression');
 
       try {
-
         $Utilisateur = Utilisateur::findOrFail(Input::get("id"));
         $nom = $Utilisateur->nom;
-        $message = "Suppression de $nom réussie.";
-        $Utilisateur->delete($message);
-        return $this->afficherSucces($message);
 
+        $message = '<p>Supression de ' . $nom . ' réussi.</p>';
+        $message = $message . "<a href=\"/utilisateurs/\">Retour à la liste des utilisateurs.</a>";
+
+        $Utilisateur->delete($message);
+
+        return $this->afficherSucces($message);
       } catch (Exception $e) {
         return $this->afficherErreur("Utilisateur introuvable.");
       }
 
-       return 
-        View::make('faireface', $proprietesPage)
-          ->nest('contenu',
-                 'succes');
     }
   }
 ?>
