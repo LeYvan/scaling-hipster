@@ -113,7 +113,8 @@ class UtilisateursController extends BaseController {
         if ($nom != "" && $login !="" && $mdp != "" && $email != "")
         {
           $user = Utilisateur::where('nomUtilisateur',Input::get('txtUtilisateur'))->get();
-          if(is_null($user))
+
+          if(!is_null($user))
           {
             $Utilisateur = new Utilisateur;      
 
@@ -123,9 +124,16 @@ class UtilisateursController extends BaseController {
             $Utilisateur->email = $email;
             $Utilisateur->niveau = 1;
 
-            $Utilisateur->save();
-
-            return $this->afficherSucces("Bienvenu ". $login. "!");
+            try
+            {
+              $Utilisateur->save();
+              return $this->afficherSucces("Bienvenu ". $login. "!");
+            }
+            catch (Exception $e)
+            {
+              return $this->afficherErreur("Nom d'utilisateur déjà utilisé.");
+            }
+            
           }
           else
           {
