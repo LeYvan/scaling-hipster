@@ -27,6 +27,10 @@ body
 {
 	text-align: justify;
 }
+.panel-body
+{
+	padding-bottom: 0;
+}
 .nom-faireface
 {
 	font-weight: bold;
