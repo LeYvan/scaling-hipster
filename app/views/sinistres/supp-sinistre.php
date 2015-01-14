@@ -8,12 +8,10 @@
             echo Form::open(array('url'=>'/sinistres/' . $sinistre->id . '/supp/'));
             echo Form::submit('Oui');
             echo Form::button('Non');
-            echo Form::hidden('id',$element->id);
+            echo Form::hidden('id',$sinistre->id);
             echo Form::close();
           ?>
-
-          <a href="<?=$id?>" type="button" class="btn btn-default">Oui</a>
-          <a href="javascript:history.back();" type="button" class="btn btn-default">Non</a>
+          
         </div>
       </div>
   </div>

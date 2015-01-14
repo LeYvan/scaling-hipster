@@ -79,7 +79,7 @@
                         <div>
                           <div class="btn-group" role="group" aria-label="Administration">
                             <a href="/sinistres/modifier/<?= $sinistre->id ?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span>Modifier</a>
-                            <a href="/sinistres/supp/<?= $sinistre->id ?>" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
+                            <a href="/sinistres/<?= $sinistre->id ?>/supp/" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
                           </div>
                         </div>
                         <?php

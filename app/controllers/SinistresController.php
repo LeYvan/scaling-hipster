@@ -90,26 +90,33 @@ class SinistresController extends BaseController {
     public function confirmerSupprimer($id)
     {
         // Set titre page générée
-        $proprietesPage = array('titre' => 'Sinistres - Supprimer');
-          
-        try {
-          $sinistre = Sinistre::findOrFail($id);
-          $nom = $sinistre->
-          $sinistre->delete();
-          return $this->afficherSucces('Le sinistre "' . $nom . ' a été supprimé.');
-        }catch(Eception $e) {
-          return $this->afficherErreur("Introuvable");
-        }
+        $proprietesPage = array('titre' => 'Sinistres - Suppression');
+
+        $sinistre = Sinistre::where('id',$id)->firstOrFail();
+
+        // Enboite vue sinistres dans vue design
+        return 
+          View::make('faireface', $proprietesPage)
+            ->nest('contenu',
+                   'sinistres.supp-sinistre',
+                    array('id' => $id,
+                          'sinistre' => $sinistre));
     }
 
-    public function Supprimer()
+    public function supprimer()
     {
         // Set titre page générée
-        $proprietesPage = array('titre' => 'Sinistres - Supprimer');
+        $proprietesPage = array('titre' => Input::get('id'));
 
         try {
-          $element = ElementSinistre::where('id',Input::get('id'))->firstOrFail();
-          $element->delete();
+          $sinistre = Sinistre::where('id',Input::get('id'))->firstOrFail();
+
+          $message = '<p>Supression du sinistre ' . $sinistre->titre . ' réussi.</p>';
+          $message = $message . "<a href=\"/sinistres/\">Retour à la liste des sinistres.</a>";
+
+          $sinistre->delete();
+          return $this->afficherSucces($message);
+
         } catch(Exception $e) {
           return 
             View::make('faireface', $proprietesPage)
@@ -117,12 +124,6 @@ class SinistresController extends BaseController {
                      'erreur',
                      array('message' => "L'élément n'existe plus!"));
         }
-
-        // Enboite vue sinistres dans vue design
-        return 
-          View::make('faireface', $proprietesPage)
-            ->nest('contenu',
-                   'succes');
     }
 }
 ?>

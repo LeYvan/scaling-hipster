@@ -19,10 +19,10 @@ Route::post('/sinistres/modifier/{id}',       // Modifier POST
             'SinistresController@modifierPost');
 
 Route::get('/sinistres/{id}/supp/',           // Supprimer GET
-            'SinistresController@supprimerGet');
+            'SinistresController@confirmerSupprimer');
 
 Route::post('/sinistres/{id}/supp/',           // Supprimer POST
-            'SinistresController@supprimerPost');
+            'SinistresController@supprimer');
 
 Route::get('/elements-sinistres/supp/{id}',   // Supprimer GET
           'ElementsSinistreController@confirmerSupprimer');

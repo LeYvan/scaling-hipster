@@ -33,7 +33,7 @@
             <a href="/utilisateurs/<?= $utilisateur->id?>" type="button">
             	<span class="glyphicon glyphicon-edit"></span>  Modifier
             </a>
-			<a href="/utilisateurs/supprimer/<?= $utilisateur->id?>" type="button">
+			<a href="/utilisateurs/<?= $utilisateur->id?>/supprimer/" type="button">
             	<span class="glyphicon glyphicon-remove"></span>  Supprimer
             </a>
             </article>
