@@ -3,7 +3,7 @@
     <h1>Sinistres</h1>
 
       <div>
-        <h4><a href="/sinistres/ajouter.php" class="label label-faireface"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>Publier un noueau rapport</a></h4>
+        <h4><a href="/sinistres/ajouter.php" class="label label-faireface"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Publier un noueau rapport</a></h4>
       </div>
 
       <div class="row">
@@ -24,10 +24,6 @@
         <!-- Fin liste des catégories de sinistres -->
 
         <div class="col-md-9 col-md-pull-3">
-
-          <div>
-            <?= $sinistres->links(); ?>
-          </div>
 
             <!-- Début d'un sinistre -->
             <?php foreach($sinistres as $sinistre) { ?>

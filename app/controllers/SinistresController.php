@@ -13,12 +13,12 @@ class SinistresController extends BaseController {
         if ($categorie_id > 0)
         {
           // Get sinistres de categorie_id
-          $sinistres = Sinistre::where('categorie_id',$categorie_id)->paginate(15);
+          $sinistres = Sinistre::where('categorie_id',$categorie_id)->paginate(10);
         } 
         else
         {
           // Get sinistres de categorie_id
-          $sinistres = Sinistre::paginate(15);
+          $sinistres = Sinistre::paginate(10);
         }
 
         // Get all categories (pour sidebar)
