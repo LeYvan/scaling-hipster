@@ -57,7 +57,6 @@
   if($event)
   {
     ?>
-    <div class="container">
       <?php
       $al = array();
       if($event['reussi']) {
@@ -66,13 +65,12 @@
         $al['class'] = 'alert-danger';
       }
         ?>
-        <div class="alert <?= $al['class'] ?> fade in">
+        <div class="container alert <?= $al['class'] ?> fade in">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
           <?= $event['message'] ?>
         </div>
-    </div>
     <?php
   }?>
 
