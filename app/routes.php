@@ -46,6 +46,9 @@ Route::get('/utilisateurs/supprimer/{id}',
 Route::post('/utilisateurs/{id}/supprimer/',
            'UtilisateursController@supprimer');
 
+Route::post('/inscription/',
+           'UtilisateursController@inscription');
+
 // Accueil
 Route::get('/', function()
 {
