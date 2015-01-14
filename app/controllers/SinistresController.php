@@ -86,5 +86,43 @@ class SinistresController extends BaseController {
           ->nest('contenu',
                  'succes');
     }
+
+    public function confirmerSupprimer($id)
+    {
+        // Set titre page générée
+        $proprietesPage = array('titre' => 'Sinistres - Supprimer');
+          
+        try {
+          $sinistre = Sinistre::findOrFail($id);
+          $nom = $sinistre->
+          $sinistre->delete();
+          return $this->afficherSucces('Le sinistre "' . $nom . ' a été supprimé.');
+        }catch(Eception $e) {
+          return $this->afficherErreur("Introuvable");
+        }
+    }
+
+    public function Supprimer()
+    {
+        // Set titre page générée
+        $proprietesPage = array('titre' => 'Sinistres - Supprimer');
+
+        try {
+          $element = ElementSinistre::where('id',Input::get('id'))->firstOrFail();
+          $element->delete();
+        } catch(Exception $e) {
+          return 
+            View::make('faireface', $proprietesPage)
+              ->nest('contenu',
+                     'erreur',
+                     array('message' => "L'élément n'existe plus!"));
+        }
+
+        // Enboite vue sinistres dans vue design
+        return 
+          View::make('faireface', $proprietesPage)
+            ->nest('contenu',
+                   'succes');
+    }
 }
 ?>

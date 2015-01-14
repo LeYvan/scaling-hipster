@@ -41,6 +41,12 @@
           <li><a href="/capsules">Capsules<!--  <sup><span class="badge"></span></sup> --></a></li>
           <li><a href="/plan">Plan Familial</a></li>
           <li><a href="/sinistres">Sinistres<!--  <sup><span class="badge">4</span></sup> --></a></li>
+          <?php
+            if (Auth::check() && Auth::User()->niveau == 99)
+            {
+              print ("<li><a href=\"/utilisateurs/\">Utilisateurs</a></li>");
+            }
+          ?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if(Auth::check()){?>

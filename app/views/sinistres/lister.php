@@ -13,13 +13,11 @@
           <div class="list-group">
             <a href="/sinistres/" class="list-group-item <?= $categorie_id == 0 ? "active" : ""; ?>">Toutes les catégories</a>
             <?php
-
               foreach($categories as $categorie)
               {
                 $active = $categorie->id == $categorie_id ? "active" : "";
                 print("<a href=\"/sinistres/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
               }
-
             ?>
           </div>
         </div>
@@ -36,7 +34,7 @@
 
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h2><?= $sinistre->titre . $sinistre->id ?></h2>
+                <h2><?= $sinistre->titre ?></h2>
                 <h4>
                   <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span> <?= $sinistre->utilisateur()->nom ?>
                 <small><?= date('d/m/Y à g:ia', strtotime($sinistre->updated_at)) ?></small></h4>
@@ -69,10 +67,24 @@
                       ?>
                     </a>
                   </div>
+
                   <?php
                   }
                 ?>
                 </div>
+                      <?php
+                        if (Auth::check() && Auth::User()->niveau > 2)
+                        { 
+                        ?>
+                        <div>
+                          <div class="btn-group" role="group" aria-label="Administration">
+                            <a href="/sinistres/modifier/<?= $sinistre->id ?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span>Modifier</a>
+                            <a href="/sinistres/supp/<?= $sinistre->id ?>" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
+                          </div>
+                        </div>
+                        <?php
+                        }
+                      ?>
               </div>
             </div>
             <?php } ?>

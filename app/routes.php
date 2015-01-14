@@ -2,22 +2,32 @@
 
 
 // Sinistres
-Route::get('/sinistres/{categorie_id?}',
+
+Route::get('/sinistres/{categorie_id?}',      // Lister
            'SinistresController@lister');
 
-Route::get('/sinistres/ajouter/',
+Route::get('/sinistres/ajouter/',             // Ajouter GET
            'SinistresController@ajouterGet');
 
-Route::get('/sinistres/modifier/{id}',
+Route::get('/sinistres/ajouter/',             // Ajouter POST
+           function(){return "NIY";});        // À FAIRE
+
+Route::get('/sinistres/modifier/{id}',        // Modifier GET
            'SinistresController@modifierGet');
 
-Route::post('/sinistres/modifier/{id}',
+Route::post('/sinistres/modifier/{id}',       // Modifier POST
             'SinistresController@modifierPost');
 
-Route::get('/elements-sinistres/supp/{id}',
+Route::get('/sinistres/{id}/supp/',           // Supprimer GET
+            'SinistresController@supprimerGet');
+
+Route::post('/sinistres/{id}/supp/',           // Supprimer POST
+            'SinistresController@supprimerPost');
+
+Route::get('/elements-sinistres/supp/{id}',   // Supprimer GET
           'ElementsSinistreController@confirmerSupprimer');
 
-Route::post('/elements-sinistres/supp/',
+Route::post('/elements-sinistres/supp/',      // Supprimer POST
           'ElementsSinistreController@supprimer');
 
 //Utilisateur

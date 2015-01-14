@@ -96,5 +96,15 @@ class UtilisateursController extends BaseController {
       }
 
     }
+
+    public function ajouterGet()
+    {
+
+    }
+
+    public function ajouterPost($id)
+    {
+
+    }
   }
 ?>

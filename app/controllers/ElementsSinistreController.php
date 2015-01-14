@@ -10,7 +10,6 @@ class ElementsSinistreController extends BaseController {
         // Set titre page générée
         $proprietesPage = array('titre' => 'Sinistres');
 
-
         $element = ElementSinistre::where('id',$id)->firstOrFail();
         $sinistre = Sinistre::findOrFail($element->sinistre_id);
 
