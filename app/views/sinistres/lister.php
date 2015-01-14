@@ -2,8 +2,8 @@
 
     <h1>Sinistres</h1>
 
-      <div class="panel">
-        <a href="/sinistres/ajouter.php"><h4><span class="label label-warning"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>Publier un noueau rapport</span></h4></a>
+      <div>
+        <h4><a href="/sinistres/ajouter.php" class="label label-faireface"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>Publier un noueau rapport</a></h4>
       </div>
 
       <div class="row">
@@ -34,47 +34,47 @@
             <!-- Début d'un sinistre -->
             <?php foreach($sinistres as $sinistre) { ?>
 
-            <article>
-
-              <h2><?= $sinistre->titre . $sinistre->id ?></h2>
-              <h4>
-                <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span> <?= $sinistre->utilisateur()->nom ?>
-              <small><?= date('d/m/Y à g:ia', strtotime($sinistre->updated_at)) ?></small></h4>
-
-              <div class="well"><?= $sinistre->rapport ?></div>
-
-              <div class="row">
-              <?php  
-                foreach($sinistre->elements() as $element)
-                {
-                ?>
-                <div class="col-xs-6 col-sm-4 col-lg-3">
-                  <a href="#" class="thumbnail" data-toggle="modal" data-target="#mediaModal">
-                  <?php
-                    if ($element->type == 'image')
-                    {
-                      $rand1 = rand(0,1000);
-                      $rand2 = rand($rand1*16/9,$rand1*9/16);
-                      print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2."\">");
-                      // print("$element->fichier");
-                    } 
-                    else 
-                    {
-                      ?>
-                      <video width="100%" controls>
-                        <source src="<?= $element->fichier ?>" type="video/mp4">
-                      </video>
-                      <?php
-                    }
-                    ?>
-                  </a>
-                </div>
-                <?php
-                }
-              ?>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2><?= $sinistre->titre . $sinistre->id ?></h2>
+                <h4>
+                  <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span> <?= $sinistre->utilisateur()->nom ?>
+                <small><?= date('d/m/Y à g:ia', strtotime($sinistre->updated_at)) ?></small></h4>
               </div>
-
-            </article>
+              <div class="panel-body">
+                <p><?= $sinistre->rapport ?></p>
+                <div class="row">
+                <?php  
+                  foreach($sinistre->elements() as $element)
+                  {
+                  ?>
+                  <div class="col-xs-6 col-sm-4 col-lg-3">
+                    <a href="#" class="thumbnail" data-toggle="modal" data-target="#mediaModal">
+                    <?php
+                      if ($element->type == 'image')
+                      {
+                        $rand1 = rand(0,1000);
+                        $rand2 = rand($rand1*16/9,$rand1*9/16);
+                        print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2."\">");
+                        // print("$element->fichier");
+                      } 
+                      else 
+                      {
+                        ?>
+                        <video width="100%" controls>
+                          <source src="<?= $element->fichier ?>" type="video/mp4">
+                        </video>
+                        <?php
+                      }
+                      ?>
+                    </a>
+                  </div>
+                  <?php
+                  }
+                ?>
+                </div>
+              </div>
+            </div>
             <?php } ?>
             <!-- Fin d'un sinistre -->
 

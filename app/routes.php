@@ -34,8 +34,6 @@ Route::get('/', function()
 
 Route::post('/connexion/', function(){
 	$reussi = Auth::attempt(array('nomUtilisateur' => Input::get("nomUtilisateur"), 'password' => Input::get("motPasse")));
-	Session::put('connecte', $reussi);
-
 	if ($reussi)
 	{
 		$params = array("reussi" => true, "message" => 'Connexion réussie!');
@@ -48,6 +46,6 @@ Route::post('/connexion/', function(){
 
 
 Route::get('/deconnexion/', function(){
-	Session::forget('connecte');
+	Auth::logout();
 	return Redirect::to('/')->with(array("reussi" => true, "message" => 'Connexion réussie!'));
 });

@@ -17,3 +17,13 @@ body
 	border-radius: 5px;
 	background-color: #fff;
 }
+.blanc
+{
+	background-color: #fff;
+	height: 5em;
+	margin-top: -5em;
+}
+.panel p
+{
+	text-align: justify;
+}

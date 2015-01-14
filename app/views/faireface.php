@@ -43,7 +43,7 @@
           <li><a href="/sinistres">Sinistres<!--  <sup><span class="badge">4</span></sup> --></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <?php if(Session::get('connecte')){?>
+          <?php if(Auth::check()){?>
           <li><a href="/deconnexion/">Déconnexion</a></li>          
           <?php }else{?>
           <li><a href="#" data-toggle="modal" data-target="#connexionModal">Compte</a></li>
