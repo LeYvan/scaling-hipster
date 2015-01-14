@@ -44,9 +44,10 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if(Auth::check()){?>
+          <p class="navbar-text"><?= Auth::user()->nom ?></p>
           <li><a href="/deconnexion/">Déconnexion</a></li>          
           <?php }else{?>
-          <li><a href="#" data-toggle="modal" data-target="#connexionModal">Compte</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#connexionModal">Connexion</a></li>
           <?php }?>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -65,7 +66,7 @@
         $al['class'] = 'alert-danger';
       }
         ?>
-        <div class="container alert <?= $al['class'] ?> fade in">
+        <div class="container alert <?= $al['class'] ?> fade in" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

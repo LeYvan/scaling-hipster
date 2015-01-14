@@ -43,3 +43,11 @@ body
 	display: inline-block;
 	font-style: italic;
 }
+.table-middle>tbody>tr>td
+{
+	vertical-align: middle;
+}
+.table-middle>tbody>tr>td:last-of-type
+{
+	/*text-align: right;*/
+}
