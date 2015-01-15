@@ -42,8 +42,8 @@ Route::get('/utilisateurs/{id}',
 Route::post('/utilisateurs/{id}',
            'UtilisateursController@modifierPost');
 
-Route::get('/utilisateurs/supprimer/{id}',
-          'UtilisateursController@confirmationSupprimer');
+// Route::get('/utilisateurs/supprimer/{id}',
+//           'UtilisateursController@confirmationSupprimer');
 
 Route::post('/utilisateurs/{id}/supprimer/',
            'UtilisateursController@supprimer');
