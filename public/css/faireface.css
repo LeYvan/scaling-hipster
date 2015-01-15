@@ -14,6 +14,9 @@ body
 }
 #page
 {
+	/*margin-top:-20px;*/
+	/*padding-top:20px;*/
+	/*padding: 10px;*/
 	border-radius: 5px;
 	background-color: #fff;
 }
@@ -55,4 +58,13 @@ body
 {
 	display: inline-block;
 	margin: 20px 0 10px 0;
+}
+.dropdown li:hover,
+.dropdown li:active
+{
+	background-color:#286090;
+}
+.sinistre-edit
+{
+	margin:10px;
 }

@@ -1,5 +1,3 @@
-<div id="page" class="container">
-
       <div id="title-sinistres" class="">
         <h4 class="pull-right"><a href="/sinistres/ajouter.php" class="label label-faireface"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Publier un nouveau rapport</a></h4>
         <h1>Sinistres</h1>
@@ -60,58 +58,71 @@
                 <h4>
                   <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span> <?= $sinistre->utilisateur()->nom ?>
                 <small><?= date('d/m/Y à g:ia', strtotime($sinistre->updated_at)) ?></small></h4>
+
               </div>
               <div class="panel-body">
-                <p><?= $sinistre->rapport ?></p>
                 <div class="row">
-                <?php  
-                  foreach($sinistre->elements() as $element)
-                  {
+                  <?php
+                    $nbPhotos = 0;
+                    $nbPhotos = count($sinistre->elements());
                   ?>
-                  <div class="col-xs-6 col-sm-4 col-lg-3">
-                    <a href="#" class="thumbnail" data-toggle="modal" data-target="#mediaModal">
-                    <?php
-                      if ($element->type == 'image')
-                      {
-                        $rand1 = rand(200,800);
-                        $rand2 = rand($rand1*1334/750,$rand1*750/1334);
-                        print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2."\">");
-                        // print("$element->fichier");
-                      } 
-                      else 
-                      {
-                        ?>
-                        <video width="100%" controls>
-                          <source src="<?= $element->fichier ?>" type="video/mp4">
-                        </video>
-                        <?php
-                      }
-                      ?>
-                    </a>
+                  <div class="col-md-9">
+                    <p><?= $sinistre->rapport ?></p>
                   </div>
 
+                  <div class="col-md-3">
+                    <div class="row">
+                  <?php
+                    foreach($sinistre->elements() as $element)
+                    {
+                    ?>
+                    <div class="col-xs-3 col-sm-2 col-md-6">
+                      <a href="#" class="thumbnail" data-toggle="modal" data-target="#mediaModal">
+                      <?php
+   
+                        if ($element->type == 'image')
+                        {
+                          $rand1 = rand(400,600);
+                          $rand2 = array($rand1*1334/750, $rand1*750/1334,$rand1*16/9,$rand1*9/16,$rand1*4/3,$rand1*3/4);
+                          print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2[rand(0,5)]."\">");
+                          // print("$element->fichier");
+                        } 
+                        else 
+                        {
+                          ?>
+                          <video width="100%" controls>
+                            <source src="<?= $element->fichier ?>" type="video/mp4">
+                          </video>
+                          <?php
+                        }
+
+                        ?>
+                      </a>
+                    </div>
+
+                    <?php
+                  }
+                  ?>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+                <?php
+                  if (Auth::check() && Auth::User()->niveau > 2)
+                  { 
+                  ?>
+                  <div class="text-right sinistre-edit">
+                      <a href="/sinistres/modifier/<?= $sinistre->id ?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span>Modifier</a>
+                      <a href="/sinistres/<?= $sinistre->id ?>/supp/" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
+                  </div>
                   <?php
                   }
-                ?>
-                </div>
-                      <?php
-                        if (Auth::check() && Auth::User()->niveau > 2)
-                        { 
-                        ?>
-                        <div>
-                          <div class="btn-group" role="group" aria-label="Administration">
-                            <a href="/sinistres/modifier/<?= $sinistre->id ?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span>Modifier</a>
-                            <a href="/sinistres/<?= $sinistre->id ?>/supp/" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
-                          </div>
-                        </div>
-                        <?php
-                        }
-                      ?>
-              </div>
+                  ?>
             </div>
             <?php } ?>
             <!-- Fin d'un sinistre -->
-          <div>
+          <div class="text-center">
             <?= $sinistres->links(); ?>
           </div>
           <!-- Fenêtre modal de visionnement d'images -->
@@ -133,4 +144,3 @@
 
         </div>
       </div>
-</div>
