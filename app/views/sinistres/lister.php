@@ -54,6 +54,7 @@
 
             <div class="panel panel-default">
               <div class="panel-heading">
+                <div class="pull-right"><a href="#" title="Retour en haut">Retour en haut <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"> </span></a></div>
                 <h2><?= $sinistre->titre ?></h2>
                 <h4>
                   <span class="label label-default"><?= $sinistre->categorie()->etiquette ?></span> <?= $sinistre->utilisateur()->nom ?>
