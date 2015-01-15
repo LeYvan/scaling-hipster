@@ -54,7 +54,7 @@ Route::post('/inscription/',
 // Accueil
 Route::get('/', function()
 {
-  $message = array('titre' => 'Accueil');
+  $message = array('titre' => 'Accueil', 'jumbo' => true);
   return View::make('faireface', $message)->nest('contenu','accueil');
 });
 
@@ -75,5 +75,5 @@ Route::post('/connexion/', function(){
 
 Route::get('/deconnexion/', function(){
 	Auth::logout();
-	return Redirect::back()->with(array("reussi" => true, "message" => 'Connexion réussie!'));
+	return Redirect::back()->with('evenement', array("reussi" => true, "message" => 'Déconnecté!'));
 });

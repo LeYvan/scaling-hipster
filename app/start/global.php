@@ -50,7 +50,20 @@ App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
 });
-
+App::missing(function($exception)
+{
+	$proprietesPage = array(
+		'titre' => "Erreur 404",
+		'jumbo' => true,
+		'erreur'=>true,
+		'errNo'=>404,
+		'message'=>"La page <strong>".URL::current()."</strong> n'existe pas!"
+	);
+	return 
+        View::make('faireface', $proprietesPage)
+          ->nest('contenu',
+                 'erreur');
+});
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

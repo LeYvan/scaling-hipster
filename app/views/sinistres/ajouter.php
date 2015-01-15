@@ -1,4 +1,3 @@
-<div id="page" class="container">
 <h1>Publier un rapport de sinistre</h1>
 <?php
     echo Form::open(array('url' => '/sinistres/ajouter/', 'class'=>'form-horizontal'));
@@ -69,4 +68,3 @@
 <?php
   echo Form::close();
 ?>
-</div>
