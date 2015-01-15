@@ -88,9 +88,15 @@
   if(!empty($jumbo)){?>
 <div class="jumbotron">
   <div class="container">
-      <h1 class="nom-faireface">FAIRE<span class="face">FACE</span>
-      <p>Aux dangers. Aux problèmes. À la situation.</p></h1>
+    <?php if(!empty($erreur)){
+      ?>
+      <h1 class="nom-faireface">Erreur<span class="face"><?= $errNo ?></span></h1>
+      <p><?= $message ?></p><?php
+      }else{ ?>
+      <h1 class="nom-faireface">FAIRE<span class="face">FACE</span></h1>
+      <p>Aux dangers. Aux problèmes. À la situation.</p>
       <!-- <p>Planifier. Informer. Alerter.</p> -->
+      <?php }?>
   </div>
 </div>
 <?php }?>
