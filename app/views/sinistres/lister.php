@@ -1,5 +1,5 @@
       <div id="title-sinistres" class="">
-        <h4 class="pull-right"><a href="/sinistres/ajouter.php" class="label label-faireface"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Publier un nouveau rapport</a></h4>
+        <h4 class="pull-right"><a href="/sinistres/ajouter/" class="label label-faireface"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Publier un nouveau rapport</a></h4>
         <h1>Sinistres</h1>
       </div>
       <div class="row">
@@ -11,7 +11,7 @@
               foreach($categories as $categorie)
               {
                 $active = $categorie->id == $categorie_id ? "active" : "";
-                print("<a href=\"/sinistres/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
+                print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
               }
             ?>
           </div>
