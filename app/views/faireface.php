@@ -85,13 +85,17 @@
         </div>
     <?php
   }
+  // Avoir une variable nommée "jumbo" ayant une valeur true pour afficher le jumbo
   if(!empty($jumbo)){?>
 <div class="jumbotron">
   <div class="container">
     <?php if(!empty($erreur)){
       ?>
-      <h1 class="nom-faireface">Erreur<span class="face"><?= $errNo ?></span></h1>
-      <p><?= $message ?></p><?php
+      <!-- Affichage des erreurs HTTP -->
+        <!-- Avoir dans les paramètres le numéro de l'erreur avec un message associé -->
+        <h1 class="nom-faireface">Erreur<span class="face"><?= $errNo ?></span></h1>
+        <p><?= $message ?></p>
+      <?php
       }else{ ?>
       <h1 class="nom-faireface">FAIRE<span class="face">FACE</span></h1>
       <p>Aux dangers. Aux problèmes. À la situation.</p>
