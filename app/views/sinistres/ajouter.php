@@ -42,8 +42,6 @@
   </label>
 </div>
 
-
-
 <!-- Button -->
 <div class="form-group text-right">
   <div class="controls">
