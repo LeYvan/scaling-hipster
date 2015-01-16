@@ -40,7 +40,7 @@ class BaseController extends Controller {
       $params = array('message' => $message, 'reussi' => true);
 
         // Enboite vue sinistres dans vue design
-        return Redirect::back()->with('evenement', $params);
+      return Redirect::back()->with('evenement', $params);
     }
 
 

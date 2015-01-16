@@ -60,16 +60,7 @@ Route::get('/', function()
 
 
 
-Route::post('/connexion/', function(){
-	$reussi = Auth::attempt(array('nomUtilisateur' => Input::get("nomUtilisateur"), 'password' => Input::get("motPasse")));
-	if ($reussi)
-	{
-		$params = array("reussi" => true, "message" => 'Connexion réussie!');
-	} else {
-		$params = array("reussi" => false, "message" => 'La connexion a échouée!');		
-	}
-	return Redirect::back()->with('evenement', $params);
-});
+Route::post('/connexion/','UtilisateursController@connexion');
 
 
 
