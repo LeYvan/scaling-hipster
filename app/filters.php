@@ -100,7 +100,7 @@ Route::filter('admin', function()
 {
 	if(Auth::user()->niveau != 99)
 	{
-		$params = array("reussi" => false, "message" => 'Vous ne disposez pas des droits pour cette section!')
+		$params = array("reussi" => false, "message" => 'Vous ne disposez pas des droits pour cette section!');
 		return Redirect::to('/')->with('evenement', $params);
 	}
 });

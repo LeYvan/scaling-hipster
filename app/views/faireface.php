@@ -36,17 +36,22 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-faireface-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/alertes">Alertes<!--  <sup><span class="badge">420</span></sup> --></a></li>
-          <li><a href="/nouvelles">Nouvelles<!--  <sup><span class="badge">42</span></sup> --></a></li>
-          <li><a href="/capsules">Capsules<!--  <sup><span class="badge"></span></sup> --></a></li>
-          <li><a href="/plan">Plan Familial</a></li>
-          <li><a href="/sinistres">Sinistres<!--  <sup><span class="badge">4</span></sup> --></a></li>
-          <?php
+        <?php
+        $menu = array(
+            array('titre'=>'Alertes', 'href'=>'/alertes/'),
+            array('titre'=>'Nouvelles', 'href'=>'/nouvelles/'),
+            array('titre'=>'Capsules', 'href'=>'/capsules/'),
+            array('titre'=>'Plan Familial', 'href'=>'/plan/'),
+            array('titre'=>'Sinistres', 'href'=>'/sinistres/')
+          );
             if (Auth::check() && Auth::User()->niveau == 99)
             {
-              print ("<li><a href=\"/utilisateurs/\">Utilisateurs</a></li>");
+              array_push($menu, array('titre'=>'Utilisateurs', 'href'=>'/utilisateurs/'));
             }
-          ?>
+          foreach ($menu as $element) {?>
+            <li <?= $titre == $element['titre']?'class="active"':''?>><a href="<?= $element['href'] ?>"><?= $element['titre'] ?></a></li>
+          <?php }
+?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if(Auth::check()){?>
@@ -79,10 +84,34 @@
           <?= $event['message'] ?>
         </div>
     <?php
-  }?>
+  }
+  // Avoir une variable nommée "jumbo" ayant une valeur true pour afficher le jumbo
+  if(!empty($jumbo)){?>
+<div class="jumbotron">
+  <div class="container">
+    <?php if(!empty($erreur)){
+      ?>
+      <!-- Affichage des erreurs HTTP -->
+        <!-- Avoir dans les paramètres le numéro de l'erreur avec un message associé -->
+        <h1 class="nom-faireface">Erreur<span class="face"><?= $errNo ?></span></h1>
+        <p><?= $message ?></p>
+      <?php
+      }else{ ?>
+      <h1 class="nom-faireface">FAIRE<span class="face">FACE</span></h1>
+      <p>Aux dangers. Aux problèmes. À la situation.</p>
+      <!-- <p>Planifier. Informer. Alerter.</p> -->
+      <?php }?>
+  </div>
+</div>
+<?php }?>
+  <div class="container" id="page">
 
-  <?php echo $contenu ?>
-
+    <?php echo $contenu ?>
+    <footer class="text-center">
+      <div>Faire<i>Face</i>, une application formidable.</div>
+      <div>©&#8239;Équipe Tamia, 2015</div>
+    </footer>
+  </div>
     <!-- Fenêtre modal de visionnement d'images -->
     <div class="modal fade" id="connexionModal" tabindex="-1" role="dialog" aria-labelledby="connexionModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -195,5 +224,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/faireface.js"></script>
+    <script src="/js/holder.js"></script>
   </body>
 </html>

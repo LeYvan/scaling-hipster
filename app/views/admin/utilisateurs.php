@@ -1,2 +1,1 @@
-
-<pre><?php print_r($cats); ?></pre>
+<center></center><pre><?php print_r($cats); ?></pre>

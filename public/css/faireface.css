@@ -14,6 +14,10 @@ body
 }
 #page
 {
+	/*margin-top:-20px;*/
+	/*padding-top:20px;*/
+	/*padding: 10px;*/
+	margin-bottom: 15px;
 	border-radius: 5px;
 	background-color: #fff;
 }
@@ -51,3 +55,46 @@ body
 {
 	/*text-align: right;*/
 }
+.liste-navigation>div>div
+{
+	display: inline-block;
+	margin: 20px 0 10px 0;
+}
+.dropdown li:hover,
+.dropdown li:active
+{
+	background-color:#286090;
+}
+.sinistre-edit
+{
+	margin:10px;
+}
+.erreur-media
+{
+	position: relative;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.affichage
+{
+	position:absolute;
+	background-color:transparent;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	z-index:1000;
+}
+.esg
+{
+	-moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+/*.jumbotron
+{
+	margin-bottom:0; 
+}*/

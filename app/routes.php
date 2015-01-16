@@ -1,10 +1,7 @@
 <?php
 
-
 // Groupe de route pour ADMIN SEULEMENT
 Route::group(array('before' => 'auth|admin'), function() {
-
-   //Utilisateur
 
   Route::get('/utilisateurs/',
            'UtilisateursController@lister');
@@ -47,7 +44,6 @@ Route::group(array('before' => 'auth|admin|conseiller'), function() {
             'ElementsSinistreController@supprimer');
 
 });
-
 //======================================================================================================================
 
 // Sinistres
@@ -73,7 +69,7 @@ Route::post('/inscription/',
 // Accueil
 Route::get('/', function()
 {
-  $message = array('titre' => 'Accueil');
+  $message = array('titre' => 'Accueil', 'jumbo' => true);
   return View::make('faireface', $message)->nest('contenu','accueil');
 });
 
@@ -94,6 +90,12 @@ Route::post('/connexion/', function(){
 
 Route::get('/deconnexion/', function(){
 	Auth::logout();
+
+  /*
   $params = array("reussi" => true, "message" => 'Deconnexion réussie!!');
   return Redirect::to('/')->with('evenement', $params);
+  */
+
+	return Redirect::back()->with('evenement', array("reussi" => true, "message" => 'Déconnecté!'));
+
 });
