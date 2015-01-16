@@ -5,15 +5,18 @@ class SinistresController extends BaseController {
      * Lister les sinistres par catégorie.
      * Lister les sinistres de toutes les catégories si aucune spécifiée.
      */
-    public function lister($categorie_id = 0)
+    public function lister($etiquette = null)
     {
         // Set titre page générée
         $proprietesPage = array('titre' => 'Sinistres');
 
-        if ($categorie_id > 0)
+        $catCourante = null;
+        if ($etiquette)
         {
+          $catCourante = CategorieSinistre::where('etiquette',$etiquette)->first();
+          // var_dump($catCourante);
           // Get sinistres de categorie_id
-          $sinistres = Sinistre::where('categorie_id',$categorie_id)->paginate(10);
+          $sinistres = Sinistre::where('categorie_id',$catCourante->id)->paginate(10);
         } 
         else
         {
@@ -25,7 +28,6 @@ class SinistresController extends BaseController {
         $lstCategories = CategorieSinistre::lists('etiquette', 'id');
         $categories = CategorieSinistre::all();
 
-
         // Enboite vue sinistres dans vue design
         return 
           View::make('faireface', $proprietesPage)
@@ -34,7 +36,7 @@ class SinistresController extends BaseController {
                     array('sinistres' => $sinistres,
                           'lstCategories' => $lstCategories,
                           'categories' => $categories,
-                          'categorie_id' => $categorie_id));
+                          'catCourante' => $catCourante));
     }
 
     public function ajouterGet()
@@ -57,7 +59,7 @@ class SinistresController extends BaseController {
     {
       // Set titre page générée
       $proprietesPage = array('titre' => Input::get('id'));
-      // var_dump(Input::file());
+      // var_dump(Input::file('files'));
       if (!(Input::has('titre') &&
           Input::has('rapport') &&
           Input::has('categorie_id'))){

@@ -1,4 +1,4 @@
-<?= Form::open(array('url' => '/sinistres/ajouter/')) ?>
+<?= Form::open(array('url' => '/sinistres/ajouter/','files' => true)) ?>
 <fieldset>
 <!-- Text input-->
 <div class="form-group">
@@ -29,7 +29,7 @@
 <div class="form-group">
   <label class="control-label" for="filebutton">Ajouter des fichiers</label>
   <div class="controls">
-    <?= Form::file('filebutton', array('id' => 'filebutton', 'multiple', 'multiple')) ?>
+    <?= Form::file('files[]', array('id' => 'filebutton', 'multiple'=>true)) ?>
     <!-- <input id="filebutton" name="filebutton" class="input-file" type="file"> -->
   </div>
 </div>

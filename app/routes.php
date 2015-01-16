@@ -50,7 +50,7 @@ Route::group(array('before' => 'auth|admin|conseiller'), function() {
 Route::get('/sinistres/',      // Lister
            'SinistresController@lister');
 
-Route::get('/sinistres/categorie/{categorie_id}',      // Lister
+Route::get('/sinistres/categorie/{etiquette}',      // Lister
            'SinistresController@lister');
 
 Route::get('/sinistres/ajouter/',             // Ajouter GET

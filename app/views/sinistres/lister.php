@@ -2,37 +2,22 @@
         <!-- <h4 class="pull-right"><a href="/sinistres/ajouter/" class="label label-faireface"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Publier un nouveau rapport</a></h4> -->
         <h1>Sinistres</h1>
       </div>
-        <!-- Liste des catégories de sinistres -->
- <!--       <div class="col-md-3 col-md-push-9">
-          <div class="list-group">
-            <a href="/sinistres/" class="list-group-item <?= $categorie_id == 0 ? "active" : ""; ?>">Toutes les catégories</a>
-            <?php
-              foreach($categories as $categorie)
-              {
-                $active = $categorie->id == $categorie_id ? "active" : "";
-                print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
-              }
-            ?>
-          </div>
-        </div>-->
-        <!-- Fin liste des catégories de sinistres -->
-
           <div class="row liste-navigation">
             <div class="col-sm-4">
               <!-- <div>Catégorie:</div> -->
               <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                    <?= $categorie_id == 0 ? "Tout les types" : $categorie->etiquette ?>
+                    <?= !$catCourante ? "Tout les types" : $catCourante->etiquette ?>
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation" class="<?= $categorie_id == 0 ? "active" : "" ?>"><a role="menuitem" tabindex="-1" href="/sinistres/">Toutes les catégories</a></li>
+                    <li role="presentation" class="<?= !$catCourante ? "active" : "" ?>"><a role="menuitem" tabindex="-1" href="/sinistres/">Toutes les catégories</a></li>
                   <?php
                     foreach($categories as $categorie)
                     {
-                      $active = $categorie->id == $categorie_id ? "active" : "";
+                      $active = $categorie == $catCourante ? "active" : "";
                       ?>
-                      <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/categorie/<?= $categorie->id ?>/"><?= $categorie->etiquette ?></a></li>
+                      <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/categorie/<?= $categorie->etiquette ?>/"><?= $categorie->etiquette ?></a></li>
                       <?php
                       // print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
                     }
