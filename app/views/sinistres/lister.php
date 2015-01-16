@@ -21,10 +21,10 @@
         <div class="col-md-12">
           <div class="row liste-navigation">
             <div class="col-sm-4">
-              <div>Catégorie:</div>
+              <!-- <div>Catégorie:</div> -->
               <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                    <?= $categorie_id == 0 ? "Toutes" : $categorie->etiquette ?>
+                    <?= $categorie_id == 0 ? "Tout les types" : $categorie->etiquette ?>
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -34,9 +34,9 @@
                     {
                       $active = $categorie->id == $categorie_id ? "active" : "";
                       ?>
-                      <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/<?= $categorie->id ?>"><?= $categorie->etiquette ?></a></li>
+                      <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/categorie/<?= $categorie->id ?>/"><?= $categorie->etiquette ?></a></li>
                       <?php
-                      // print("<a href=\"/sinistres/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
+                      // print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
                     }
                   ?>
   <!--                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>

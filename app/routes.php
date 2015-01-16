@@ -5,7 +5,7 @@
 Route::get('/sinistres/',      // Lister
            'SinistresController@lister');
 
-Route::get('/sinistres/categorie/{categorie_id}',      // Lister
+Route::get('/sinistres/categorie/{categorie_id}/',      // Lister
            'SinistresController@lister');
 
 Route::get('/sinistres/ajouter/',             // Ajouter GET
