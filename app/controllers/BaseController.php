@@ -17,25 +17,30 @@ class BaseController extends Controller {
 
     public function afficherErreur($message = null)
     {
-      $proprietesPage = array('titre' => 'Erreur');
+      $params = array('message' => $message, 'reussi' => false);
 
         // Enboite vue sinistres dans vue design
-        return 
-          View::make('faireface', $proprietesPage)
-            ->nest('contenu',
-                   'erreur',
-                   array('message' => $message));
+        return Redirect::back()->with('evenement', $params);
+          // View::make('faireface', $proprietesPage)
+            // ->nest('contenu',
+            //        'erreur',
+            //        array('message' => $message));
     }
 
     public function afficherSucces($message = null)
     {
-      $proprietesPage = array('titre' => 'Succes');
+      // $proprietesPage = array('titre' => 'Succes');
 
-       return 
-        View::make('faireface', $proprietesPage)
-          ->nest('contenu',
-                 'succes',
-                 array('message' => $message));
+      //  return 
+      //   View::make('faireface', $proprietesPage)
+      //     ->nest('contenu',
+      //            'succes',
+      //            array('message' => $message));
+
+      $params = array('message' => $message, 'reussi' => true);
+
+        // Enboite vue sinistres dans vue design
+        return Redirect::back()->with('evenement', $params);
     }
 
 

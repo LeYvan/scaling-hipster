@@ -61,20 +61,20 @@ class UtilisateursController extends BaseController {
                  'succes');
     }
     
-    public function confirmationSupprimer($id)
-    {
-        // Set titre page générée
-        $proprietesPage = array('titre' => 'Utilisateur - Confirmer supression');
+    // public function confirmationSupprimer($id)
+    // {
+    //     // Set titre page générée
+    //     $proprietesPage = array('titre' => 'Utilisateur - Confirmer supression');
 
-        $Utilisateur = Utilisateur::findOrFail($id);
+    //     $Utilisateur = Utilisateur::findOrFail($id);
 
-        // Enboite vue sinistres dans vue design
-        return 
-          View::make('faireface', $proprietesPage)
-            ->nest('contenu',
-                   'utilisateurs.supp-utilisateur',
-                    array('utilisateur' => $Utilisateur));
-    }
+    //     // Enboite vue sinistres dans vue design
+    //     return 
+    //       View::make('faireface', $proprietesPage)
+    //         ->nest('contenu',
+    //                'utilisateurs.supp-utilisateur',
+    //                 array('utilisateur' => $Utilisateur));
+    // }
 
     public function supprimer()
     {
