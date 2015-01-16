@@ -41,7 +41,16 @@ Route::filter('auth', function()
 		{
 			return Response::make('Unauthorized', 401);
 		}
-		return Redirect::guest('login');
+		
+		$params = array("reussi" => false, "message" => 'Section reservée aux utilisateurs connectés!');
+		try
+		{
+			return Redirect::back()->with('evenement', $params);
+		}
+		catch(Exception $e)
+		{
+			return Redirect::to('/')->with('evenement', $params);
+		}
 	}
 });
 
@@ -83,5 +92,24 @@ Route::filter('csrf', function()
 	if (Session::token() !== Input::get('_token'))
 	{
 		throw new Illuminate\Session\TokenMismatchException;
+	}
+});
+
+
+Route::filter('admin', function()
+{
+	if(Auth::user()->niveau != 99)
+	{
+		$params = array("reussi" => false, "message" => 'Vous ne disposez pas des droits pour cette section!')
+		return Redirect::to('/')->with('evenement', $params);
+	}
+});
+
+Route::filter('conseiller', function()
+{
+	if(Auth::user()->niveau != 2 && Auth::user()->niveau != 99)
+	{
+		$params = array("reussi" => false, "message" => 'Vous ne disposez pas des droits pour cette section!');
+		return Redirect::to('/')->with('evenement', $params);		
 	}
 });
