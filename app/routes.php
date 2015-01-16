@@ -5,7 +5,7 @@
 Route::get('/sinistres/',      // Lister
            'SinistresController@lister');
 
-Route::get('/sinistres/categorie/{categorie_id}',      // Lister
+Route::get('/sinistres/categorie/{categorie_id}/',      // Lister
            'SinistresController@lister');
 
 Route::get('/sinistres/ajouter/',             // Ajouter GET
@@ -42,8 +42,8 @@ Route::get('/utilisateurs/{id}',
 Route::post('/utilisateurs/{id}',
            'UtilisateursController@modifierPost');
 
-Route::get('/utilisateurs/supprimer/{id}',
-          'UtilisateursController@confirmationSupprimer');
+// Route::get('/utilisateurs/supprimer/{id}',
+//           'UtilisateursController@confirmationSupprimer');
 
 Route::post('/utilisateurs/{id}/supprimer/',
            'UtilisateursController@supprimer');

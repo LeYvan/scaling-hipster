@@ -21,10 +21,10 @@
         <div class="col-md-12">
           <div class="row liste-navigation">
             <div class="col-sm-4">
-              <div>Catégorie:</div>
+              <!-- <div>Catégorie:</div> -->
               <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                    <?= $categorie_id == 0 ? "Toutes" : $categorie->etiquette ?>
+                    <?= $categorie_id == 0 ? "Tout les types" : $categorie->etiquette ?>
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -34,9 +34,9 @@
                     {
                       $active = $categorie->id == $categorie_id ? "active" : "";
                       ?>
-                      <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/<?= $categorie->id ?>"><?= $categorie->etiquette ?></a></li>
+                      <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/categorie/<?= $categorie->id ?>/"><?= $categorie->etiquette ?></a></li>
                       <?php
-                      // print("<a href=\"/sinistres/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
+                      // print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
                     }
                   ?>
   <!--                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
@@ -67,17 +67,14 @@
                     $nbPhotos = 0;
                     $nbPhotos = count($sinistre->elements());
                   ?>
-                  <div class="col-md-9">
+                  <div class="col-md-8 col-lg-9">
                     <p><?= $sinistre->rapport ?></p>
-                  </div>
-
-                  <div class="col-md-3">
                     <div class="row">
                   <?php
                     foreach($sinistre->elements() as $element)
                     {
                     ?>
-                    <div class="col-xs-3 col-sm-2 col-md-6">
+                    <div class="col-xs-3 col-sm-2 col-md-2">
                       <a href="#" class="thumbnail" data-toggle="modal" data-target="#mediaModal">
                       <?php
    
@@ -105,21 +102,37 @@
                   }
                   ?>
                     </div>
-                  </div>
-                </div>
+                   </div>
 
+                  <div class="col-xs-12 col-md-4 col-lg-3">
+                    <div class="thumbnail">
+                    <div class="row">
+                      <div class="col-sm-6 col-md-12">
+                        <img data-src="holder.js/100%x250/text:Cliquez pour afficher la carte" alt="...">
+                      </div>
+                      <div class="col-sm-6 col-md-12">
+                        <div class="caption">
+                          <h3>Thumbnail label</h3>
+                          <p>Wow, c'est fou que ce se soit passé là-bas. T'imagines? Ça aurait pû être nous.</p>
+                          <?php
+                            if (Auth::check() && Auth::User()->niveau > 2)
+                            { 
+                            ?>
+                            <div class="text-right">
+                                <a href="/sinistres/modifier/<?= $sinistre->id ?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span>Modifier</a>
+                                <a href="/sinistres/<?= $sinistre->id ?>/supp/" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
+                            </div>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                 </div>
+                </div>
               </div>
-                <?php
-                  if (Auth::check() && Auth::User()->niveau > 2)
-                  { 
-                  ?>
-                  <div class="text-right sinistre-edit">
-                      <a href="/sinistres/modifier/<?= $sinistre->id ?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span>Modifier</a>
-                      <a href="/sinistres/<?= $sinistre->id ?>/supp/" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
-                  </div>
-                  <?php
-                  }
-                  ?>
+
             </div>
             <?php } ?>
             <!-- Fin d'un sinistre -->
