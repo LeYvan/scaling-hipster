@@ -12,6 +12,7 @@
 </div>
 <div class="container" id="page">
   <!-- Fin de la section à enlever si nécessaire -->
+<!--
   <div class="jumbotron">
       <div class="container">
       <h1>FaireFace</h1>
@@ -23,3 +24,4 @@
       <?php } ?>
       </div>
   </div>
+-->

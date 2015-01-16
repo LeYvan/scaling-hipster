@@ -25,7 +25,7 @@ class UtilisateursController extends BaseController {
         $proprietesPage = array('titre' => 'Utilisateur - Modifier');
 
         // Get utilisateur
-        $Utilisateur = utilisateur::where('id',$id)->firstOrFail();
+        $Utilisateur = Utilisateur::where('id',$id)->firstOrFail();
 
         // Enboite vue formulaire dans vue design
         return 
