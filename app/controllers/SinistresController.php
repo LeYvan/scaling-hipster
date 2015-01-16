@@ -57,7 +57,7 @@ class SinistresController extends BaseController {
     {
       // Set titre page générée
       $proprietesPage = array('titre' => Input::get('id'));
-      var_dump(Input::file());
+      // var_dump(Input::file());
       if (!(Input::has('titre') &&
           Input::has('rapport') &&
           Input::has('categorie_id'))){

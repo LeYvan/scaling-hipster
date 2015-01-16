@@ -29,7 +29,7 @@
 <div class="form-group">
   <label class="control-label" for="filebutton">Ajouter des fichiers</label>
   <div class="controls">
-    <?= Form::file('filebutton', array('id' => 'filebutton')) ?>
+    <?= Form::file('filebutton', array('id' => 'filebutton', 'multiple', 'multiple')) ?>
     <!-- <input id="filebutton" name="filebutton" class="input-file" type="file"> -->
   </div>
 </div>
