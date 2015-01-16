@@ -22,7 +22,9 @@ class SinistresController extends BaseController {
         }
 
         // Get all categories (pour sidebar)
+        $lstCategories = CategorieSinistre::lists('etiquette', 'id');
         $categories = CategorieSinistre::all();
+
 
         // Enboite vue sinistres dans vue design
         return 
@@ -30,6 +32,7 @@ class SinistresController extends BaseController {
             ->nest('contenu',
                    'sinistres.lister',
                     array('sinistres' => $sinistres,
+                          'lstCategories' => $lstCategories,
                           'categories' => $categories,
                           'categorie_id' => $categorie_id));
     }
@@ -54,7 +57,7 @@ class SinistresController extends BaseController {
     {
       // Set titre page générée
       $proprietesPage = array('titre' => Input::get('id'));
-
+      var_dump(Input::file());
       if (!(Input::has('titre') &&
           Input::has('rapport') &&
           Input::has('categorie_id'))){

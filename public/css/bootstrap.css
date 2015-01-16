@@ -5400,22 +5400,23 @@ a.list-group-item-danger.active:focus {
   border-bottom-color: #ebccd1;
 }
 .panel-faireface {
-  border-color: #ddd;
+  border-color: #e2600c;
+  /*background-color: #fce4d5;*/
 }
 .panel-faireface > .panel-heading {
-  color: #333;
-  background-color: #eee;
-  border-color: #ddd;
+  color: #fff;
+  background-color: #F36C15;
+  border-color: #e2600c;
 }
 .panel-faireface > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #ddd;
+  border-top-color: #e2600c;
 }
 .panel-faireface > .panel-heading .badge {
-  color: #eee;
+  color: #f47b2d;
   background-color: #333;
 }
 .panel-faireface > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #ddd;
+  border-bottom-color: #e2600c;
 }
 .embed-responsive {
   position: relative;
