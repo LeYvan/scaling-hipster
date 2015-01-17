@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder {
         $utilisateurs[] = Utilisateur::create(array('nomUtilisateur' => 'ticul',
                                  'nom' => 'Stéphane Tremblay',
                                  'email' => 'stephentabarnaque@faireface.com',
-                                 'niveau' => 1,
+                                 'niveau' => 2,
                                  'password' => $hPasse
                                 )
                               );
@@ -84,7 +84,7 @@ class DatabaseSeeder extends Seeder {
         $utilisateurs[] = Utilisateur::create(array('nomUtilisateur' => 'jose',
                                  'nom' => 'José Consola',
                                  'email' => 'jose@faireface.com',
-                                 'niveau' => 1,
+                                 'niveau' => 2,
                                  'password' => $hPasse
                                 )
                               );

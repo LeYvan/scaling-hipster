@@ -16,12 +16,11 @@ class SinistresController extends BaseController {
           $catCourante = CategorieSinistre::where('etiquette',$etiquette)->first();
           // var_dump($catCourante);
           // Get sinistres de categorie_id
-          $sinistres = Sinistre::where('categorie_id',$catCourante->id)->paginate(10);
+          $sinistres = Sinistre::where('categorie_id',$catCourante->id)->orderBy('created_at', 'desc')->paginate(10);
         } 
         else
         {
-          // Get sinistres de categorie_id
-          $sinistres = Sinistre::paginate(10);
+          $sinistres = Sinistre::orderBy('created_at', 'desc')->paginate(10);
         }
 
         // Get all categories (pour sidebar)
@@ -64,7 +63,11 @@ class SinistresController extends BaseController {
           Input::has('rapport') &&
           Input::has('categorie_id'))){
 
-        return $this->afficherErreur("Introuvable");
+        return $this->afficherErreur("Données de sinistre invalide pour insertion.");
+      }
+
+      if (!Auth::check()) {
+        return $this->afficherErreurWithInput("Vous devez être connecté pour reporter un sinistre.");
       }
 
       $sinistre = new Sinistre;

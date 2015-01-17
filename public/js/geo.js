@@ -1,4 +1,38 @@
 (function( faireface, $, undefined ) {
+
+var placeSearch, autocomplete;
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+    // Create the autocomplete object, restricting the search
+    // to geographical location types.
+    autocomplete = new google.maps.places.Autocomplete(
+      /** @type {HTMLInputElement} */
+      (document.getElementById('adresse')),
+      { types: ['geocode'] });
+      // When the user selects an address from the dropdown,
+      // populate the address fields in the form.
+      google.maps.event.addListener(autocomplete, 'place_changed', function() {
+        faireface.fillInAddress();
+      });
+
+    faireface.fillInAddress = function () {
+      // Get the place details from the autocomplete object.
+      var place = autocomplete.getPlace();
+
+      faireface.genererImgCarte({
+        coords: {
+          latitude: place.geometry.location.lat(),
+          longitude: place.geometry.location.lng()
+        }
+      });
+    }
+
     // ========================================================================
     // Private
     // ========================================================================
@@ -52,6 +86,10 @@
                 + size + '&'
                 + maptype + '&'
                 + 'markers=color:red%7Clabel:C%7C' + coords;
+
+      divGeoPos.style.display = 'inline-block';
+
+      imgPos.onload = function() { $('#divGeoPos').scrollTo('50%', 100); };
 
       imgPos.setAttribute('src',url);
       geoxField.setAttribute('value',latitude);

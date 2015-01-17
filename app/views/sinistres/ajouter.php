@@ -1,4 +1,4 @@
-<?= Form::open(array('url' => '/sinistres/ajouter/','files' => true)) ?>
+<?= Form::model(new Sinistre, array('url' => '/sinistres/ajouter/','files' => true)) ?>
 <fieldset>
 <!-- Text input-->
 <div class="form-group">
@@ -13,7 +13,7 @@
 <div class="form-group">
   <label class="control-label" for="categorie_id">Catégorie</label>
   <div class="controls">
-    <?=Form::select('categorie_id', $lstCategories, null, array('id' => 'cmbCategorie', 'class' => 'form-control'))?>
+    <?=Form::select('categorie_id', $lstCategories, Input::old('categorie_id'), array('id' => 'cmbCategorie', 'class' => 'form-control'))?>
   </div>
 </div>
 
@@ -21,7 +21,7 @@
 <div class="form-group">
   <label class="control-label" for="rapport">Le contenu du rapport.</label>
   <div class="controls">                     
-    <textarea class="form-control" id="rapport" name="rapport" rows="10"></textarea>
+    <textarea class="form-control" id="rapport" name="rapport" rows="10"><?=Input::old('rapport')?></textarea>
   </div>
 </div>
 
@@ -40,17 +40,22 @@
   <input type="hidden" id="geo-x" name="geo-x"/>
   <input type="hidden" id="geo-y" name="geo-y"/>
   <div class="controls">
+    <div>
+      <input id="adresse" name="adresse" type="text" placeholder="2020 Rue Nexiste-Pas" class="form-control" required="" value="<?=Input::old('adresse')?>"/>
+    </div>
+  </div>
+  <div>
+    </br>
     <div id="divGeoPos" class="geoPosImageScroll">
       <img id="imgGeoPos" src="/images/chargement.gif" alt="Chargement de la position en cours..."/>
     </div>
-    <input id="adresse" name="adresse" type="text" placeholder="2020 rue nexistepas" class="form-control" required=""/>
   </div>
 </div>
 
 <!-- Checkbox -->
 <div class="checkbox">
   <label>
-    <input id="cmdGetGeoPos" name="cmdGetGeoPos" type="checkbox" value="" />
+    <input id="cmdGetGeoPos" name="cmdGetGeoPos" type="checkbox" value="<?=Input::old('cmdGetGeoPos')?>" />
     Inclure ma position
   </label>
 </div>
@@ -58,6 +63,7 @@
 <!-- Button -->
 <div class="form-group text-right">
   <div class="controls">
+    <button id="cmdReset" name="cmdReset" type="reset" class="btn btn-danger">Réinitialiser</button>
     <button id="cmdEnvoyer" name="cmdEnvoyer" class="btn btn-primary">Envoyer</button>
   </div>
 </div>

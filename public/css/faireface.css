@@ -102,9 +102,7 @@ body
 .geoPosImageScroll 
 {
 	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	overflow: auto;
+	overflow: hidden;
 		width: 225px;
 	height: 225px;
 	--webkit-overflow-scrolling: touch;

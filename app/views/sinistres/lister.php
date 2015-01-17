@@ -95,27 +95,41 @@
                     ?>
                       </div>
                      </div>
+                        <div class="col-xs-4 col-md-4 col-lg-3 col-xs-offset-4 col-sm-offset-0">
+                          
+                    <?php 
+                        $base ='https://maps.googleapis.com/maps/api/staticmap?';
+                        $coords = $sinistre['geo-x'] . ',' . $sinistre['geo-y'];
+                        $center = 'center=' . $coords;
+                        $zoom = 'zoom=15';
+                        $size = 'size=200x200';
+                        $maptype = 'maptype=roadmap';
 
-                    <div class="col-xs-4 col-md-4 col-lg-3 col-xs-offset-4 col-sm-offset-0">
-                      <div class="thumbnail">
-                        <?php 
-                            $base ='https://maps.googleapis.com/maps/api/staticmap?';
-                            $coords = $sinistre['geo-x'] . ',' . $sinistre['geo-y'];
-                            $center = 'center=' . $coords;
-                            $zoom = 'zoom=15';
-                            $size = 'size=200x200';
-                            $maptype = 'maptype=roadmap';
+                        $url = $base . $center . '&'
+                        . $zoom . '&'
+                        . $size . '&'
+                        . $maptype . '&'
+                        . 'markers=color:red%7Clabel:C%7C' . $coords;
 
-                            $url = $base . $center . '&'
-                            . $zoom . '&'
-                            . $size . '&'
-                            . $maptype . '&'
-                            . 'markers=color:red%7Clabel:C%7C' . $coords;
+                        //http://maps.google.com/maps?q=35.128061,-106.535561&ll=35.126517,-106.535131&z=17
+                        $href = "http://maps.google.com/maps?q=$coords&ll=$coords&z=17";
 
-                            print("<img alt=\"Image envoyée par un utilisateur\" src=\"$url\">");
+                        print("");
+
+                        if ($sinistre['geo-x'] == 0 && $sinistre['geo-y'] == 0) {
                         ?>
-                      </div>
-                   </div>
+                          <div class="alert alert-warning">Aucune données de localisation fournies.</div>
+                        <?php
+                        } else {
+                        ?>
+                          <div class="thumbnail">
+                            <a href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
+                          </div>
+                        <?php
+                        }
+                    ?>
+                                              
+                        </div>
                 </div>
               </div>
             </div>
