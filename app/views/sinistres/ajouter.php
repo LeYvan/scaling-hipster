@@ -34,6 +34,18 @@
   </div>
 </div>
 
+<!-- Img -->
+<div class="form-group">
+  <span class="control-label" for="geo-x">Position</span>
+  <input type="hidden" id="geo-x" name="geo-x"/>
+  <input type="hidden" id="geo-y" name="geo-y"/>
+  <div class="controls">
+    <div class="geoPosImageScroll">
+      <img id="imgGeoPos" src="/images/chargement.gif" alt="Chargement de la position en cours..."/>
+    </div>
+  </div>
+</div>
+
 <!-- Checkbox -->
 <div class="checkbox">
   <label>

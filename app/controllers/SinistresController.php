@@ -72,15 +72,13 @@ class SinistresController extends BaseController {
       $sinistre->titre = Input::get('titre');
       $sinistre->rapport = Input::get('rapport');
       $sinistre->categorie_id = Input::get('categorie_id');
+      $sinistre['geo-x'] = Input::get('geo-x');
+      $sinistre['geo-y'] = Input::get('geo-y');
       $sinistre->utilisateur_id = Auth::user()->id;
 
       $sinistre->save();
 
-      return 
-        View::make('faireface', $proprietesPage)
-          ->nest('contenu',
-                 'succes');
-
+      return $this->afficherSucces('Votre rapport de sinistre a bien été envoyé.');
     }
 
     public function modifierGet($id)

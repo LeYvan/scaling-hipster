@@ -76,7 +76,6 @@
                             $rand1 = rand(400,600);
                             $rand2 = array($rand1*1334/750, $rand1*750/1334,$rand1*16/9,$rand1*9/16,$rand1*4/3,$rand1*3/4);
                             print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2[rand(0,5)]."\">");
-                            // print("$element->fichier");
                           } 
                           else 
                           {
@@ -99,7 +98,22 @@
 
                     <div class="col-xs-4 col-md-4 col-lg-3 col-xs-offset-4 col-sm-offset-0">
                       <div class="thumbnail">
-                        <img src="http://cdn.flaticon.com/png/256/33409.png" alt="...">
+                        <?php 
+                            $base ='https://maps.googleapis.com/maps/api/staticmap?';
+                            $coords = $sinistre['geo-x'] . ',' . $sinistre['geo-y'];
+                            $center = 'center=' . $coords;
+                            $zoom = 'zoom=15';
+                            $size = 'size=200x200';
+                            $maptype = 'maptype=roadmap';
+
+                            $url = $base . $center . '&'
+                            . $zoom . '&'
+                            . $size . '&'
+                            . $maptype . '&'
+                            . 'markers=color:red%7Clabel:C%7C' . $coords;
+
+                            print("<img alt=\"Image envoyée par un utilisateur\" src=\"$url\">");
+                        ?>
                       </div>
                    </div>
                 </div>

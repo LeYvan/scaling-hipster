@@ -225,5 +225,7 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/faireface.js"></script>
     <script src="/js/holder.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/geo.js"></script>
   </body>
 </html>
