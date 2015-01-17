@@ -10,6 +10,25 @@ function generateRandomString($length = 10) {
     return $randomString;
 }
 
+/**
+ * Generate Float Random Number
+ *
+ * @param float $Min Minimal value
+ * @param float $Max Maximal value
+ * @param int $round The optional number of decimal digits to round to. default 0 means not round
+ * @return float Random float value
+ */
+function float_rand($Min, $Max, $round=0){
+    //validate input
+    if ($Min>$Max) { $Min=$Max; $max=$Min; }
+        else { $Min=$Min; $max=$Max; }
+    $randomfloat = $Min + mt_rand() / mt_getrandmax() * ($max - $Min);
+    if($round>0)
+        $randomfloat = round($randomfloat,$round);
+ 
+    return $randomfloat;
+}
+
 class DatabaseSeeder extends Seeder {
 
 	/**
@@ -57,7 +76,7 @@ class DatabaseSeeder extends Seeder {
         $utilisateurs[] = Utilisateur::create(array('nomUtilisateur' => 'ticul',
                                  'nom' => 'Stéphane Tremblay',
                                  'email' => 'stephentabarnaque@faireface.com',
-                                 'niveau' => 1,
+                                 'niveau' => 2,
                                  'password' => $hPasse
                                 )
                               );
@@ -65,7 +84,7 @@ class DatabaseSeeder extends Seeder {
         $utilisateurs[] = Utilisateur::create(array('nomUtilisateur' => 'jose',
                                  'nom' => 'José Consola',
                                  'email' => 'jose@faireface.com',
-                                 'niveau' => 1,
+                                 'niveau' => 2,
                                  'password' => $hPasse
                                 )
                               );
@@ -112,8 +131,8 @@ class DatabaseSeeder extends Seeder {
                 'categorie_id' => $categories[1]->id,
                 'titre' => 'Sinistre sur la rue Morgue',
                 'rapport' => 'Une femme fut insérée la tête en bas dans la cheminée d\'un foyer',
-                'geo-x' => 0.12312312,
-                'geo-y' => 1.12312434,
+                'geo-x' => float_rand(46.752605,46.843091),
+                'geo-y' => float_rand(-71.384887,-71.196231),
                 'afficher' => true
               )
             );
@@ -122,8 +141,8 @@ class DatabaseSeeder extends Seeder {
                 'categorie_id' => $categories[2]->id,
                 'titre' => 'Renversement d\'un camion citerne',
                 'rapport' => 'Un camion renverse son contenu dans la rivière chaudière.',
-                'geo-x' => 0.12312312,
-                'geo-y' => 1.12312434,
+                'geo-x' => float_rand(46.752605,46.843091),
+                'geo-y' => float_rand(-71.384887,-71.196231),
                 'afficher' => true
               )
             );
@@ -133,17 +152,18 @@ class DatabaseSeeder extends Seeder {
 
         for ($i = 1; $i <= $nbSinistres; $i++)
         {
+          $lat =  float_rand(46.752605,46.843091);
+          $long = float_rand(-71.384887,-71.196231);
+	         $mot = generateRandomString(mt_rand(3,5));
 
-	$mot = generateRandomString(mt_rand(3,5));
-
-	$sinistres[] = Sinistre::create(array('utilisateur_id' => $utilisateurs[mt_rand(1,$nbUtilisateurs-1)]->id,
+	         $sinistres[] = Sinistre::create(array('utilisateur_id' => $utilisateurs[mt_rand(1,$nbUtilisateurs-1)]->id,
                           'categorie_id' => $categories[mt_rand(1,7)]->id,
                           'titre' => 'Lorem ipsum ' . $mot . 'dolor sit amet ' . $mot . ', consectetur adipiscing elit.',
                           'rapport' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rhoncus ligula nisl, quis hendrerit justo sodales vitae. Nullam fermentum lobortis sapien vel convallis. Ut congue, quam nec porta dignissim, enim purus bibendum nisl, ut posuere augue urna eu felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse nec nunc convallis, hendrerit metus eu, vestibulum turpis. Vestibulum vestibulum eu odio nec imperdiet. Donec quis nunc ut enim posuere pulvinar.
                           Donec gravida vitae nibh at dignissim. Nunc bibendum felis a interdum vulputate. Duis ac erat vel enim bibendum consequat. Aenean lacus quam, congue nec auctor ac, congue fermentum est. In lobortis dictum risus. Donec quis auctor diam. Aenean eget diam lorem. Cras vel sem tellus. Nunc at velit convallis, suscipit tortor id, malesuada ipsum. Fusce at pulvinar nunc. Integer quis venenatis mauris, at blandit leo. Integer pellentesque scelerisque auctor. Nam nec quam eget risus laoreet pulvinar in eu mi. Nulla sodales eros ligula, congue rhoncus enim blandit vel. Suspendisse aliquet, urna vitae pulvinar laoreet, purus libero aliquet sem, non pretium mauris mi vel neque. Integer sodales molestie urna, nec feugiat felis mollis nec.
                           Nulla mattis urna odio, a fermentum tellus lacinia feugiat. Vestibulum metus ex, condimentum aliquet mauris non, consectetur maximus ex. Fusce lectus ipsum, euismod suscipit metus a, posuere volutpat enim. Suspendisse venenatis arcu et massa rutrum, ac porta nulla consequat. Nullam mauris lorem, posuere et ultricies nec, dapibus a lectus. Aenean non erat venenatis, varius dui dignissim, pellentesque orci. Nunc non ex vitae nulla.',
-                          'geo-x' => 0.12312312,
-                          'geo-y' => 1.12312434,
+                          'geo-x' => $lat,
+                          'geo-y' => $long,
                           'afficher' => true
                         )
                       );
