@@ -29,11 +29,11 @@ body
 }
 .panel p
 {
-	text-align: justify;
+	/*text-align: justify;*/
 }
 .panel-body
 {
-	padding-bottom: 0;
+	/*padding-bottom: 0;*/
 }
 .nom-faireface
 {

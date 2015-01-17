@@ -155,5 +155,17 @@ class UtilisateursController extends BaseController {
           ->nest('contenu',
                  'succes');
     }
+    public function connexion()
+    {
+      $reussi = Auth::attempt(array('nomUtilisateur' => Input::get("nomUtilisateur"), 'password' => Input::get("motPasse")));
+      if ($reussi)
+      {
+        // $params = array("reussi" => true, "message" => 'Connexion réussie!');
+        return $this->afficherSucces('Connexion réussie');
+      } else {
+        // $params = array("reussi" => false, "message" => 'La connexion a échouée!');    
+        return $this->afficherErreur('La connexion a échouée!');
+      }
+    }
   }
 ?>
