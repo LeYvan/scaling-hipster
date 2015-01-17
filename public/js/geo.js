@@ -1,28 +1,36 @@
 (function( faireface, $, undefined ) {
+  var cmdFichiers = document.getElementById('filebutton');
+  var lblNbFichiers = document.getElementById('lblNbFichiers');
+  var shadowCmdFichier;
 
-var placeSearch, autocomplete;
-var componentForm = {
-  street_number: 'short_name',
-  route: 'long_name',
-  locality: 'long_name',
-  administrative_area_level_1: 'short_name',
-  country: 'long_name',
-  postal_code: 'short_name'
-};
-    // Create the autocomplete object, restricting the search
-    // to geographical location types.
-    autocomplete = new google.maps.places.Autocomplete(
-      /** @type {HTMLInputElement} */
-      (document.getElementById('adresse')),
-      { types: ['geocode'] });
-      // When the user selects an address from the dropdown,
-      // populate the address fields in the form.
-      google.maps.event.addListener(autocomplete, 'place_changed', function() {
-        faireface.fillInAddress();
+    // Pour afficher un beau bouton de sélection de fichier
+    var styliserBoutonFichier = function() {
+      var shadow = cmdFichiers.createShadowRoot();
+      shadow.innerHTML = '<style> @import "/css/bootstrap.min.css"; </style><button type="button" class="btn btn-info">Photos & Vidéos</button>';
+      cmdFichiers.addEventListener( "keydown", function( event ) {
+          if ( event.keyCode === 13 || event.keyCode === 32 ) {
+              cmdFichiers.click();
+          }
       });
+    };
+
+  cmdFichiers.onchange = function( event ) {
+    lblNbFichiers.innerHTML = this.files.length + ' fichiers' ;
+  };
+
+    styliserBoutonFichier();
+
+    var autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('adresse')),
+      { types: ['geocode'] }
+    );
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      faireface.fillInAddress();
+    });
 
     faireface.fillInAddress = function () {
-      // Get the place details from the autocomplete object.
+
       var place = autocomplete.getPlace();
 
       faireface.genererImgCarte({
@@ -42,6 +50,7 @@ var componentForm = {
     var geoxField = document.getElementById('geo-x');
     var geoyField = document.getElementById('geo-y');
     var divGeoPos = document.getElementById('divGeoPos');
+    var divAdresse = document.getElementById('divAdresse');
     // ========================================================================
     faireface.getImgPos = function() {
       return imgPos;
@@ -62,7 +71,7 @@ var componentForm = {
     // ========================================================================
     faireface.trouverGeoPos = function () {
       if (Modernizr.geolocation) {
-        txtAdresse.visibility = 'hidden';
+        $('#divAdresse').hide();
         navigator.geolocation.getCurrentPosition(faireface.genererImgCarte,faireface.genererImgNoPos);
       } else {
         genererImgNoPos();
@@ -85,7 +94,7 @@ var componentForm = {
                 + zoom + '&'
                 + size + '&'
                 + maptype + '&'
-                + 'markers=color:red%7Clabel:C%7C' + coords;
+                + 'markers=color:red%7Clabel:C%7C' + coords + '&key=AIzaSyAWDDvWulCh3nBVbzPuGjy_yZ26PePG23k';
 
       divGeoPos.style.display = 'inline-block';
 
@@ -98,22 +107,12 @@ var componentForm = {
 
     // ========================================================================
     faireface.genererImgNoPos = function (error) {
-      //alert(imgPos.visibility );
-      //imgPos.style.visibility = 'collapse  ';
+      $('#divAdresse').show();
       divGeoPos.style.display = 'none';
       lblPosition.innerHTML  = 'Adresse';
       txtAdresse.style.display = 'inline';
-      //img.setAttribute('src','http://adasdasd.com/introuvable.jpg');
     };
 
-    //Private Method
-    /*
-    function addItem( item ) {
-        if ( item !== undefined ) {
-            console.log( "Adding " + $.trim(item) );
-        }
-    }
-    */
 }( window.faireface = window.faireface || {}, jQuery ));
 
 faireface.trouverGeoPos();

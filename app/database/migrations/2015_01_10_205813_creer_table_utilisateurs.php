@@ -43,8 +43,8 @@ class CreerTableUtilisateurs extends Migration {
 
 			$table->string('titre'); // ->unique(); (unique ou non?)
 			$table->text('rapport');	
-			$table->float('geo-x');
-			$table->float('geo-y');
+			$table->double('geo-x', 15, 8);
+			$table->double('geo-y', 15, 8);
 			$table->string('adresse');
 
 			$table->boolean('afficher');

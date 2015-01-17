@@ -1,4 +1,6 @@
 <?= Form::model(new Sinistre, array('url' => '/sinistres/ajouter/','files' => true)) ?>
+<script type="text/javascript">
+</script>
 <fieldset>
 <!-- Text input-->
 <div class="form-group">
@@ -31,6 +33,7 @@
   <div class="controls">
     <?= Form::file('files[]', array('id' => 'filebutton', 'multiple'=>true)) ?>
     <!-- <input id="filebutton" name="filebutton" class="input-file" type="file"> -->
+    <span id="lblNbFichiers" class="label label-info">0 Fichiers</span>
   </div>
 </div>
 
@@ -39,9 +42,10 @@
   <label id="lblPosition" class="control-label" for="geo-x">Position</label>
   <input type="hidden" id="geo-x" name="geo-x"/>
   <input type="hidden" id="geo-y" name="geo-y"/>
-  <div class="controls">
+  <div id="divAdresse" name="divAdresse" class="controls">
     <div>
       <input id="adresse" name="adresse" type="text" placeholder="2020 Rue Nexiste-Pas" class="form-control" required="" value="<?=Input::old('adresse')?>"/>
+       <p class="help-block">Entrer une adresse et choisir un élément proposé.</p>
     </div>
   </div>
   <div>
@@ -50,14 +54,6 @@
       <img id="imgGeoPos" src="/images/chargement.gif" alt="Chargement de la position en cours..."/>
     </div>
   </div>
-</div>
-
-<!-- Checkbox -->
-<div class="checkbox">
-  <label>
-    <input id="cmdGetGeoPos" name="cmdGetGeoPos" type="checkbox" value="<?=Input::old('cmdGetGeoPos')?>" />
-    Inclure ma position
-  </label>
 </div>
 
 <!-- Button -->

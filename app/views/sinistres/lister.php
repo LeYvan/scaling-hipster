@@ -109,7 +109,7 @@
                         . $zoom . '&'
                         . $size . '&'
                         . $maptype . '&'
-                        . 'markers=color:red%7Clabel:C%7C' . $coords;
+                        . 'markers=color:red%7Clabel:C%7C' . $coords . "&key=AIzaSyAWDDvWulCh3nBVbzPuGjy_yZ26PePG23k";
 
                         //http://maps.google.com/maps?q=35.128061,-106.535561&ll=35.126517,-106.535131&z=17
                         $href = "http://maps.google.com/maps?q=$coords&ll=$coords&z=17";
@@ -131,6 +131,19 @@
                                               
                         </div>
                 </div>
+                        <?php
+                        if (Auth::check() && Auth::User()->niveau > 1)
+                        { 
+                        ?>
+                        <div>
+                          <div class="btn-group" role="group" aria-label="Administration">
+                            <a href="/sinistres/modifier/<?= $sinistre->id ?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span>Modifier</a>
+                            <a href="/sinistres/<?= $sinistre->id ?>/supp/" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
+                          </div>
+                        </div>
+                        <?php
+                        }
+                      ?>
               </div>
             </div>
             <?php } ?>
