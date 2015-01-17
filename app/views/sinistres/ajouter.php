@@ -36,13 +36,14 @@
 
 <!-- Img -->
 <div class="form-group">
-  <span class="control-label" for="geo-x">Position</span>
+  <label id="lblPosition" class="control-label" for="geo-x">Position</label>
   <input type="hidden" id="geo-x" name="geo-x"/>
   <input type="hidden" id="geo-y" name="geo-y"/>
   <div class="controls">
-    <div class="geoPosImageScroll">
+    <div id="divGeoPos" class="geoPosImageScroll">
       <img id="imgGeoPos" src="/images/chargement.gif" alt="Chargement de la position en cours..."/>
     </div>
+    <input id="adresse" name="adresse" type="text" placeholder="2020 rue nexistepas" class="form-control" required=""/>
   </div>
 </div>
 

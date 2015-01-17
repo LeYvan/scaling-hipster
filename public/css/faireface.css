@@ -109,3 +109,8 @@ body
 	height: 225px;
 	--webkit-overflow-scrolling: touch;
 }
+
+#adresse
+{
+	display: none;
+}

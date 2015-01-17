@@ -2,7 +2,12 @@
     // ========================================================================
     // Private
     // ========================================================================
-    var imgPos = document.createElement('span');
+    var imgPos = document.getElementById('imgGeoPos');
+    var txtAdresse = document.getElementById('adresse');
+    var lblPosition = document.getElementById('lblPosition');
+    var geoxField = document.getElementById('geo-x');
+    var geoyField = document.getElementById('geo-y');
+    var divGeoPos = document.getElementById('divGeoPos');
     // ========================================================================
     faireface.getImgPos = function() {
       return imgPos;
@@ -23,7 +28,8 @@
     // ========================================================================
     faireface.trouverGeoPos = function () {
       if (Modernizr.geolocation) {
-        navigator.geolocation.getCurrentPosition(faireface.genererImgCarte);
+        txtAdresse.visibility = 'hidden';
+        navigator.geolocation.getCurrentPosition(faireface.genererImgCarte,faireface.genererImgNoPos);
       } else {
         genererImgNoPos();
       }
@@ -47,22 +53,19 @@
                 + maptype + '&'
                 + 'markers=color:red%7Clabel:C%7C' + coords;
 
-      var img = document.getElementById('imgGeoPos');
-      img.setAttribute('src',url);
-      faireface.imgPosActuelle = img;
-
-      var geoxField = document.getElementById('geo-x');
-      var geoyField = document.getElementById('geo-y');
+      imgPos.setAttribute('src',url);
       geoxField.setAttribute('value',latitude);
       geoyField.setAttribute('value',longitude);
     };
 
     // ========================================================================
-    faireface.genererImgNoPos = function () {
-      alert('faireface.genererImgNoPos');
-      var img = document.getElementById('imgGeoPos');
-      img.setAttribute('src','http://adasdasd.com/introuvable.jpg');
-      faireface.imgPosActuelle = img;
+    faireface.genererImgNoPos = function (error) {
+      //alert(imgPos.visibility );
+      //imgPos.style.visibility = 'collapse  ';
+      divGeoPos.style.display = 'none';
+      lblPosition.innerHTML  = 'Adresse';
+      txtAdresse.style.display = 'inline';
+      //img.setAttribute('src','http://adasdasd.com/introuvable.jpg');
     };
 
     //Private Method
