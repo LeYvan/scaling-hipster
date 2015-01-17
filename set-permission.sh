@@ -6,11 +6,8 @@
 #   d'appartenance pour les nouveaux fichiers.
 chown -R www-data:www-data ../faireface
 usermod -a -G www-data $USER
-chmod g+s ../faireface
+chmod -R g+ws ../faireface
  
-#Droit d'écriture de groupe sur le dossier .git
-sudo chmod -R g+ws .git
 #dire à git d'utiliser les permissions de groupe de l'utilisateur courant
 git config core.sharedRepository true
-#sudo chgrp -R www-data .git
 echo "\033[0;31mVous devez vous relogger avant que les permissions (de groupes) soient prises en compte."
