@@ -31,9 +31,6 @@ Route::group(array('before' => 'auth|admin|conseiller'), function() {
   Route::post('/sinistres/modifier/{id}',       // Modifier POST
               'SinistresController@modifierPost');
 
-  Route::get('/sinistres/{id}/supp/',           // Supprimer GET
-              'SinistresController@confirmerSupprimer');
-
   Route::post('/sinistres/{id}/supp/',           // Supprimer POST
               'SinistresController@supprimer');
 

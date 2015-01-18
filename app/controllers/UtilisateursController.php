@@ -79,7 +79,7 @@ class UtilisateursController extends BaseController {
     public function supprimer()
     {
       // Set titre page générée
-      $proprietesPage = array('titre' => 'Utilisateur - Suppression');
+      $proprietesPage = array('titre' => Input::get("id") . 'Utilisateur - Suppression');
 
       try {
         $Utilisateur = Utilisateur::findOrFail(Input::get("id"));

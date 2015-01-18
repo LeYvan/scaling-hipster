@@ -16,3 +16,21 @@ $('#supprUserModal').on('show.bs.modal', function (event) {
   // modal.find('.modal-title').text(lien.parents(".panel").find('h2').text())
   // modal.find('.modal-body').html(lien.html())
 });
+
+$('#supprSinistreModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  var id = button.data('sinistre-id');
+  var titre = button.data('titre');
+  document.getElementById('id').value = id;
+  document.getElementById('suppMsg').innerHTML = titre;
+
+});
+
+$('#supprElementModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  var id = button.data('element-id');
+  var fichier = button.data('fichier');
+  document.getElementById('id').value = id;
+  document.getElementById('suppMsg').innerHTML = fichier;
+
+});
