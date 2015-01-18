@@ -73,13 +73,14 @@
                           {
                             $rand1 = rand(400,600);
                             $rand2 = array($rand1*1334/750, $rand1*750/1334,$rand1*16/9,$rand1*9/16,$rand1*4/3,$rand1*3/4);
-                            print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2[rand(0,5)]."\">");
+                            //print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2[rand(0,5)]."\">");
+                            print("<img alt=\"Image envoyée par un utilisateur\" src=\"/uploads/" . $element->fichier . "\"/>");
                           } 
                           else 
                           {
                             ?>
                             <video width="100%" controls>
-                              <source src="<?= $element->fichier ?>" type="video/mp4">
+                              <source src="<?='/uploads/'.$element->fichier?>" type="video/mp4">
                             </video>
                             <?php
                           }

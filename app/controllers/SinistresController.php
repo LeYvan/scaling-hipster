@@ -56,6 +56,9 @@ class SinistresController extends BaseController {
 
     public function ajouterPost()
     {
+        $valide = true;
+        $message = '';
+
       // Set titre page générée
       $proprietesPage = array('titre' => Input::get('id'));
       // var_dump(Input::file('files'));
@@ -70,18 +73,71 @@ class SinistresController extends BaseController {
         return $this->afficherErreurWithInput("Vous devez être connecté pour reporter un sinistre.");
       }
 
-      $sinistre = new Sinistre;
+      try
+      {
 
-      $sinistre->titre = Input::get('titre');
-      $sinistre->rapport = Input::get('rapport');
-      $sinistre->categorie_id = Input::get('categorie_id');
-      $sinistre['geo-x'] = Input::get('geo-x');
-      $sinistre['geo-y'] = Input::get('geo-y');
-      $sinistre->utilisateur_id = Auth::user()->id;
+        $sinistre = new Sinistre;
 
-      $sinistre->save();
+        $sinistre->titre = Input::get('titre');
+        $sinistre->rapport = Input::get('rapport');
+        $sinistre->categorie_id = Input::get('categorie_id');
+        $sinistre['geo-x'] = Input::get('geo-x');
+        $sinistre['geo-y'] = Input::get('geo-y');
+        $sinistre->utilisateur_id = Auth::user()->id;
 
-      return $this->afficherSucces('Votre rapport de sinistre a bien été envoyé.');
+        $sinistre->save();
+
+        $fichiers = Input::file('files');
+        foreach($fichiers as $fichier)
+        {
+          if (!$fichier->isValid()) break;
+
+          $ext = substr($fichier->getMimeType(),strpos($fichier->getMimeType(),"/")+1);  
+
+          $dossierLocal = md5($sinistre->titre);
+          $fichierLocal = md5($fichier->getClientOriginalName()) . '.' . $ext;
+          
+          $element = new ElementSinistre;
+          $element->fichier = $fichierLocal;
+          $element->type = '';
+          $element->sinistre_id = $sinistre->id;
+
+          switch($fichier->getMimeType())
+          {
+            case "image/jpeg":
+            case "image/png":
+              $element->type = 'image';
+              $valide = true;
+              break;
+            case "video/mp4":
+              $element->type = 'video';
+              $valide = true;
+              break;
+            default:
+              $valide = false;
+              break;
+          }
+
+          if (!$valide) {
+            $message = $message . "Le fichier '" . $fichier->getClientOriginalName() . "' est invalide.<br/>";
+            throw new Exception();
+            break;
+          } else {
+            $url = $dossierLocal . '/' . $fichierLocal;
+            $fichier->move(public_path() . '/uploads/' . $dossierLocal . '/', $fichierLocal);
+            $element->fichier = $url;
+            $element->save();
+          }
+        }
+        return $this->afficherSucces('Votre rapport de sinistre a bien été envoyé.');
+      } catch (Exception $e) {
+        try {
+          $sinistre->delete();
+        } catch (Exception $w) {
+          $message = $message . 'De plus, une erreure est survenue lors de la gestion d\'erreur: ' . $w->getMessage();
+        }
+        return $this->afficherErreur('Le sinistre n\'a pu être reporté: </br>' . $message);
+      }
     }
 
     public function modifierGet($id)
