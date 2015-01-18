@@ -6,30 +6,28 @@
             <div class="col-sm-4">
               <!-- <div>Catégorie:</div> -->
               <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="ddownCategorie" data-toggle="dropdown" aria-expanded="true">
                     <?= !$catCourante ? "Tout les types" : $catCourante->etiquette ?>
                     <span class="caret"></span>
                   </button>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="ddownCategorie">
                     <li role="presentation" class="<?= !$catCourante ? "active" : "" ?>"><a role="menuitem" tabindex="-1" href="/sinistres/">Toutes les catégories</a></li>
-                  <?php
-                    foreach($categories as $categorie)
-                    {
-                      $active = $categorie == $catCourante ? "active" : "";
-                      ?>
-                      <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/categorie/<?= $categorie->etiquette ?>/"><?= $categorie->etiquette ?></a></li>
-                      <?php
-                      // print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
-                    }
-                  ?>
-  <!--                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> -->
-                  </ul>
-                </div>
+                <?php
+                  foreach($categories as $categorie)
+                  {
+                    $active = $categorie == $catCourante ? "active" : "";
+                    ?>
+                    <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/categorie/<?= $categorie->etiquette ?>/"><?= $categorie->etiquette ?></a></li>
+                    <?php
+                    // print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
+                  }
+                ?>
+                </ul>
               </div>
-            <div class="col-sm-8 text-right"><?= $sinistres->links(); ?></div>
+            </div>
+            <div class="col-sm-8 text-right">
+              <?= $sinistres->links(); ?>
+            </div>
           </div>
           <div class="row">
             <div class="col-md-3 col-md-push-9">
@@ -106,6 +104,7 @@
               </div>
             </div>
             <?php } ?>
+            </div>
             <!-- Fin d'un sinistre -->
           <div class="text-center">
             <?= $sinistres->links(); ?>
@@ -128,4 +127,3 @@
           <!-- Fin Fenêtre modal de visionnement d'images -->
 
         </div>
-      </div>
