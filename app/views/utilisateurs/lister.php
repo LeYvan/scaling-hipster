@@ -25,7 +25,7 @@
                         <a class="btn btn-primary" href="/utilisateurs/<?= $utilisateur->id?>" type="button">
                     	   <span class="glyphicon glyphicon-edit"></span>  Modifier
                         </a>
-                        <a class="btn btn-danger" href="#" data-user-id="<?= $utilisateur->id?>" type="button" data-toggle="modal" data-target="#supprUserModal">
+                        <a class="btn btn-danger" href="#" data-user-id="<?=$utilisateur->id?>" data-user-name="<?=$utilisateur->nom?>" type="button" data-toggle="modal" data-target="#supprUserModal">
                     	   <span class="glyphicon glyphicon-remove"></span>  Supprimer
                         </a>
                     <!-- </div> -->
@@ -45,16 +45,13 @@
           <div class="modal-body">
             <div id="user-id"></div> 
               <?= Form::open(array('action'=>'UtilisateursController@supprimer','method' => 'post', 'id' => 'frmSupprUser')) ?>
-                <input type="hidden" name="userId" id="userId" />
+                <input type="hidden" name="id" id="id" />
+                <p>Voulez-vous vraiment supprimer "<span id="suppMsg"></span>"?</p>
                 <div class="text-right">
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 </div>
             <?= Form::close() ?>
-<!--                 echo Form::submit('Oui');
-                echo Form::button('Non');
-                echo Form::hidden('id','');
-                echo Form::close(); -->
           </div>
         </div>
       </div>

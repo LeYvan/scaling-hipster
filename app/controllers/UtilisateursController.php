@@ -86,7 +86,6 @@ class UtilisateursController extends BaseController {
         $nom = $Utilisateur->nom;
 
         $message = '<p>Supression de ' . $nom . ' réussi.</p>';
-        $message = $message . "<a href=\"/utilisateurs/\">Retour à la liste des utilisateurs.</a>";
 
         $Utilisateur->delete($message);
 
