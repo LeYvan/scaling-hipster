@@ -19,7 +19,6 @@
                     ?>
                     <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/categorie/<?= $categorie->etiquette ?>/"><?= $categorie->etiquette ?></a></li>
                     <?php
-                    // print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
                   }
                 ?>
                 </ul>
