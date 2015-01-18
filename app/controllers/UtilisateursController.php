@@ -55,10 +55,7 @@ class UtilisateursController extends BaseController {
 
       $Utilisateur->save();
 
-      return 
-        View::make('faireface', $proprietesPage)
-          ->nest('contenu',
-                 'succes');
+      return $this->afficherSucces("Modifications enregistrées!");
     }
     
     // public function confirmationSupprimer($id)
@@ -79,14 +76,13 @@ class UtilisateursController extends BaseController {
     public function supprimer()
     {
       // Set titre page générée
-      $proprietesPage = array('titre' => 'Utilisateur - Suppression');
+      $proprietesPage = array('titre' => Input::get("id") . 'Utilisateur - Suppression');
 
       try {
         $Utilisateur = Utilisateur::findOrFail(Input::get("id"));
         $nom = $Utilisateur->nom;
 
         $message = '<p>Supression de ' . $nom . ' réussi.</p>';
-        $message = $message . "<a href=\"/utilisateurs/\">Retour à la liste des utilisateurs.</a>";
 
         $Utilisateur->delete($message);
 

@@ -85,8 +85,12 @@
         </div>
     <?php
   }
-  // Avoir une variable nommée "jumbo" ayant une valeur true pour afficher le jumbo
+  ?>
+  <div class="container" id="page">
+  <?php
+// Avoir une variable nommée "jumbo" ayant une valeur true pour afficher le jumbo
   if(!empty($jumbo)){?>
+</br>
 <div class="jumbotron">
   <div class="container">
     <?php if(!empty($erreur)){
@@ -103,9 +107,8 @@
       <?php }?>
   </div>
 </div>
-<?php }?>
-  <div class="container" id="page">
-
+<?php }
+  ?>
     <?php echo $contenu ?>
     <footer class="text-center">
       <div>Faire<i>Face</i>, une application formidable.</div>

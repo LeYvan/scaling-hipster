@@ -5,7 +5,7 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Utilisateur extends Eloquent implements UserInterface {
-
+  use SoftDeletingTrait;
 	use UserTrait;
 
 	/**

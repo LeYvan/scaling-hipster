@@ -1,7 +1,7 @@
 <?php
 class ElementsSinistreController extends BaseController {
 
-    /**
+    /**d-
      * Lister les sinistres par catégorie.
      * Lister les sinistres de toutes les catégories si aucune spécifiée.
      */
@@ -23,27 +23,22 @@ class ElementsSinistreController extends BaseController {
                           'sinistre' => $sinistre));
     }
 
-    public function Supprimer()
+    public function supprimer()
     {
         // Set titre page générée
         $proprietesPage = array('titre' => 'Sinistres');
 
         try {
           $element = ElementSinistre::where('id',Input::get('id'))->firstOrFail();
-          $element->delete();
-        } catch(Exception $e) {
-          return 
-            View::make('faireface', $proprietesPage)
-              ->nest('contenu',
-                     'erreur',
-                     array('message' => "L'élément n'existe plus!"));
-        }
 
-        // Enboite vue sinistres dans vue design
-        return 
-          View::make('faireface', $proprietesPage)
-            ->nest('contenu',
-                   'succes');
+          $message = 'Suppression de "' . $element->fichier . "' réussie!";
+
+          $element->delete();
+
+          return $this->afficherSucces($message);
+        } catch(Exception $e) {
+          return $this->afficherErreur('Element introuvable.');
+        }
     }
 }
 ?>
