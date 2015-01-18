@@ -1,6 +1,7 @@
 <?php
 
 class Sinistre extends Eloquent {
+  use SoftDeletingTrait;
 
   public function categorie()
   {
@@ -9,7 +10,13 @@ class Sinistre extends Eloquent {
 
   public function utilisateur()
   {
-    return Utilisateur::findOrFail($this->utilisateur_id);
+    $utilisateur = Utilisateur::find($this->utilisateur_id);
+    if (!is_null($utilisateur)) {
+      return $utilisateur;
+    }
+    $utilisateur = new Utilisateur(); 
+    $utilisateur->nom ="Manquant";
+    return $utilisateur;
   }
 
   public function elements()

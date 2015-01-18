@@ -55,10 +55,7 @@ class UtilisateursController extends BaseController {
 
       $Utilisateur->save();
 
-      return 
-        View::make('faireface', $proprietesPage)
-          ->nest('contenu',
-                 'succes');
+      return $this->afficherSucces("Modifications enregistrées!");
     }
     
     // public function confirmationSupprimer($id)
