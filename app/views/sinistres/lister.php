@@ -114,8 +114,6 @@
                         //http://maps.google.com/maps?q=35.128061,-106.535561&ll=35.126517,-106.535131&z=17
                         $href = "http://maps.google.com/maps?q=$coords&ll=$coords&z=17";
 
-                        print("");
-
                         if ($sinistre['geo-x'] == 0 && $sinistre['geo-y'] == 0) {
                         ?>
                           <div class="alert alert-warning">Aucune données de localisation fournies.</div>
@@ -137,8 +135,12 @@
                         ?>
                         <div>
                           <div class="btn-group" role="group" aria-label="Administration">
-                            <a href="/sinistres/modifier/<?= $sinistre->id ?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span>Modifier</a>
-                            <a href="/sinistres/<?= $sinistre->id ?>/supp/" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
+                            <a class="btn btn-primary" href="/sinistres/modifier/<?= $sinistre->id ?>" type="button">
+                             <span class="glyphicon glyphicon-edit"></span>  Modifier
+                            </a>
+                            <a class="btn btn-danger" href="#" data-titre="<?=$sinistre->titre?>" data-sinistre-id="<?= $sinistre->id?>" type="button" data-toggle="modal" data-target="#supprSinistreModal">
+                             <span class="glyphicon glyphicon-remove"></span>  Supprimer
+                            </a>
                           </div>
                         </div>
                         <?php
@@ -151,6 +153,7 @@
           <div class="text-center">
             <?= $sinistres->links(); ?>
           </div>
+
           <!-- Fenêtre modal de visionnement d'images -->
           <div class="modal fade" id="mediaModal" tabindex="-1" role="dialog" aria-labelledby="mediaModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -167,6 +170,29 @@
             </div>
           </div>
           <!-- Fin Fenêtre modal de visionnement d'images -->
+
+          <!-- Fenêtre modal de confirmation de suppressin de sinistre -->
+          <div class="modal fade" id="supprSinistreModal" tabindex="-1" role="dialog" aria-labelledby="supprSinistreModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="supprSinistreModalLabel">Supprimer le sinistre</h4>
+                </div>
+                <div class="modal-body">
+                    <?= Form::open(array('action'=>'SinistresController@supprimer','method' => 'post', 'id' => 'frmSupprSinistre')) ?>
+                      <input type="hidden" name="id" id="id" />
+                      <p>Voulez-vous vraiment supprimer "<span id="suppMsg"/>"?</p>
+                      <div class="text-right">
+                          <button type="submit" class="btn btn-danger">Supprimer</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                      </div>
+                  <?= Form::close() ?>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin fenêtre modal de confirmation de suppressin de sinistre -->
 
         </div>
       </div>

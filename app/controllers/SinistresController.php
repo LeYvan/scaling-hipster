@@ -126,49 +126,27 @@ class SinistresController extends BaseController {
 
       $sinistre->save();
 
-      return 
-        View::make('faireface', $proprietesPage)
-          ->nest('contenu',
-                 'succes');
-    }
-
-    public function confirmerSupprimer($id)
-    {
-        // Set titre page générée
-        $proprietesPage = array('titre' => 'Sinistres - Suppression');
-
-        $sinistre = Sinistre::where('id',$id)->firstOrFail();
-
-        // Enboite vue sinistres dans vue design
-        return 
-          View::make('faireface', $proprietesPage)
-            ->nest('contenu',
-                   'sinistres.supp-sinistre',
-                    array('id' => $id,
-                          'sinistre' => $sinistre));
+      $message = "Modification enregistrées.";
+      return $this->afficherSucces($message);
     }
 
     public function supprimer()
     {
-        // Set titre page générée
-        $proprietesPage = array('titre' => Input::get('id'));
+      // Set titre page générée
+      $proprietesPage = array('titre' => 'Sinistre - Suppression');
 
-        try {
-          $sinistre = Sinistre::where('id',Input::get('id'))->firstOrFail();
+      try {
+        $sinistre = Sinistre::findOrFail(Input::get("id"));
+        $titre = $sinistre->titre;
 
-          $message = '<p>Supression du sinistre ' . $sinistre->titre . ' réussi.</p>';
-          $message = $message . "<a href=\"/sinistres/\">Retour à la liste des sinistres.</a>";
+        $message = '<p>Supression de "' . $titre . '" réussi.</p>';
 
-          $sinistre->delete();
-          return $this->afficherSucces($message);
+        $sinistre->delete($message);
 
-        } catch(Exception $e) {
-          return 
-            View::make('faireface', $proprietesPage)
-              ->nest('contenu',
-                     'erreur',
-                     array('message' => "L'élément n'existe plus!"));
-        }
+        return $this->afficherSucces($message);
+      } catch (Exception $e) {
+        return $this->afficherErreur("Sinistre introuvable. (" . var_dump(Input::get()) . ")");
+      }
     }
 }
 ?>

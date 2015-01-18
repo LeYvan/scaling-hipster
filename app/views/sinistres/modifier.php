@@ -60,7 +60,10 @@
           <strong>Fichier</strong>
         </div>
         <div class="col-md-6 well well-sm">
-          <p class="col-md-2"><?= $element->fichier ?> <a  href="/elements-sinistres/supp/<?= $element->id ?>" type="button col-md-2" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Supprimer</a></p>
+          <p><span class="label label-default"><?= $element->fichier ?></span></p>
+          <a class="btn btn-danger" href="#" data-fichier="<?=$element->fichier?>" data-element-id="<?= $element->id?>" type="button" data-toggle="modal" data-target="#supprElementModal">
+            <span class="glyphicon glyphicon-remove"></span>  Supprimer
+          </a>
         </div>
       </div>
       <?php
@@ -88,3 +91,26 @@
 <?php
   echo Form::close();
 ?>
+
+<!-- Fenêtre modal de confirmation de suppressin d'élément de sinistre -->
+<div class="modal fade" id="supprElementModal" tabindex="-1" role="dialog" aria-labelledby="supprElementModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="supprElementModalLabel">Supprimer l'élément</h4>
+      </div>
+      <div class="modal-body">
+          <?= Form::open(array('action'=>'ElementsSinistreController@supprimer','method' => 'post', 'id' => 'frmSupprElement')) ?>
+            <input type="hidden" name="id" id="id" />
+            <p>Voulez-vous vraiment supprimer "<span id="suppMsg"></span>"?</p>
+            <div class="text-right">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            </div>
+        <?= Form::close() ?>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin fenêtre modal de confirmation de suppressin d'élément de sinistre -->

@@ -24,6 +24,7 @@ class CreerTableUtilisateurs extends Migration {
 
 			$table->rememberToken();
 			$table->timestamps();
+			$table->softDeletes();
 		});
 
 		Schema::create('categories_sinistres',function($table)
@@ -33,6 +34,7 @@ class CreerTableUtilisateurs extends Migration {
 			$table->string('etiquette')->unique();
 			
 			$table->timestamps();
+			$table->softDeletes();
 		});
 
 		Schema::create('sinistres',function($table)
@@ -50,6 +52,7 @@ class CreerTableUtilisateurs extends Migration {
 			$table->boolean('afficher');
 
 			$table->timestamps();
+			$table->softDeletes();
 		});
 
 		Schema::create('elements_sinistres',function($table)
@@ -62,7 +65,7 @@ class CreerTableUtilisateurs extends Migration {
 			$table->string('fichier');
 
 			$table->timestamps();
-
+			$table->softDeletes();
 		});
 	}
 

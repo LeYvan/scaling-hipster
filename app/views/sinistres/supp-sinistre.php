@@ -5,7 +5,7 @@
           <p>Voulez-vous vraiment supprimer le sinistre "<?= $sinistre->titre ?>"?</p>
 
           <?php 
-            echo Form::open(array('url'=>'/sinistres/' . $sinistre->id . '/supp/'));
+            echo Form::open(array('url'=>'/sinistres/' . $sinistre->id . '/supp/', 'method' => 'post'));
             echo Form::submit('Oui');
             echo Form::button('Non');
             echo Form::hidden('id',$sinistre->id);
