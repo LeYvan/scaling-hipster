@@ -1,7 +1,7 @@
 <?php
 class ElementsSinistreController extends BaseController {
 
-    /**
+    /**d-
      * Lister les sinistres par catégorie.
      * Lister les sinistres de toutes les catégories si aucune spécifiée.
      */
