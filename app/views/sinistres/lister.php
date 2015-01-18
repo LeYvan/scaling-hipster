@@ -6,32 +6,31 @@
             <div class="col-sm-4">
               <!-- <div>Catégorie:</div> -->
               <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="ddownCategorie" data-toggle="dropdown" aria-expanded="true">
                     <?= !$catCourante ? "Tout les types" : $catCourante->etiquette ?>
                     <span class="caret"></span>
                   </button>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="ddownCategorie">
                     <li role="presentation" class="<?= !$catCourante ? "active" : "" ?>"><a role="menuitem" tabindex="-1" href="/sinistres/">Toutes les catégories</a></li>
-                  <?php
-                    foreach($categories as $categorie)
-                    {
-                      $active = $categorie == $catCourante ? "active" : "";
-                      ?>
-                      <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/categorie/<?= $categorie->etiquette ?>/"><?= $categorie->etiquette ?></a></li>
-                      <?php
-                      // print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
-                    }
-                  ?>
-  <!--                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> -->
-                  </ul>
-                </div>
+                <?php
+                  foreach($categories as $categorie)
+                  {
+                    $active = $categorie == $catCourante ? "active" : "";
+                    ?>
+                    <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/sinistres/categorie/<?= $categorie->etiquette ?>/"><?= $categorie->etiquette ?></a></li>
+                    <?php
+                    // print("<a href=\"/sinistres/categorie/" . $categorie->id . "\" class=\"list-group-item ". $active ." \">" . $categorie->etiquette . "</a>");
+                  }
+                ?>
+                </ul>
               </div>
-            <div class="col-sm-8 text-right"><?= $sinistres->links(); ?></div>
+            </div>
+            <div class="col-sm-8 text-right">
+              <?= $sinistres->links(); ?>
+            </div>
           </div>
           <div class="row">
+
             <div class="col-md-3 col-md-push-9">
               <div class="panel panel-faireface">
                 <div class="panel-heading">
@@ -42,7 +41,7 @@
                 </div>
               </div>
             </div>
-        <div class="col-md-9 col-md-pull-3">
+            <div class="col-md-9 col-md-pull-3">
             <!-- Début d'un sinistre -->
             <?php foreach($sinistres as $sinistre) { ?>
               <div class="panel panel-default">
@@ -149,7 +148,9 @@
               </div>
             </div>
             <?php } ?>
+            </div>
             <!-- Fin d'un sinistre -->
+
           <div class="text-center">
             <?= $sinistres->links(); ?>
           </div>
@@ -171,6 +172,8 @@
           </div>
           <!-- Fin Fenêtre modal de visionnement d'images -->
 
+          
+
           <!-- Fenêtre modal de confirmation de suppressin de sinistre -->
           <div class="modal fade" id="supprSinistreModal" tabindex="-1" role="dialog" aria-labelledby="supprSinistreModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -182,7 +185,7 @@
                 <div class="modal-body">
                     <?= Form::open(array('action'=>'SinistresController@supprimer','method' => 'post', 'id' => 'frmSupprSinistre')) ?>
                       <input type="hidden" name="id" id="id" />
-                      <p>Voulez-vous vraiment supprimer "<span id="suppMsg"/>"?</p>
+                      <p>Voulez-vous vraiment supprimer "<span id="suppMsg"></span>"?</p>
                       <div class="text-right">
                           <button type="submit" class="btn btn-danger">Supprimer</button>
                           <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
