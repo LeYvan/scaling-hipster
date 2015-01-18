@@ -27,6 +27,14 @@ class BaseController extends Controller {
             //        array('message' => $message));
     }
 
+    public function afficherErreurWithInput($message = null)
+    {
+      $params = array('message' => $message, 'reussi' => false);
+      $redirect = Redirect::back()->with('evenement', $params);
+      $redirect->withInput();
+      return $redirect;
+    }
+
     public function afficherSucces($message = null)
     {
       // $proprietesPage = array('titre' => 'Succes');

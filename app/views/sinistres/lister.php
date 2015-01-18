@@ -74,7 +74,6 @@
                             $rand1 = rand(400,600);
                             $rand2 = array($rand1*1334/750, $rand1*750/1334,$rand1*16/9,$rand1*9/16,$rand1*4/3,$rand1*3/4);
                             print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2[rand(0,5)]."\">");
-                            // print("$element->fichier");
                           } 
                           else 
                           {
@@ -94,13 +93,55 @@
                     ?>
                       </div>
                      </div>
+                        <div class="col-xs-4 col-md-4 col-lg-3 col-xs-offset-4 col-sm-offset-0">
+                          
+                    <?php 
+                        $base ='https://maps.googleapis.com/maps/api/staticmap?';
+                        $coords = $sinistre['geo-x'] . ',' . $sinistre['geo-y'];
+                        $center = 'center=' . $coords;
+                        $zoom = 'zoom=15';
+                        $size = 'size=200x200';
+                        $maptype = 'maptype=roadmap';
 
-                    <div class="col-xs-4 col-md-4 col-lg-3 col-xs-offset-4 col-sm-offset-0">
-                      <div class="thumbnail">
-                        <img src="http://cdn.flaticon.com/png/256/33409.png" alt="...">
-                      </div>
-                   </div>
+                        $url = $base . $center . '&'
+                        . $zoom . '&'
+                        . $size . '&'
+                        . $maptype . '&'
+                        . 'markers=color:red%7Clabel:C%7C' . $coords . "&key=AIzaSyAWDDvWulCh3nBVbzPuGjy_yZ26PePG23k";
+
+                        //http://maps.google.com/maps?q=35.128061,-106.535561&ll=35.126517,-106.535131&z=17
+                        $href = "http://maps.google.com/maps?q=$coords&ll=$coords&z=17";
+
+                        print("");
+
+                        if ($sinistre['geo-x'] == 0 && $sinistre['geo-y'] == 0) {
+                        ?>
+                          <div class="alert alert-warning">Aucune données de localisation fournies.</div>
+                        <?php
+                        } else {
+                        ?>
+                          <div class="thumbnail">
+                            <a href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
+                          </div>
+                        <?php
+                        }
+                    ?>
+                                              
+                        </div>
                 </div>
+                        <?php
+                        if (Auth::check() && Auth::User()->niveau > 1)
+                        { 
+                        ?>
+                        <div>
+                          <div class="btn-group" role="group" aria-label="Administration">
+                            <a href="/sinistres/modifier/<?= $sinistre->id ?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span>Modifier</a>
+                            <a href="/sinistres/<?= $sinistre->id ?>/supp/" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>Supprimer</a>
+                          </div>
+                        </div>
+                        <?php
+                        }
+                      ?>
               </div>
             </div>
             <?php } ?>

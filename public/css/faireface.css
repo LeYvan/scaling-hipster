@@ -98,3 +98,21 @@ body
 {
 	margin-bottom:0; 
 }*/
+
+.geoPosImageScroll 
+{
+	display: inline-block;
+	overflow: hidden;
+		width: 225px;
+	height: 225px;
+	--webkit-overflow-scrolling: touch;
+
+  -webkit-border-radius: 0.5em;
+     -moz-border-radius: 0.5em;
+          border-radius: 0.5em;
+}
+
+#adresse
+{
+	display: none;
+}
