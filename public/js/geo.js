@@ -97,7 +97,7 @@
                 + 'markers=color:red%7Clabel:C%7C' + coords + '&key=AIzaSyAWDDvWulCh3nBVbzPuGjy_yZ26PePG23k';
 
       divGeoPos.style.display = 'inline-block';
-      txtAdresse.value = '_';
+      //txtAdresse.value = '_';
 
       imgPos.onload = function() { $('#divGeoPos').scrollTo('50%', 100); };
 
