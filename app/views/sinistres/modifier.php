@@ -33,19 +33,19 @@
   </div>
 </div>
 
-<!-- Button -->
+<!-- Text input-->
 <div class="form-group">
-  <label class="col-md-2 control-label" for="cmdGetGeoPos">Localisation</label>
+  <label class="col-md-2 control-label" for="titre">Latitude</label>  
   <div class="col-md-6">
-    <button id="cmdGetGeoPos" name="cmdGetGeoPos" class="btn btn-primary">Position actuelle</button>
+  <?= Form::text('geo-x',Input::old('geo-x'),array('class'=>'form-control input-md')) ?>
   </div>
 </div>
 
-<!-- Button -->
+<!-- Text input-->
 <div class="form-group">
-  <label class="col-md-2 control-label" for="cmdChoisirGeoPos"></label>
+  <label class="col-md-2 control-label" for="titre">Longitude</label>  
   <div class="col-md-6">
-    <button id="cmdChoisirGeoPos" name="cmdChoisirGeoPos" class="btn btn-primary">Choisir sur une carte</button>
+  <?= Form::text('geo-y',Input::old('geo-y'),array('class'=>'form-control input-md')) ?>
   </div>
 </div>
 
@@ -60,6 +60,22 @@
           <strong>Fichier</strong>
         </div>
         <div class="col-md-6 well well-sm">
+          <?php
+                          if ($element->type == 'image')
+                          { ?>
+                            <a href="#" class="thumbnail" data-toggle="modal" data-target="#mediaModal" >
+                              <img alt="Image envoyée par un utilisateur" src="/uploads/<?=$element->fichier?>"/>
+                            </a>
+                          <?php } 
+                          else 
+                          {
+                            ?>
+                            <video width="100%" controls>
+                              <source src="<?='/uploads/'.$element->fichier?>" type="video/mp4">
+                            </video>
+                            <?php
+                          }
+          ?>
           <p><span class="label label-default"><?= $element->fichier ?></span></p>
           <a class="btn btn-danger" href="#" data-fichier="<?=$element->fichier?>" data-element-id="<?= $element->id?>" type="button" data-toggle="modal" data-target="#supprElementModal">
             <span class="glyphicon glyphicon-remove"></span>  Supprimer
@@ -91,6 +107,23 @@
 <?php
   echo Form::close();
 ?>
+
+          <!-- Fenêtre modal de visionnement d'images -->
+          <div class="modal fade" id="mediaModal" tabindex="-1" role="dialog" aria-labelledby="mediaModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="mediaModalLabel">Titre</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin Fenêtre modal de visionnement d'images -->
 
 <!-- Fenêtre modal de confirmation de suppressin d'élément de sinistre -->
 <div class="modal fade" id="supprElementModal" tabindex="-1" role="dialog" aria-labelledby="supprElementModalLabel" aria-hidden="true">

@@ -23,7 +23,7 @@ Route::group(array('before' => 'auth|admin'), function() {
 //======================================================================================================================
 
 // Groupe de route pour ADMIN ET CONSEILLER SEULEMENT
-Route::group(array('before' => 'auth|admin|conseiller'), function() {
+Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), function() {
 
   Route::get('/sinistres/modifier/{id}',        // Modifier GET
              'SinistresController@modifierGet');
@@ -39,7 +39,7 @@ Route::group(array('before' => 'auth|admin|conseiller'), function() {
 
   Route::post('/elements-sinistres/supp/',      // Supprimer POST
             'ElementsSinistreController@supprimer');
-
+  
 });
 //======================================================================================================================
 
