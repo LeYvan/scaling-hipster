@@ -136,7 +136,7 @@
                     <div class="control-group">
                       <label class="control-label" for="nomUtilisateur">Nom d'utilisateur</label>
                       <div class="controls">
-                        <input id="nomUtilisateur" name="nomUtilisateur" type="text" placeholder="Nom d'utilisateur" class="form-control" required="required">
+                        <input id="nomUtilisateur" name="nomUtilisateur" type="text" autofocus="autofocus" placeholder="Nom d'utilisateur" class="form-control" required="required">
                         
                       </div>
                     </div>

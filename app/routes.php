@@ -76,14 +76,4 @@ Route::post('/connexion/','UtilisateursController@connexion');
 
 
 
-Route::get('/deconnexion/', function(){
-	Auth::logout();
-
-  /*
-  $params = array("reussi" => true, "message" => 'Deconnexion réussie!!');
-  return Redirect::to('/')->with('evenement', $params);
-  */
-
-	return Redirect::back()->with('evenement', array("reussi" => true, "message" => 'Déconnecté!'));
-
-});
+Route::get('/deconnexion/', 'UtilisateursController@deconnexion');
