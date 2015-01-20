@@ -14,11 +14,17 @@
       });
     };
 
+  if (cmdFichiers.createShadowRoot) {
+    styliserBoutonFichier();
+  } else {
+    cmdFichiers.className = cmdFichiers.className + ' custom-file-input';
+  }
+
+    
+
   cmdFichiers.onchange = function( event ) {
     lblNbFichiers.innerHTML = this.files.length + ' fichiers' ;
   };
-
-    styliserBoutonFichier();
 
     var autocomplete = new google.maps.places.Autocomplete(
       (document.getElementById('adresse')),
