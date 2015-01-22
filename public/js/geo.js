@@ -14,14 +14,24 @@
       });
     };
 
-  if (cmdFichiers.createShadowRoot) {
-    styliserBoutonFichier();
-  } else {
-    cmdFichiers.className = cmdFichiers.className + ' custom-file-input';
+  function msieversion() {
+    var msie = window.navigator.userAgent.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))
+        return true;
+
+    return false;
   }
 
-    
-
+  if (cmdFichiers.createShadowRoot != null) {
+    styliserBoutonFichier();
+  } else {
+    if (!msieversion()){
+      cmdFichiers.className = cmdFichiers.className + ' custom-file-input';
+    } else {
+      // Style spécial pour IE?
+    }
+  }
   cmdFichiers.onchange = function( event ) {
     lblNbFichiers.innerHTML = this.files.length + ' fichiers' ;
   };
