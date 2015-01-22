@@ -1,3 +1,8 @@
+$('#connexionModal').on('shown.bs.modal', function (event) {
+  $('#nomUtilisateur').focus();
+});
+
+
 $('#mediaModal').on('show.bs.modal', function (event) {
   var lien = $(event.relatedTarget) // Button that triggered the modal
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).

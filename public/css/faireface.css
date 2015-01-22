@@ -14,10 +14,12 @@ body
 }
 #page
 {
+/*	padding-top:15px;
+*/	padding-bottom:15px;
 	/*margin-top:-20px;*/
 	/*padding-top:20px;*/
 	/*padding: 10px;*/
-	margin-bottom: 15px;
+	/*margin-bottom: 15px;*/
 	border-radius: 5px;
 	background-color: #fff;
 }
