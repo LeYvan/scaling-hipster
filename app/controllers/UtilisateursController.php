@@ -49,9 +49,9 @@ class UtilisateursController extends BaseController {
 
       $Utilisateur = Utilisateur::findOrFail($id);
 
-      $Utilisateur->nom = Input::get('nom');
-      $Utilisateur->email = Input::get('email');
-      $Utilisateur->niveau = Input::get('niveau');
+      $Utilisateur->nom = htmlspecialchars(Input::get('nom'));
+      $Utilisateur->email = htmlspecialchars(Input::get('email'));
+      $Utilisateur->niveau = htmlspecialchars(Input::get('niveau'));
 
       $Utilisateur->save();
 

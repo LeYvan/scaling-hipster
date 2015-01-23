@@ -78,8 +78,8 @@ class SinistresController extends BaseController {
 
         $sinistre = new Sinistre;
 
-        $sinistre->titre = Input::get('titre');
-        $sinistre->rapport = Input::get('rapport');
+        $sinistre->titre = htmlspecialchars(Input::get('titre'));
+        $sinistre->rapport = htmlspecialchars (Input::get('rapport'));
         $sinistre->categorie_id = Input::get('categorie_id');
         $sinistre['geo-x'] = Input::get('geo-x');
         $sinistre['geo-y'] = Input::get('geo-y');
@@ -90,7 +90,7 @@ class SinistresController extends BaseController {
         $fichiers = Input::file('files');
         foreach($fichiers as $fichier)
         {
-          if (!$fichier->isValid()) break;
+          if (is_null($fichier) || !$fichier->isValid()) break;
 
           $ext = substr($fichier->getMimeType(),strpos($fichier->getMimeType(),"/")+1);  
 
@@ -176,8 +176,8 @@ class SinistresController extends BaseController {
 
       $sinistre = Sinistre::findOrFail($id);
 
-      $sinistre->titre = Input::get('titre');
-      $sinistre->rapport = Input::get('rapport');
+      $sinistre->titre = htmlspecialchars(Input::get('titre'));
+      $sinistre->rapport = htmlspecialchars(Input::get('rapport'));
       $sinistre->categorie_id = Input::get('categorie_id');
 
       $sinistre->save();

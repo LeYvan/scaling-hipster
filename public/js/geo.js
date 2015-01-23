@@ -88,10 +88,16 @@
     faireface.trouverGeoPos = function () {
       if (Modernizr.geolocation) {
         $('#divAdresse').hide();
-        navigator.geolocation.getCurrentPosition(faireface.genererImgCarte,faireface.genererImgNoPos);
+        navigator.geolocation.getCurrentPosition(faireface.gotGeoPos,faireface.genererImgNoPos);
       } else {
         genererImgNoPos();
       }
+    };
+
+    // ========================================================================
+    faireface.gotGeoPos = function (position) {
+      faireface.genererImgCarte(position);
+      divAdresse.parentNode.removeChild(divAdresse);
     };
 
     // ========================================================================
@@ -113,7 +119,7 @@
                 + 'markers=color:red%7Clabel:C%7C' + coords + '&key=AIzaSyAWDDvWulCh3nBVbzPuGjy_yZ26PePG23k';
 
       divGeoPos.style.display = 'inline-block';
-      //txtAdresse.value = '_';
+
 
       imgPos.onload = function() { $('#divGeoPos').scrollTo('50%', 100); };
 
