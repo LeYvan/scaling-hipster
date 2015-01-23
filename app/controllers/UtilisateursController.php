@@ -123,7 +123,7 @@ class UtilisateursController extends BaseController {
             try
             {
               $Utilisateur->save();
-              return $this->afficherSucces("Bienvenu ". $login. "!");
+              return $this->afficherSucces("Bienvenue ". $login. "!");
             }
             catch (Exception $e)
             {
@@ -162,6 +162,11 @@ class UtilisateursController extends BaseController {
         // $params = array("reussi" => false, "message" => 'La connexion a échouée!');    
         return $this->afficherErreur('La connexion a échouée!');
       }
+    }
+    public function deconnexion(){
+      Auth::logout();
+
+      return Redirect::to('/')->with('evenement', $params = array('message' => 'Déconnecté!', 'reussi' => true));
     }
   }
 ?>

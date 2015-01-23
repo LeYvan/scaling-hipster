@@ -9,8 +9,6 @@
       </div>
     </div>
   </div>
-</div>
-<div class="container" id="page">
   <!-- Fin de la section à enlever si nécessaire -->
 <!--
   <div class="jumbotron">
