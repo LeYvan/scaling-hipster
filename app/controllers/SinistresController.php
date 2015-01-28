@@ -66,7 +66,7 @@ class SinistresController extends BaseController {
           Input::has('rapport') &&
           Input::has('categorie_id'))){
 
-        return $this->afficherErreur("Données de sinistre invalide pour insertion.");
+        return $this->afficherErreurWithInput("Données de sinistre invalide pour insertion.");
       }
 
       if (!Auth::check()) {
@@ -136,7 +136,7 @@ class SinistresController extends BaseController {
         } catch (Exception $w) {
           $message = $message . 'De plus, une erreure est survenue lors de la gestion d\'erreur: ' . $w->getMessage();
         }
-        return $this->afficherErreur('Le sinistre n\'a pu être reporté: </br>' . $message);
+        return $this->afficherErreurWithInput('Le sinistre n\'a pu être reporté: </br>' . $message);
       }
     }
 
