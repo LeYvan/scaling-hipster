@@ -6,7 +6,7 @@
 <div class="form-group">
   <label class="control-label" for="titre">Titre du rapport</label>  
   <div class="controls">
-  <input value="<?=Input::old('titre')?>" id="titre" name="titre" type="text" placeholder="Sinistre au coin de Rue A et Rue B." class="form-control" required=""/>
+  <input value="<?=Input::old('titre')?>" id="titre" name="titre" type="text" placeholder="Titre du sinistre" class="form-control" required=""/>
   <!-- <span class="help-block">Un titre concis contenant le type et le lieu du sinistre.</span>   -->
   </div>
 </div>
