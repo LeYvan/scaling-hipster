@@ -57,21 +57,6 @@ class UtilisateursController extends BaseController {
 
       return $this->afficherSucces("Modifications enregistrées!");
     }
-    
-    // public function confirmationSupprimer($id)
-    // {
-    //     // Set titre page générée
-    //     $proprietesPage = array('titre' => 'Utilisateur - Confirmer supression');
-
-    //     $Utilisateur = Utilisateur::findOrFail($id);
-
-    //     // Enboite vue sinistres dans vue design
-    //     return 
-    //       View::make('faireface', $proprietesPage)
-    //         ->nest('contenu',
-    //                'utilisateurs.supp-utilisateur',
-    //                 array('utilisateur' => $Utilisateur));
-    // }
 
     public function supprimer()
     {
@@ -123,7 +108,7 @@ class UtilisateursController extends BaseController {
             try
             {
               $Utilisateur->save();
-              return $this->afficherSucces("Bienvenue ". $login. "!");
+              return $this->afficherSucces("Bienvenue ". $login. "!</br>Utilisez maintenant le menu connexion en haut à droite.");
             }
             catch (Exception $e)
             {
