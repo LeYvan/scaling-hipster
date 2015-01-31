@@ -11,9 +11,7 @@ class AlertesSeeder extends FfSeeder {
   {
     Eloquent::unguard();
 
-    $nbAlertes = 50;
-    $nbNouvelles = 50;
-    $nbCapsules = 100;
+    $nbAlertes = 500;
 
     $this->chargerRessources();
 
