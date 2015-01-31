@@ -70,10 +70,28 @@ Route::get('/', function()
   return View::make('faireface', $message)->nest('contenu','accueil');
 });
 
+Route::get ('/alertes/',                'AlertesController@lister');
+Route::get ('/alertes/catégories/{id}', 'AlertesController@lister');
+Route::get ('/alertes/ajouter/',        'AlertesController@ajouterGet');
+Route::post('/alertes/ajouter/',        'AlertesController@ajouterPost');
+Route::post ('/alertes/{id}/supprimer/','AlertesController@suppPost');
+Route::get ('/alertes/{id}/modifier/',  'AlertesController@modGet');
+Route::post('/alertes/{id}/modifier/',  'AlertesController@modPost');
 
+Route::get ('/nouvelles/',                'NouvellesController@lister');
+Route::get ('/nouvelles/ajouter/',        'NouvellesController@ajouterGet');
+Route::post('/nouvelles/ajouter/',        'NouvellesController@ajouterPost');
+Route::post('/nouvelles/{id}/supprimer/', 'NouvellesController@suppPost');
+Route::get ('/nouvelles/{id}/modifier/',  'NouvellesController@modGet');
+Route::post('/nouvelles/{id}/modifier/',  'NouvellesController@modPost');
+
+Route::get ('/capsules/',                 'CapsulesController@lister');
+Route::get ('/capsules/catégories/{id}',  'CapsulesController@lister');
+Route::get ('/capsules/ajouter/',         'CapsulesController@ajouterGet');
+Route::post('/capsules/ajouter/',         'CapsulesController@ajouterPost');
+Route::post('/capsules/{id}/supprimer/',  'CapsulesController@suppPost');
+Route::get ('/capsules/{id}/modifier/',   'CapsulesController@modGet');
+Route::post('/capsules/{id}/modifier/',   'CapsulesController@modPost');
 
 Route::post('/connexion/','UtilisateursController@connexion');
-
-
-
 Route::get('/deconnexion/', 'UtilisateursController@deconnexion');
