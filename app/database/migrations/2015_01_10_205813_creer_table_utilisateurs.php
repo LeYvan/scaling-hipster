@@ -41,7 +41,7 @@ class CreerTableUtilisateurs extends Migration {
 		{
 			$table->increments('id');
 			$table->string('utilisateur_id')->references('id')->on('utilisateurs');
-			$table->string('categorie_id')->references('id')->on('categoriesSinistres');
+			$table->string('categorie_id')->references('id')->on('categories_sinistres');
 
 			$table->string('titre'); // ->unique(); (unique ou non?)
 			$table->text('rapport');	
