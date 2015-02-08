@@ -34,6 +34,7 @@ class AlertesSeeder extends FfSeeder {
                                         'categorie_id'=>$categorie_id,
                                         'lat' => $lat,
                                         'long' => $long,
+                                        'rayon' => 5,
                                         'contenu'=>$contenu));
     }
 

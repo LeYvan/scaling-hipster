@@ -1,6 +1,6 @@
 (function( faireface, $, undefined ) {
 
-    if(window.location.href.indexOf("/sinistres/") === -1) {
+    if(window.location.href.indexOf("/alertes/") === -1) {
        return;
     }
 

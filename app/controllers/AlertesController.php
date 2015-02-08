@@ -30,14 +30,21 @@ class AlertesController extends BaseController {
           View::make('faireface', $proprietesPage);
     }
 
-    public function ajouterGet()
+    public function publierGet()
     {
-      return "AlertesController@ajouterGet";
+        $proprietesPage = array('titre' => 'Alertes');
+        $categories = CategorieSinistre::all();
+
+        return 
+          View::make('faireface', $proprietesPage)
+            ->nest('contenu',
+                   'alertes.publier',
+                    array('categories' => $categories));
     }
 
-    public function ajouterPost()
+    public function publierPost()
     {
-        return $this->afficherSucces('AlertesController@ajouterPost');
+        return $this->afficherSuccesRedirect('/alertes/','AlertesController@ajouterPost');
     }
 
     public function modGet($id)
