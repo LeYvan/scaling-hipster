@@ -28,7 +28,7 @@
         {
 
           ?>
-          <li role="presentation" class=""><a role="menuitem" tabindex="-1" onlick="alert('asasd');"><?= $categorie->etiquette ?></a></li>
+          <li role="presentation" class=""><a role="menuitem" tabindex="-1"><?= $categorie->etiquette ?></a></li>
           <?php
         }
       ?>
@@ -40,7 +40,7 @@
 <!-- Textarea -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="contenu">Contenu</label>
-  <div class="col-md-4">                     
+  <div class="col-md-8">                     
     <textarea class="form-control" id="contenu" name="contenu">Contenu de l'alerte.</textarea>
   </div>
 </div>
@@ -76,7 +76,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="cmdAdresse">Trouver par</label>
   <div class="col-md-4">
-    <button id="cmdAdresse" name="cmdAdresse" class="btn btn-info">Adresse</button>
+    <button id="cmdAdresse" name="cmdAdresse" class="btn btn-info" href="#" type="button" data-toggle="modal" data-target="#trouverAdresseModel">Adresse</button>
   </div>
 </div>
 
@@ -91,3 +91,53 @@
 
 </fieldset>
 <?= Form::close();?>
+
+          <!-- Fenêtre modal de confirmation de suppressin de sinistre -->
+          <div class="modal fade" id="trouverAdresseModel" tabindex="-1" role="dialog" aria-labelledby="lblTrouverAdresseModel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="lblTrouverAdresseModel">Trouver par adresse</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <?= Form::open(array('action'=>'SinistresController@supprimer','method' => 'post', 'id' => 'frmSupprSinistre','class'=>'form-horizontal')) ?>
+
+                    <!-- Adresse -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="adresse">Adresse</label>  
+                      <div class="col-md-8">
+                        <input id="_adresse" name="_adresse" type="text" placeholder="5.0" class="form-control input-md">
+                      </div>
+                    </div>
+
+                    <!-- Preview -->
+                    <div id="adressePreview" class="form-group">
+                      <label class="col-md-4 control-label" for="adresse">Carte</label>  
+                      <div class="col-md-8">
+                        <img id="imgPreview" src="/images/chargement.gif">
+                      </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                      <div class="col-md-4">
+                      </div>
+                      <div class="col-md-8 controls">
+                        <button id="cmdCancelAdresse" name="cmdReset" class="btn btn-danger" data-dismiss="trouverAdresseModel">Annuler</button>
+                        <button id="cmdSelAdresse" name="cmdEnvoyer" class="btn btn-primary">Sélectionner</button>
+                      </div>
+                    </div>
+                  <?= Form::close() ?>
+
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Fin fenêtre modal de confirmation de suppressin de sinistre -->

@@ -232,5 +232,6 @@
     <!--<script src="/js/holder.js"></script>-->
     <script src="/js/modernizr.js"></script>
     <script src="/js/geo.js"></script>
+    <script src="/js/alertes.publier.js"></script>
   </body>
 </html>

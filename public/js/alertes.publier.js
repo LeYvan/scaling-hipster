@@ -1,105 +1,50 @@
-(function( faireface, $, undefined ) {
+(function( ff_pub_alerte, $, undefined ) {
 
-    if(window.location.href.indexOf("/alertes/") === -1) {
-       return;
-    }
 
-  var cmdFichiers = document.getElementById('filebutton');
-  var lblNbFichiers = document.getElementById('lblNbFichiers');
-  var shadowCmdFichier;
-
-    // Pour afficher un beau bouton de sélection de fichier
-    var styliserBoutonFichier = function() {
-      var shadow = cmdFichiers.createShadowRoot();
-      shadow.innerHTML = '<style> @import "/css/bootstrap.min.css"; </style><button type="button" class="btn btn-info">Photos & Vidéos</button>';
-      cmdFichiers.addEventListener( "keydown", function( event ) {
-          if ( event.keyCode === 13 || event.keyCode === 32 ) {
-              cmdFichiers.click();
-          }
-      });
-    };
-
-  function msieversion() {
-    var msie = window.navigator.userAgent.indexOf("MSIE ");
-    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))
-        return true;
-    return false;
+  if(window.location.href.indexOf("/alertes/") === -1) {
+     return;
   }
 
-  if (cmdFichiers.createShadowRoot != null && !msieversion()) {
-    styliserBoutonFichier();
-  }
-  
-  cmdFichiers.onchange = function( event ) {
-    lblNbFichiers.innerHTML = this.files.length + ' fichiers' ;
-  };
+  var imgPreview = document.getElementById('imgPreview');
+  var divPreview = imgPreview.parentNode;
+  var lat = document.getElementById('lat');
+  var long = document.getElementById('long');
 
-    var autocomplete = new google.maps.places.Autocomplete(
-      (document.getElementById('adresse')),
-      { types: ['geocode'] }
-    );
+  var autocomplete = new google.maps.places.Autocomplete(
+    (document.getElementById('_adresse')),
+    { types: ['geocode'] }
+  );
 
-    google.maps.event.addListener(autocomplete, 'place_changed', function() {
-      faireface.fillInAddress();
-    });
+  // Autcomplete stuff
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    ff_pub_alerte.fillInAddress();
+  });
 
-    faireface.fillInAddress = function () {
+  // Autocomplete select
+  ff_pub_alerte.fillInAddress = function () {
+    var place = autocomplete.getPlace();
 
-      var place = autocomplete.getPlace();
-
-      faireface.genererImgCarte({
-        coords: {
-          latitude: place.geometry.location.lat(),
-          longitude: place.geometry.location.lng()
-        }
-      });
-    }
-
-    // ========================================================================
-    // Private
-    // ========================================================================
-    var imgPos = document.getElementById('imgGeoPos');
-    var txtAdresse = document.getElementById('adresse');
-    var lblPosition = document.getElementById('lblPosition');
-    var geoxField = document.getElementById('geo-x');
-    var geoyField = document.getElementById('geo-y');
-    var divGeoPos = document.getElementById('divGeoPos');
-    var divAdresse = document.getElementById('divAdresse');
-    // ========================================================================
-    faireface.getImgPos = function() {
-      return imgPos;
-    };
-    // ========================================================================
-    faireface.setImgPos = function(img) {
-      imgPos = img;
-    };
-    // ========================================================================
-
-    // ========================================================================
-    // Public
-    // ========================================================================
-    faireface.test = function() {
-      alert('faireface.test');
-    };
-
-    // ========================================================================
-    faireface.trouverGeoPos = function () {
-      if (Modernizr.geolocation) {
-        $('#divAdresse').hide();
-        navigator.geolocation.getCurrentPosition(faireface.gotGeoPos,faireface.genererImgNoPos);
-      } else {
-        genererImgNoPos();
+    ff_pub_alerte.coords = {
+      coords: {
+        latitude: place.geometry.location.lat(),
+        longitude: place.geometry.location.lng()
       }
     };
 
-    // ========================================================================
-    faireface.gotGeoPos = function (position) {
-      faireface.genererImgCarte(position);
-      divAdresse.parentNode.removeChild(divAdresse);
-    };
+    var imgNewPos = ff_pub_alerte.genererImgCarte(ff_pub_alerte.coords);
+    imgNewPos.id = 'imgPreview';
 
-    // ========================================================================
-    faireface.genererImgCarte = function (position) {
+    imgPreview = document.getElementById('imgPreview');
+    divPreview.removeChild(imgPreview);
+    divPreview.appendChild(imgNewPos);
+
+    $('#cmdSelAdresse').show();
+
+    lat.setAttribute('value',ff_pub_alerte.coords.latitude);
+    long.setAttribute('value',ff_pub_alerte.coords.longitude);
+  }
+
+    ff_pub_alerte.genererImgCarte = function (position) {
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;
 
@@ -116,30 +61,26 @@
                 + maptype + '&'
                 + 'markers=color:red%7Clabel:C%7C' + coords + '&key=AIzaSyAWDDvWulCh3nBVbzPuGjy_yZ26PePG23k';
 
-      divGeoPos.style.display = 'inline-block';
-
-
-      imgPos.onload = function() { $('#divGeoPos').scrollTo('50%', 100); };
-
-      imgPos.setAttribute('src',url);
-      geoxField.setAttribute('value',latitude);
-      geoyField.setAttribute('value',longitude);
+      var img = document.createElement('img');
+      img.setAttribute('src',url);
+      return img;
     };
 
-    // ========================================================================
-    faireface.genererImgNoPos = function (error) {
-      $('#divAdresse').show();
-      divGeoPos.style.display = 'none';
-      lblPosition.innerHTML  = 'Adresse';
-      txtAdresse.style.display = 'inline';
-    };
+    $('#cmdSelAdresse').hide();
 
-}( window.faireface = window.faireface || {}, jQuery ));
+}( window.ff_pub_alerte = window.ff_pub_alerte || {}, jQuery ));
 
 
+$('#cmdCancelAdresse').click(function() {
+  event.preventDefault();
+  $('#trouverAdresseModel').modal('hide');
+});
 
-$(document).ready(function () {
-    if(window.location.href.indexOf("/sinistres/") > -1) {
-       faireface.trouverGeoPos();
-    }
+$('#cmdSelAdresse').click(function() {
+  event.preventDefault();
+
+  $('#lat').val(ff_pub_alerte.coords.coords.latitude);
+  $('#long').val(ff_pub_alerte.coords.coords.longitude);
+  
+  $('#trouverAdresseModel').modal('hide');
 });
