@@ -39,6 +39,9 @@ Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), fun
 
   Route::post('/elements-sinistres/supp/',      // Supprimer POST
             'ElementsSinistreController@supprimer');
+
+  Route::get ('/alertes/publier/',        'AlertesController@publierGet');
+  Route::post('/alertes/publier/',        'AlertesController@publierPost');
   
 });
 //======================================================================================================================
@@ -71,9 +74,8 @@ Route::get('/', function()
 });
 
 Route::get ('/alertes/',                'AlertesController@lister');
-Route::get ('/alertes/catégories/{id}', 'AlertesController@lister');
-Route::get ('/alertes/publier/',        'AlertesController@publierGet');
-Route::post('/alertes/publier/',        'AlertesController@publierPost');
+Route::get ('/alertes/categories/{etiquette}', 'AlertesController@lister');
+
 Route::post ('/alertes/{id}/supprimer/','AlertesController@suppPost');
 Route::get ('/alertes/{id}/modifier/',  'AlertesController@modGet');
 Route::post('/alertes/{id}/modifier/',  'AlertesController@modPost');

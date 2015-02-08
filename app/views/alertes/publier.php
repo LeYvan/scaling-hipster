@@ -8,15 +8,14 @@
       </div>
 
 <?= Form::model(new Sinistre, array('url' => '/alertes/publier/','files' => true,'class'=>"form-horizontal")) ?>
-<script type="text/javascript">
-</script>
+<input type="hidden" id="categorie_id" name="categorie_id" />
 <fieldset>
 <legend>Publier</legend>
 <!-- Catégorie -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="ddownCategorie">Catégorie</label>
   <div class="col-md-4">
-    <div class="dropdown">
+    <div id="categorieSel" class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" id="ddownCategorie" data-toggle="dropdown" aria-expanded="true">
           Choisir
           <span class="caret"></span>
@@ -28,7 +27,7 @@
         {
 
           ?>
-          <li role="presentation" class=""><a role="menuitem" tabindex="-1"><?= $categorie->etiquette ?></a></li>
+          <li role="presentation" class=""><a role="menuitem" tabindex="-1" data-id="<?= $categorie->id ?>"><?= $categorie->etiquette ?></a></li>
           <?php
         }
       ?>
@@ -40,7 +39,7 @@
 <!-- Textarea -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="contenu">Contenu</label>
-  <div class="col-md-8">                     
+  <div class="col-md-6">                     
     <textarea class="form-control" id="contenu" name="contenu">Contenu de l'alerte.</textarea>
   </div>
 </div>
@@ -63,6 +62,17 @@
   </div>
 </div>
 
+
+ <div class="form-group">
+
+    <label class="col-md-4 control-label" for="cmdAdresse">Trouver par</label>
+
+  <div class="  col-md-4">
+    <button id="cmdAdresse" name="cmdAdresse" class="btn btn-info" href="#" type="button" >Adresse</button>
+  </div>
+</div>
+
+
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="rayon">Rayon (Km)</label>  
@@ -74,9 +84,9 @@
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="cmdAdresse">Trouver par</label>
+  
   <div class="col-md-4">
-    <button id="cmdAdresse" name="cmdAdresse" class="btn btn-info" href="#" type="button" data-toggle="modal" data-target="#trouverAdresseModel">Adresse</button>
+    
   </div>
 </div>
 
@@ -99,7 +109,7 @@
 
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="lblTrouverAdresseModel">Trouver par adresse</h4>
+                  <h4 class="modal-title" id="lblTrouverAdresseModel">Déduire position géographique par adresse</h4>
                 </div>
 
                 <div class="modal-body">
