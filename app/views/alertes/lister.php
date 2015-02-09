@@ -31,7 +31,7 @@
             if (Auth::check() && Auth::User()->niveau > 1)
             { 
             ?>
-            <div class="row actions-conseiler">
+            <div class="row">
               <div class="col-md-3">
                 <a class="btn btn-success" href="/alertes/publier/" role="button">Publier une nouvelle alerte</a>
               </div>

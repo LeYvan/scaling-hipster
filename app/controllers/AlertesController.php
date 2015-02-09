@@ -42,8 +42,6 @@ class AlertesController extends BaseController {
         {
             $catCourante = CategorieSinistre::where('etiquette',$etiquette)->first();
             $alertes = Alerte::where('categorie_id',$catCourante->id)
-                                ->select(DB::raw('FLOOR(created_at / 86400) AS date'))
-                                ->groupBy(DB::raw('FLOOR(created_at / 86400) AS date'))
                                 ->orderBy('created_at', 'desc')->paginate(10);
         } 
         else
