@@ -1,5 +1,5 @@
       <div id="title-sinistres" class="">
-        <h1>Alertes</h1>
+        <h1>Alertes - Historique</h1>
       </div>
           <div class="row liste-navigation">
             <div class="col-sm-4">
@@ -26,23 +26,55 @@
               <?= $alertes->links(); ?>
             </div>
           </div>
+
+          <?php
+            if (Auth::check() && Auth::User()->niveau > 1)
+            { 
+            ?>
+            <div class="row actions-conseiler">
+              <div class="col-md-3">
+                <a class="btn btn-success" href="/alertes/publier/" role="button">Publier une nouvelle alerte</a>
+              </div>
+            </div>
+            <?php
+            }
+          ?>
+
           <div class="row">
 
             <div class="col-md-3 col-md-push-9">
 
             </div>
-            
+
             <div class="col-md-9 col-md-pull-3">
             <!-- Début d'un sinistre -->
-            <?php foreach($alertes as $alerte) { ?>
+            <?php 
+              $lastAlerteDate = null;  
 
-            <p class="well"><strong>@</strong><em><?=$alerte->utilisateur()->nom?>: </em><?=$alerte->contenu?>
+              foreach($alertes as $alerte) { ?>
+
+                <?php
+                $currDate = substr($alerte->created_at,0,10); 
+
+                if ($lastAlerteDate == null || 
+                    $currDate != $lastAlerteDate) {
+                  $lastAlerteDate = $currDate;
+                  ?>
+                  <div class="page-header">
+                    <h3><?=date("l j F", strtotime($currDate))?></small></h3>
+                  </div>
+                  <?php
+                }
+                ?>
+
+            <div class="well">
+            <p ><strong>@</strong><em><?=$alerte->utilisateur()->nom?>: </em><?=$alerte->contenu?></p>
             <?php 
                 $base ='https://maps.googleapis.com/maps/api/staticmap?';
                 $coords = $alerte['lat'] . ',' . $alerte['long'];
                 $center = 'center=' . $coords;
                 $zoom = 'zoom=15';
-                $size = 'size=350x150';
+                $size = 'size=150x150';
                 $maptype = 'maptype=roadmap';
 
                 $url = $base . $center . '&'
@@ -60,13 +92,24 @@
                 <?php
                 } else {
                 ?>
-                  <div class="panel panel-info">
-                    <a href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
+                <div class="container row">
+                  <div class="col-md-4">
+                    <div class="panel panel-info">
+                      <div class="panel-heading">Localisation</div>
+                        <div class="panel-body">
+                          <a href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
+                        </div>
+                    </div>
                   </div>
+                </div>
+
                 <?php
                 }
             ?>
-            </p>
+            </div>
+
+
+
 
             <?php } ?>
             </div>

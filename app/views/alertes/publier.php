@@ -120,7 +120,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="adresse">Adresse</label>  
                       <div class="col-md-8">
-                        <input id="_adresse" name="_adresse" type="text" placeholder="5.0" class="form-control input-md">
+                        <input id="_adresse" name="_adresse" type="text" placeholder="Entrez une adresse pour chercher" class="form-control input-md">
                       </div>
                     </div>
 

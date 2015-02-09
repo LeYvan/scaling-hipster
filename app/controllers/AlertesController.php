@@ -35,15 +35,22 @@ class AlertesController extends BaseController {
         // Set titre page générée
         $proprietesPage = array('titre' => 'Alertes');
 
+        setlocale(LC_ALL, 'fr_CA');
+
         $catCourante = null;
         if ($etiquette)
         {
             $catCourante = CategorieSinistre::where('etiquette',$etiquette)->first();
-            $alertes = Alerte::where('categorie_id',$catCourante->id)->orderBy('created_at', 'desc')->paginate(10);
+            $alertes = Alerte::where('categorie_id',$catCourante->id)
+                                ->select(DB::raw('FLOOR(created_at / 86400) AS date'))
+                                ->groupBy(DB::raw('FLOOR(created_at / 86400) AS date'))
+                                ->orderBy('created_at', 'desc')->paginate(10);
         } 
         else
         {
-            $alertes = Alerte::orderBy('created_at', 'desc')->paginate(10);
+            //$alertes = Alerte::orderBy('created_at', 'desc')->paginate(10);
+            $alertes = Alerte::where('categorie_id','>',0)
+                                ->orderBy('created_at', 'desc')->paginate(10);
         }
 
         // Get all categories (pour sidebar)
