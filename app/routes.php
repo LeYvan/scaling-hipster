@@ -46,6 +46,12 @@ Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), fun
 });
 //======================================================================================================================
 
+  Route::get('/profile/',
+             'UtilisateursController@profileGet');
+
+  Route::post('/profile/{id}',
+             'UtilisateursController@profilePost');
+
 // Sinistres
 Route::get('/sinistres/',      // Lister
            'SinistresController@lister');

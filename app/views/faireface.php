@@ -56,7 +56,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if(Auth::check()){?>
-          <p class="navbar-text"><?= Auth::user()->nom ?></p>
+          <li><a href="/profile/"><?= Auth::user()->nom ?></a></li>
           <li><a href="/deconnexion/">Déconnexion</a></li>          
           <?php }else{?>
           <li><a href="#" data-toggle="modal" data-target="#connexionModal">Connexion</a></li>

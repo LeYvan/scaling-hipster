@@ -19,6 +19,7 @@ class UtilisateursController extends BaseController {
                    'utilisateurs.lister',
                     array('utilisateurs' => $utilisateurs));
     }
+
     public function modifierGet($id)
     {
       // Set titre page générée
@@ -35,6 +36,49 @@ class UtilisateursController extends BaseController {
                     array('utilisateur' => $Utilisateur));
     }
 
+    public function profileGet()
+    {
+
+    if(!Auth::check()) {
+      return $this->afficherSuccesRedirect("/","Vous devez être connecté pour modifier votre profile.");
+    }
+
+    $user = Auth::user();
+
+    // Set titre page générée
+    $proprietesPage = array('titre' => 'Profile - Modifier');
+
+    // Get utilisateur
+    $Utilisateur = Utilisateur::where('id',$user->id)->firstOrFail();
+
+    // Enboite vue formulaire dans vue design
+    return 
+      View::make('faireface', $proprietesPage)
+        ->nest('contenu',
+               'utilisateurs.profile',
+                array('utilisateur' => $Utilisateur));
+    }
+
+    public function profilePost($id)
+    {
+      if (!(Input::has('nom') &&
+          Input::has('email') &&
+          Input::has('sms'))){
+
+        return $this->afficherErreur("Introuvable");
+      }
+
+      $Utilisateur = Utilisateur::findOrFail($id);
+
+      $Utilisateur->nom = htmlspecialchars(Input::get('nom'));
+      $Utilisateur->email = htmlspecialchars(Input::get('email'));
+      $Utilisateur->sms = htmlspecialchars(Input::get('sms'));
+
+      $Utilisateur->save();
+
+      return $this->afficherSucces("Profile enregistré!");
+    }
+
     public function modifierPost($id)
     {
             // Set titre page générée
@@ -42,6 +86,7 @@ class UtilisateursController extends BaseController {
 
       if (!(Input::has('nom') &&
           Input::has('email') &&
+          Input::has('sms') &&
           Input::has('niveau'))){
 
         return $this->afficherErreur("Introuvable");
@@ -51,6 +96,7 @@ class UtilisateursController extends BaseController {
 
       $Utilisateur->nom = htmlspecialchars(Input::get('nom'));
       $Utilisateur->email = htmlspecialchars(Input::get('email'));
+      $Utilisateur->sms = htmlspecialchars(Input::get('sms'));
       $Utilisateur->niveau = htmlspecialchars(Input::get('niveau'));
 
       $Utilisateur->save();
