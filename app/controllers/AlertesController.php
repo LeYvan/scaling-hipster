@@ -79,9 +79,15 @@ class AlertesController extends BaseController {
             $alerte->utilisateur_id = Auth::user()->id;
 
             $alerte->save();
+
+            try {
+                $this->alerteSMS($alerte);
+            } catch (Services_Twilio_RestException $e) {
+                $message = "Erreur sms: " . $e->getMessage();
+            }
         } catch(Exception $e) {
             $erreur = true;
-            $message = "Erreur interne.";
+            $message = "Erreur interne: " . $e->getMessage();
         }
 
         if (!$erreur) {
@@ -107,6 +113,27 @@ class AlertesController extends BaseController {
             ->nest('contenu',
                    'alertes.details',
                     array('alerte' => $alerte));
+    }
+
+    private function alerteSMS($alerte)
+    {
+         
+        $account_sid = 'ACb678338ab5442f0984af065905021252'; 
+        $auth_token = ''; 
+        $http = new Services_Twilio_TinyHttp(
+            'https://api.twilio.com',
+            array('curlopts' => array(
+                CURLOPT_SSL_VERIFYPEER => true,
+                CURLOPT_SSL_VERIFYHOST => 2,
+            )));
+
+        $client = new Services_Twilio($sid, $token, "2010-04-01", $http);
+         
+        $client->account->messages->create(array( 
+            'To' => "4189345616", 
+            'From' => "+15817029591", 
+            'Body' => "Alerte faireface.ca: " . $alerte->contenu . "\r\nfaireface.ca/a/" . $alerte->id,   
+        ));
     }
 }
 ?>
