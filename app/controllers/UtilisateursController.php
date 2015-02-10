@@ -39,24 +39,24 @@ class UtilisateursController extends BaseController {
     public function profileGet()
     {
 
-    if(!Auth::check()) {
-      return $this->afficherSuccesRedirect("/","Vous devez être connecté pour modifier votre profile.");
-    }
+      if(!Auth::check()) {
+        return $this->afficherSuccesRedirect("/","Vous devez être connecté pour modifier votre profile.");
+      }
 
-    $user = Auth::user();
+      $user = Auth::user();
 
-    // Set titre page générée
-    $proprietesPage = array('titre' => 'Profile - Modifier');
+      // Set titre page générée
+      $proprietesPage = array('titre' => 'Profile - Modifier');
 
-    // Get utilisateur
-    $Utilisateur = Utilisateur::where('id',$user->id)->firstOrFail();
+      // Get utilisateur
+      $Utilisateur = Utilisateur::where('id',$user->id)->firstOrFail();
 
-    // Enboite vue formulaire dans vue design
-    return 
-      View::make('faireface', $proprietesPage)
-        ->nest('contenu',
-               'utilisateurs.profile',
-                array('utilisateur' => $Utilisateur));
+      // Enboite vue formulaire dans vue design
+      return 
+        View::make('faireface', $proprietesPage)
+          ->nest('contenu',
+                 'utilisateurs.profile',
+                  array('utilisateur' => $Utilisateur));
     }
 
     public function profilePost($id)

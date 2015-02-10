@@ -52,6 +52,13 @@ Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), fun
   Route::post('/profile/{id}',
              'UtilisateursController@profilePost');
 
+
+  Route::get('/alertes/{id}',
+             'AlertesController@details');
+
+    Route::get('/a/{id}',
+             'AlertesController@details');
+
 // Sinistres
 Route::get('/sinistres/',      // Lister
            'SinistresController@lister');
@@ -81,10 +88,6 @@ Route::get('/', function()
 
 Route::get ('/alertes/',                'AlertesController@lister');
 Route::get ('/alertes/categories/{etiquette}', 'AlertesController@lister');
-
-Route::post ('/alertes/{id}/supprimer/','AlertesController@suppPost');
-Route::get ('/alertes/{id}/modifier/',  'AlertesController@modGet');
-Route::post('/alertes/{id}/modifier/',  'AlertesController@modPost');
 
 Route::get ('/nouvelles/',                'NouvellesController@lister');
 Route::get ('/nouvelles/ajouter/',        'NouvellesController@ajouterGet');
