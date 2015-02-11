@@ -44,21 +44,27 @@ class SendSmsCommand extends Command {
 			$alertes = Alerte::where('sent_sms',false)->get();
 			$utilisateurs = Utilisateur::where('sms','!=',"")->get();
 
+			$this->info(date("G:i:s"));
+
 			foreach($alertes as $alerte)
 			{
-				$this->info('Préparation des envoies pour alerte nb."' . $alerte->id . '"');
+				$old = $this->sent;
 				foreach ($utilisateurs as $utilisateur)
 				{
 					$this->sendSms($alerte,$utilisateur);
+					$this->info("Envoyé " . ($this->sent - $old) . " sms pour l'alerte id=" . $alerte->id . ".");
 				}
+
 			}
+
+			$this->info("Envoyé " . $this->sent . " sms en tout.");
 	}
 
 	private function sendSms($alerte,$utilisateur)
 	{
 	  global $account_sid, $auth_token;
 
-	  $this->info("WOA: $account_sid, $auth_token");
+	  //$this->info("WOA: $account_sid, $auth_token");
 
 	  try {
 	  	$client = new Services_Twilio($GLOBALS['account_sid'], $GLOBALS['auth_token']); 
