@@ -148,3 +148,29 @@ body
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
+
+
+/* Accueil */
+.panel-faireface {
+  border-color: #e2600c;
+  /*background-color: #fce4d5;*/
+}
+.panel-faireface > .panel-heading {
+  color: #fff;
+  background-color: #F36C15;
+  border-color: #e2600c;
+}
+.panel-faireface > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #e2600c;
+}
+.panel-faireface > .panel-heading .badge {
+  color: #f47b2d;
+  background-color: #333;
+}
+.panel-faireface > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #e2600c;
+}
+.fill
+{
+	margin:-15px;
+}

@@ -74,7 +74,7 @@ Route::get ('/alertes/',                'AlertesController@lister');
 Route::get ('/alertes/catégories/{id}', 'AlertesController@lister');
 Route::get ('/alertes/ajouter/',        'AlertesController@ajouterGet');
 Route::post('/alertes/ajouter/',        'AlertesController@ajouterPost');
-Route::post ('/alertes/{id}/supprimer/','AlertesController@suppPost');
+Route::post('/alertes/{id}/supprimer/','AlertesController@suppPost');
 Route::get ('/alertes/{id}/modifier/',  'AlertesController@modGet');
 Route::post('/alertes/{id}/modifier/',  'AlertesController@modPost');
 
