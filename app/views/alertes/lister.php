@@ -1,10 +1,10 @@
       <div id="title-sinistres" class="">
         <h1>Alertes - Historique</h1>
         <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2" id="divInfoSms">
       <div class="alert alert-info alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4>Information!</h4>Vous pouvez inscrire votre numéro de téléphone cellulaire pour recevoir les alertes de faireface.ca par SMS.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+        <h4>Information!</h4>Vous pouvez inscrire votre numéro de téléphone cellulaire pour recevoir les alertes de faireface.ca par SMS. Vous n'avez qu'à ajouter l'information dans votre profile, atteignable en cliquant sur votre nom en haut à droite de la page.
       </div>
   </div>
 </div>

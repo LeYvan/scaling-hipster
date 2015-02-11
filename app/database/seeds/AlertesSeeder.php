@@ -35,7 +35,8 @@ class AlertesSeeder extends FfSeeder {
                                         'lat' => $lat,
                                         'long' => $long,
                                         'rayon' => 5,
-                                        'contenu'=>$contenu));
+                                        'contenu'=>$contenu,
+                                        'sent_sms'=>true));
     }
 
     $this->log('Table alertes germée! (' . $i . ' insertions)',true);

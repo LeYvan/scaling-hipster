@@ -1,24 +1,28 @@
 (function( ff_pub_alerte, $, undefined ) {
 
 
-  if(window.location.href.indexOf("/alertes/") === -1) {
+  if(window.location.href.indexOf("/alertes") === -1) {
      return;
   }
 
-  var imgPreview = document.getElementById('imgPreview');
-  var divPreview = imgPreview.parentNode;
-  var lat = document.getElementById('lat');
-  var long = document.getElementById('long');
+  if(window.location.href.indexOf("/alertes/publier") > -1) {
+    var imgPreview = document.getElementById('imgPreview');
+    var divPreview = imgPreview.parentNode;
+    var lat = document.getElementById('lat');
+    var long = document.getElementById('long');
 
-  var autocomplete = new google.maps.places.Autocomplete(
-    (document.getElementById('_adresse')),
-    { types: ['geocode'] }
-  );
+    $('#cmdSelAdresse').hide();
 
-  // Autcomplete stuff
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    ff_pub_alerte.fillInAddress();
-  });
+    var autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('_adresse')),
+      { types: ['geocode'] }
+    );
+
+    // Autcomplete stuff
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      ff_pub_alerte.fillInAddress();
+    });
+  }
 
   // Autocomplete select
   ff_pub_alerte.fillInAddress = function () {
@@ -71,7 +75,46 @@
       alert(categorie);
     };
 
-    $('#cmdSelAdresse').hide();
+    
+
+  function createCookie(name, value, days) {
+      var expires;
+
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toGMTString();
+      } else {
+          expires = "";
+      }
+      document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+  }
+
+  function readCookie(name) {
+      var nameEQ = encodeURIComponent(name) + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+      }
+      return null;
+  }
+
+  var afficherInfoSms = readCookie("divInfoSms");
+
+  if (afficherInfoSms == null) {
+    afficherInfoSms=true;
+  }
+
+  if (afficherInfoSms == "false") {
+    $('#divInfoSms').hide();
+  } else {
+    $('#divInfoSms').click(function(){
+      createCookie("divInfoSms","false",360);
+    });
+  }
+
 
 }( window.ff_pub_alerte = window.ff_pub_alerte || {}, jQuery ));
 

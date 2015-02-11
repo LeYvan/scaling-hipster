@@ -65,7 +65,7 @@ class UtilisateursController extends BaseController {
           Input::has('email') &&
           Input::has('sms'))){
 
-        return $this->afficherErreur("Introuvable");
+        return $this->afficherErreur("Données invalides.");
       }
 
       $Utilisateur = Utilisateur::findOrFail($id);

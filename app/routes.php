@@ -42,6 +42,18 @@ Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), fun
 
   Route::get ('/alertes/publier/',        'AlertesController@publierGet');
   Route::post('/alertes/publier/',        'AlertesController@publierPost');
+
+  Route::get ('/nouvelles/ajouter/',        'NouvellesController@ajouterGet');
+  Route::post('/nouvelles/ajouter/',        'NouvellesController@ajouterPost');
+  Route::post('/nouvelles/{id}/supprimer/', 'NouvellesController@suppPost');
+  Route::get ('/nouvelles/{id}/modifier/',  'NouvellesController@modGet');
+  Route::post('/nouvelles/{id}/modifier/',  'NouvellesController@modPost');
+
+  Route::get ('/capsules/ajouter/',         'CapsulesController@ajouterGet');
+  Route::post('/capsules/ajouter/',         'CapsulesController@ajouterPost');
+  Route::post('/capsules/{id}/supprimer/',  'CapsulesController@suppPost');
+  Route::get ('/capsules/{id}/modifier/',   'CapsulesController@modGet');
+  Route::post('/capsules/{id}/modifier/',   'CapsulesController@modPost');
   
 });
 //======================================================================================================================
@@ -90,19 +102,11 @@ Route::get ('/alertes/',                'AlertesController@lister');
 Route::get ('/alertes/categories/{etiquette}', 'AlertesController@lister');
 
 Route::get ('/nouvelles/',                'NouvellesController@lister');
-Route::get ('/nouvelles/ajouter/',        'NouvellesController@ajouterGet');
-Route::post('/nouvelles/ajouter/',        'NouvellesController@ajouterPost');
-Route::post('/nouvelles/{id}/supprimer/', 'NouvellesController@suppPost');
-Route::get ('/nouvelles/{id}/modifier/',  'NouvellesController@modGet');
-Route::post('/nouvelles/{id}/modifier/',  'NouvellesController@modPost');
+
 
 Route::get ('/capsules/',                 'CapsulesController@lister');
 Route::get ('/capsules/catégories/{id}',  'CapsulesController@lister');
-Route::get ('/capsules/ajouter/',         'CapsulesController@ajouterGet');
-Route::post('/capsules/ajouter/',         'CapsulesController@ajouterPost');
-Route::post('/capsules/{id}/supprimer/',  'CapsulesController@suppPost');
-Route::get ('/capsules/{id}/modifier/',   'CapsulesController@modGet');
-Route::post('/capsules/{id}/modifier/',   'CapsulesController@modPost');
+
 
 Route::post('/connexion/','UtilisateursController@connexion');
 Route::get('/deconnexion/', 'UtilisateursController@deconnexion');
