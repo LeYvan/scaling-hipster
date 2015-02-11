@@ -182,6 +182,7 @@ class UtilisateursController extends BaseController {
           ->nest('contenu',
                  'succes');
     }
+
     public function connexion()
     {
       $reussi = Auth::attempt(array('nomUtilisateur' => Input::get("nomUtilisateur"), 'password' => Input::get("motPasse")));
@@ -194,10 +195,31 @@ class UtilisateursController extends BaseController {
         return $this->afficherErreur('La connexion a échouée!');
       }
     }
+
     public function deconnexion(){
       Auth::logout();
 
       return Redirect::to('/')->with('evenement', $params = array('message' => 'Déconnecté!', 'reussi' => true));
+    }
+
+    public function unsubscribeSms()
+    {
+      if (!Auth::check())
+      {
+        return $this->afficherErreurWithInput("Vous devez être connecté!");
+      }
+
+      try {
+        $user = Auth::user();
+
+        $user->sms = "";
+        $user->save();
+
+        return $this->afficherSucces("Vous êtes désabonné. Entrez votre numéro à nouveau pour recevoir les alertes.");
+
+      } catch (Exception $e) {
+        return $this->afficherErreurWithInput("Vous ne pouvez pas vous désabonné et êtes maudit.");
+      }
     }
   }
 ?>

@@ -64,6 +64,9 @@ Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), fun
   Route::post('/profile/{id}',
              'UtilisateursController@profilePost');
 
+  //unsubscribeSms
+  Route::get('/profile/unsub/',
+             'UtilisateursController@unsubscribeSms');
 
   Route::get('/alertes/{id}',
              'AlertesController@details');

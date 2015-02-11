@@ -27,8 +27,28 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Email">Téléphone (pour alertes SMS) :</label>  
   <div class="col-md-5">
-  <?= Form::text('sms',Input::old('sms'),array('class'=>'form-control input-md')) ?>
-  <p class="help-block">Dix chiffres, sans espaces, sans symboles. Uniquement des chiffres (10). </p>
+    <div class="row">
+      <div class="col-md-6">
+        <?= Form::text('sms',Input::old('sms'),array('class'=>'form-control input-md')) ?>
+        <p class="help-block">Dix chiffres, sans espaces, sans symboles. Uniquement des chiffres (10). </p> 
+      </div>
+      <div class="col-md-6">
+        <?php 
+        if ($utilisateur->sms != "") {
+          ?>
+          <button id="cmdUnsub" class="btn btn-primary">Se désabonner</button>  
+          <?php
+        } 
+        else 
+        {
+          ?>
+          &nbsp;
+          <?php
+        }
+        ?>
+      </div>
+    </div>
+  
   </div>
 </div>
 
