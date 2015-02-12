@@ -1,34 +1,12 @@
 <?php
 class NouvellesController extends BaseController {
 
-    public function lister() //($etiquette = null)
+    public function lister()
     {
-        /*
-        // Set titre page générée
-        $proprietesPage = array('titre' => 'Nouvelles');
-        $proprietesPage['contenu'] = '';
-
-        $nouvelles = Nouvelle::orderBy('created_at', 'desc')->get();
-
-        foreach ($nouvelles as $nouvelle)
-        {
-            $proprietesPage['contenu'] = $proprietesPage['contenu'] 
-            . '</br><div class="well"><b>@<i>' . $nouvelle->utilisateur()->nom . 
-            '</i></b>: ' . $nouvelle->titre . "</div>";
-        }
-
-        return 
-        View::make('faireface', $proprietesPage);
-
-        =============================================================
-        */
-
-
         // Set titre page générée
         $proprietesPage = array('titre' => 'Nouvelles');
 
-        // Allez chercher toutes les nouvelles(20 par pages)
-        //$nouvelles = Nouvelles::paginate(20)
+        // Allez chercher toutes les nouvelles
         $nouvelles = Nouvelle::orderBy('created_at', 'desc')->get();
 
         // Enboite vue nouvelles dans vue design
@@ -45,10 +23,11 @@ class NouvellesController extends BaseController {
         // Set titre page générée
         $proprietesPage = array('titre' => 'Nouvelles - Ajout');
 
-        // Mettre la vue...    
-        
-
-        //return "NouvellesController@ajouterGet";
+        // Mettre la vue... 
+        return 
+            View::make('faireface', $proprietesPage)
+            ->nest ('contenu',
+                    'nouvelles.nouveau');
     }
 
     public function ajouterPost()
@@ -57,19 +36,38 @@ class NouvellesController extends BaseController {
         $proprietesPage = array('titre' => 'Nouvelles - Ajout');
         
         // Vérifier la présence des différents champs transmis par le formulaire
+        if (Input::has('titre') && Input::has('contenu'))
+        {
+            $titre = Input::get('titre');
+            $contenu = Input::get('contenu');
 
-        // initialiser une nouvelle avec new
+            if($titre != "" && $contenu != "")
+            {
+                $nouvelle = new Nouvelle;
 
-        // renseignez les champs de la bd avec ceux du formulaire et le id du user connecte
+                $nouvelle->titre = $titre;
+                $nouvelle->contenu = $contenu;
+                $nouvelle->utilisateur_id = Auth::user()->id;
 
-        // on save la nouvelle
-
-        // return $this->afficherSucces('Votre ajout de nouvelle a réussie');
-
-
-
-
-        //return $this->afficherSucces('NouvellesController@ajouterPost');
+                try
+                {
+                  $nouvelle->save();
+                  return Redirect::to('/nouvelles/')->with('evenement', $params = array('message' => 'Insertion réussie', 'reussi' => true));
+                }
+                catch (Exception $e)
+                {
+                  return $this->afficherErreur("Erreur lors de l'insertion!");
+                }
+            }
+            else
+            {
+                return $this->afficherErreur("Tous les champs sont obligatoires");
+            }
+        }
+        else
+        {
+          return $this->afficherErreur("Des champs sont manquants");     
+        }
     }
 
     public function modGet($id)
@@ -84,7 +82,7 @@ class NouvellesController extends BaseController {
         return 
             View::make('faireface', $proprietesPage)
             ->nest ('contenu',
-                    'nouvelles.modifier',
+                    'nouvelles.nouveau',
                     array('nouvelle' => $nouvelle));
     }
 
@@ -106,11 +104,16 @@ class NouvellesController extends BaseController {
         $nouvelle->titre = htmlspecialchars(Input::get('titre'));
         $nouvelle->contenu = htmlspecialchars(Input::get('contenu'));
 
-        // Enregistrer la nouvelle .save
-        $nouvelle->save();
-
-        // Return la page succes.
-        return $this->afficherSucces('Modification réussie');
+        // Enregistrer la nouvelle
+        try
+        {
+          $nouvelle->save();
+          return Redirect::to('/nouvelles/')->with('evenement', $params = array('message' => 'Modification réussie', 'reussi' => true));
+        }
+        catch (Exception $e)
+        {
+          return $this->afficherErreur("Erreur lors de l'insertion!");
+        }
     }
 
     public function suppPost()
@@ -123,8 +126,7 @@ class NouvellesController extends BaseController {
             // Allez chercher la nouvelles avec le id transmit
             $nouvelle = Nouvelle::findOrFail(Input::get("id"));
 
-            // Allez chercher le nom de l'utilisateur et le titre de la nouvelle            
-            //$utilisateur = Utilisateurs::findOrFail($nouvelle->utilisateur_id);
+            // Allez chercher le nom de l'utilisateur et le titre de la nouvelle
             $nom = $nouvelle->utilisateur()->nom;
             $titre = $nouvelle->titre;
 

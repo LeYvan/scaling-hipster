@@ -1,10 +1,15 @@
 <h1>Nouvelles</h1>
+
+<?php if (Auth::check()) { ?>
+  <a href="/nouvelles/ajouter/">Publier une nouvelle</a>
+<?php } ?>
+
 <?php foreach ($nouvelles as $nouvelle) { ?>
 	</br>
 	<div class="well">
-		<b>@<i><?= $nouvelle->utilisateur()->nom ?></i></b>: <?=$nouvelle->titre ?>
+		<b>@<i><?= $nouvelle->utilisateur()->nom ?></i></b>: <?=$nouvelle->contenu ?>
 
-		<?php if (Auth::check() && Auth::user()->niveau == 2) { ?>
+		<?php if (Auth::check() && Auth::user()->niveau == 1) { ?>
 			<a class="btn btn-primary" href="/nouvelles/<?= $nouvelle->id?>/modifier/" type="button">
         	   <span class="glyphicon glyphicon-edit"></span>  Modifier
             </a>
@@ -20,7 +25,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="supprUserModalLabel">Supprimer l'utilisateur</h4>
+        <h4 class="modal-title" id="supprUserModalLabel">Supprimer la nouvelle</h4>
       </div>
       <div class="modal-body">
         <div id="user-id"></div> 
