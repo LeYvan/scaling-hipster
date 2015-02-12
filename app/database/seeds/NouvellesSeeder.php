@@ -27,7 +27,7 @@ class NouvellesSeeder extends FfSeeder {
     for ($i = 1; $i < $nbNouvelles; $i++)
     {
       $user_id = $this->rndUtilisateur()->id;
-      $titre = 'Vivamus rhoncus ligula nisl'.
+      $titre = 'Vivamus rhoncus ligula nisl';
       $contenu = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rhoncus ligula nisl, quis hendrerit justo sodales vitae. Nullam fermentum lobortis sapien vel convallis.';
       
       $nouvelles[] = Nouvelle::create(array('utilisateur_id'=>$user_id,

@@ -64,11 +64,7 @@ Route::post('/inscription/',
 //======================================================================================================================
 
 // Accueil
-Route::get('/', function()
-{
-  $message = array('titre' => 'Accueil', 'jumbo' => true);
-  return View::make('faireface', $message)->nest('contenu','accueil');
-});
+Route::get('/', 'AccueilController@afficher');
 
 Route::get ('/alertes/',                'AlertesController@lister');
 Route::get ('/alertes/catégories/{id}', 'AlertesController@lister');
