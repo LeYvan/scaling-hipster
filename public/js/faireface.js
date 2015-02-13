@@ -37,3 +37,9 @@ $('#supprElementModal').on('show.bs.modal', function (event) {
   document.getElementById('suppMsg').innerHTML = fichier;
 
 });
+
+
+$('#cmdUnsub').click(function () {
+  event.preventDefault();
+  window.location = '/profile/unsub/';
+});

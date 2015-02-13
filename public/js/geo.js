@@ -1,4 +1,9 @@
 (function( faireface, $, undefined ) {
+
+    if(window.location.href.indexOf("/sinistres/") === -1) {
+       return;
+    }
+
   var cmdFichiers = document.getElementById('filebutton');
   var lblNbFichiers = document.getElementById('lblNbFichiers');
   var shadowCmdFichier;
@@ -131,4 +136,10 @@
 
 }( window.faireface = window.faireface || {}, jQuery ));
 
-faireface.trouverGeoPos();
+
+
+$(document).ready(function () {
+    if(window.location.href.indexOf("/sinistres/") > -1) {
+       faireface.trouverGeoPos();
+    }
+});

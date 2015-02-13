@@ -8,3 +8,5 @@ composer.lock
 Thumbs.db
 .env.*.php
 .env.php
+.secure.php
+sms.log

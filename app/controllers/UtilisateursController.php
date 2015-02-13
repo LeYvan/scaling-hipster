@@ -19,6 +19,7 @@ class UtilisateursController extends BaseController {
                    'utilisateurs.lister',
                     array('utilisateurs' => $utilisateurs));
     }
+
     public function modifierGet($id)
     {
       // Set titre page générée
@@ -35,6 +36,49 @@ class UtilisateursController extends BaseController {
                     array('utilisateur' => $Utilisateur));
     }
 
+    public function profileGet()
+    {
+
+      if(!Auth::check()) {
+        return $this->afficherSuccesRedirect("/","Vous devez être connecté pour modifier votre profile.");
+      }
+
+      $user = Auth::user();
+
+      // Set titre page générée
+      $proprietesPage = array('titre' => 'Profile - Modifier');
+
+      // Get utilisateur
+      $Utilisateur = Utilisateur::where('id',$user->id)->firstOrFail();
+
+      // Enboite vue formulaire dans vue design
+      return 
+        View::make('faireface', $proprietesPage)
+          ->nest('contenu',
+                 'utilisateurs.profile',
+                  array('utilisateur' => $Utilisateur));
+    }
+
+    public function profilePost($id)
+    {
+      if (!(Input::has('nom') &&
+          Input::has('email') &&
+          Input::has('sms'))){
+
+        return $this->afficherErreur("Données invalides.");
+      }
+
+      $Utilisateur = Utilisateur::findOrFail($id);
+
+      $Utilisateur->nom = htmlspecialchars(Input::get('nom'));
+      $Utilisateur->email = htmlspecialchars(Input::get('email'));
+      $Utilisateur->sms = htmlspecialchars(Input::get('sms'));
+
+      $Utilisateur->save();
+
+      return $this->afficherSucces("Profile enregistré!");
+    }
+
     public function modifierPost($id)
     {
             // Set titre page générée
@@ -42,6 +86,7 @@ class UtilisateursController extends BaseController {
 
       if (!(Input::has('nom') &&
           Input::has('email') &&
+          Input::has('sms') &&
           Input::has('niveau'))){
 
         return $this->afficherErreur("Introuvable");
@@ -51,6 +96,7 @@ class UtilisateursController extends BaseController {
 
       $Utilisateur->nom = htmlspecialchars(Input::get('nom'));
       $Utilisateur->email = htmlspecialchars(Input::get('email'));
+      $Utilisateur->sms = htmlspecialchars(Input::get('sms'));
       $Utilisateur->niveau = htmlspecialchars(Input::get('niveau'));
 
       $Utilisateur->save();
@@ -136,6 +182,7 @@ class UtilisateursController extends BaseController {
           ->nest('contenu',
                  'succes');
     }
+
     public function connexion()
     {
       $reussi = Auth::attempt(array('nomUtilisateur' => Input::get("nomUtilisateur"), 'password' => Input::get("motPasse")));
@@ -148,10 +195,31 @@ class UtilisateursController extends BaseController {
         return $this->afficherErreur('La connexion a échouée!');
       }
     }
+
     public function deconnexion(){
       Auth::logout();
 
       return Redirect::to('/')->with('evenement', $params = array('message' => 'Déconnecté!', 'reussi' => true));
+    }
+
+    public function unsubscribeSms()
+    {
+      if (!Auth::check())
+      {
+        return $this->afficherErreurWithInput("Vous devez être connecté!");
+      }
+
+      try {
+        $user = Auth::user();
+
+        $user->sms = "";
+        $user->save();
+
+        return $this->afficherSucces("Vous êtes désabonné. Entrez votre numéro à nouveau pour recevoir les alertes.");
+
+      } catch (Exception $e) {
+        return $this->afficherErreurWithInput("Vous ne pouvez pas vous désabonné et êtes maudit.");
+      }
     }
   }
 ?>
