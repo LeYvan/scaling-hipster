@@ -39,7 +39,7 @@
 									<div class="list-group fill">
 										<?php foreach($nouvelles as $nouvelle):?>
 											<li class="list-group-item">
-												<h4 class="list-group-item-heading"><?php echo $nouvelle->titre;?></h4>
+												<h4 class="list-group-item-heading"><?php echo Str::words($nouvelle->titre,5);?></h4>
 												<p class="list-group-item-text"><?php echo Str::words($nouvelle->contenu,10);?> <a href="#">Lire la suite</a></p>
 											</li>
 										<?php endforeach;?>
@@ -60,11 +60,14 @@
 									<p class="tout-lire pull-right"><a href="/capsules">Tout lire</a></p>
 								</div>
 								<div class="panel-body">
-									<div class="list-group fill">
+									<div class="list-group">
 										<?php foreach($capsules as $capsule):?>
-											<li class="list-group-item">
-												<h4 class="list-group-item-heading"><?php echo $capsule->titre;?></h4>
-												<p class="list-group-item-text"><?php echo Str::words($capsule->contenu,10);?> <a href="#">Lire la suite</a></p>
+											<li class="list-group-item fill">
+
+												<h4 class="list-group-item-heading"><?php echo Str::words($capsule->titre,4);?></h4>
+												<p class="list-group-item-text"><?php echo Str::words($capsule->contenu,6);?></p>
+												<p><a href="#">Lire la suite</a> <span class="label label-info"><?php echo $capsule->categorie()->etiquette;?></span></p>
+												
 											</li>
 										<?php endforeach;?>
 									</div>
@@ -85,7 +88,7 @@
 									<div class="list-group fill">
 										<?php foreach($sinistres as $sinistre):?>
 											<li class="list-group-item">
-												<h4 class="list-group-item-heading"><?php echo $sinistre->titre;?></h4>
+												<h4 class="list-group-item-heading"><?php echo Str::words($sinistre->titre,5);?></h4>
 												<p class="list-group-item-text"><?php echo Str::words($sinistre->rapport,10);?> <a href="#">Lire la suite</a></p>
 											</li>
 										<?php endforeach;?>
