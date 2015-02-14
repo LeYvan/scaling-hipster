@@ -86,7 +86,7 @@ Route::get ('/nouvelles/{id}/modifier/',  'NouvellesController@modGet');
 Route::post('/nouvelles/{id}/modifier/',  'NouvellesController@modPost');
 
 Route::get ('/capsules/',                 'CapsulesController@lister');
-Route::get ('/capsules/catégories/{id}',  'CapsulesController@lister');
+Route::get ('/capsules/catégories/{etiquette}',  'CapsulesController@lister');
 Route::get ('/capsules/ajouter/',         'CapsulesController@ajouterGet');
 Route::post('/capsules/ajouter/',         'CapsulesController@ajouterPost');
 Route::post('/capsules/{id}/supprimer/',  'CapsulesController@suppPost');
