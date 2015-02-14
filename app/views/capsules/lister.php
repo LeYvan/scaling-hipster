@@ -1,4 +1,9 @@
 <h1>Capsules</h1>
+
+<?php if (Auth::check()) { ?>
+  <a href="/capsules/ajouter/">Publier une Capsule</a>
+<?php } ?>
+
 <?php foreach ($capsules as $capsule) { ?>
 	</br>
 	<div class="well">

@@ -61,16 +61,22 @@ class CapsulesController extends BaseController {
             $capsule->contenu = htmlspecialchars (Input::get('contenu'));
             $capsule->categorie_id = Input::get('categorie_id');
             $capsule->utilisateur_id = Auth::user()->id;
-            $capsule->save();
-            return $this->afficherSucces('Votre rapport de capsule a bien été envoyé.');
-        } catch (Exception $e) {
-            try {
-                $capsule->delete();
-            } catch (Exception $w) {
-                $message = $message . 'De plus, une erreure est survenue lors de la gestion d\'erreur: ' . $w->getMessage();
+            try
+                {
+                  $capsule->save();
+                  return Redirect::to('/capsule/')->with('evenement', $params = array('message' => 'Insertion réussie', 'reussi' => true));
+                }
+                catch (Exception $e)
+                {
+                  return $this->afficherErreur("Erreur lors de l'insertion!");
+                }
+                } catch (Exception $e) {
+                try {
+                    $capsule->delete();
+                } catch (Exception $w) {
+                    $message = $message . 'De plus, une erreure est survenue lors de la gestion d\'erreur: ' . $w->getMessage();
+                }
         }
-        return $this->afficherErreurWithInput('Le capsule n\'a pu être reporté: </br>' . $message);
-      }
     }
 
     public function modGet($id)
@@ -113,9 +119,16 @@ class CapsulesController extends BaseController {
         $capsule->titre = htmlspecialchars(Input::get('titre'));
         $capsule->contenu = htmlspecialchars(Input::get('contenu'));
 
-        // Enregistrer la capsule .save
-        $capsule->save();
-
+        try
+        {
+            // Enregistrer la capsule .save
+            $capsule->save();
+            return Redirect::to('/capsules/')->with('evenement', $params = array('message' => 'Modification réussie', 'reussi' => true));
+        }
+        catch (Exception $e)
+        {
+          return $this->afficherErreur("Erreur lors de l'insertion!");
+        }
         // Return la page succes.
         return $this->afficherSucces('Modification réussie');
     }
