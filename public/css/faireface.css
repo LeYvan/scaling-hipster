@@ -8,6 +8,10 @@ article
 	margin: auto;
 	max-width: 100%;
 }
+.pac-container {
+    z-index: 1051 !important;
+}
+
 body
 {
 	background-color: #ddd;

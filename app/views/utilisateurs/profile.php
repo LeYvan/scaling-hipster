@@ -1,8 +1,9 @@
- <?= Form::model($utilisateur, array('url' => array('/utilisateurs',$utilisateur->id), 'class'=>'form-horizontal')) ?>
+<h1>Profile</h1>
+<?= Form::model($utilisateur, array('url' => array('/profile',$utilisateur->id), 'class'=>'form-horizontal')) ?>
 <fieldset>
 
 <!-- Form Name -->
-<legend>Modifier l'utilisateur</legend>
+<legend>Modification</legend>
 
 <!-- Text input-->
 <div class="form-group">
@@ -26,16 +27,28 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Email">Téléphone (pour alertes SMS) :</label>  
   <div class="col-md-5">
-  <?= Form::text('sms',Input::old('sms'),array('class'=>'form-control input-md')) ?>
-    
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="niveau">Niveau</label>
-  <div class="col-md-5">
-  <?=Form::select('niveau', array('1' => 'Utilisateur', '2' => 'Conseiller', '99' => 'Administrateur'), Input::old('niveau'),array('class'=>'form-control input-md')); ?>
+    <div class="row">
+      <div class="col-md-6">
+        <?= Form::text('sms',Input::old('sms'),array('class'=>'form-control input-md')) ?>
+        <p class="help-block">Dix chiffres, sans espaces, sans symboles. Uniquement des chiffres (10). </p> 
+      </div>
+      <div class="col-md-6">
+        <?php 
+        if ($utilisateur->sms != "") {
+          ?>
+          <button id="cmdUnsub" class="btn btn-primary">Se désabonner</button>  
+          <?php
+        } 
+        else 
+        {
+          ?>
+          &nbsp;
+          <?php
+        }
+        ?>
+      </div>
+    </div>
+  
   </div>
 </div>
 
