@@ -64,6 +64,8 @@ class CreerAlertesNouvellesCapsules extends Migration {
 	public function down()
 	{
 		Schema::drop('alertes');
+		Schema::drop('capsules');
+		Schema::drop('nouvelles');
 	}
 
 }

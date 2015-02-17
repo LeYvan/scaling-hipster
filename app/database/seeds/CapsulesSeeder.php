@@ -28,10 +28,11 @@ class CapsulesSeeder extends FfSeeder {
     {
       $user_id = $this->rndUtilisateur()->id;
       $categorie_id = $this->rndCategorie()->id;
-      $titre = 'Vivamus rhoncus ligula nisl'.
+      $titre = 'Vivamus rhoncus ligula nisl';
       $contenu = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rhoncus ligula nisl, quis hendrerit justo sodales vitae. Nullam fermentum lobortis sapien vel convallis.';
       
       $capsules[] = Capsule::create(array('utilisateur_id'=>$user_id,
+                                          'categorie_id'=>$categorie_id,
                                           'titre' => $titre,
                                           'contenu'=>$contenu));
     }

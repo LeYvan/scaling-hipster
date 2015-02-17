@@ -108,7 +108,7 @@
 </div>
 <?php }
   ?>
-  <div class="container" id="page">
+  <div class="container <?php if (isset($classe)) echo $classe;?>" id="page">
     <?php echo $contenu ?>
     <footer class="text-center">
       <div>Faire<i>Face</i>, une application formidable.</div>
