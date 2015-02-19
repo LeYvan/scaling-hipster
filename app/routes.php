@@ -104,8 +104,8 @@ Route::get ('/nouvelles/',                'NouvellesController@lister');
 
 
 Route::get ('/capsules/',                 'CapsulesController@lister');
-Route::get ('/capsules/catégories/{id}',  'CapsulesController@lister');
 
+Route::get ('/capsules/catégories/{id}',  'CapsulesController@lister');
 
 Route::post('/connexion/','UtilisateursController@connexion');
 Route::get('/deconnexion/', 'UtilisateursController@deconnexion');
