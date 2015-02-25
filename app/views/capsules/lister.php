@@ -9,7 +9,7 @@
 	<div class="well">
 		<b>@<i><?= $capsule->utilisateur()->nom ?></i></b></br><?=$capsule->titre ?>:</br>
     <?= $capsule->contenu?></br>
-		<?php if (Auth::check() && Auth::user()->niveau == 1) { ?>
+		 <?php if (Auth::check() && (Auth::user()->niveau == 1 || Auth::user()->niveau == 99)) { ?>
 			<a class="btn btn-primary" href="/capsules/<?= $capsule->id?>/modifier/" type="button">
         	   <span class="glyphicon glyphicon-edit"></span>  Modifier
             </a>

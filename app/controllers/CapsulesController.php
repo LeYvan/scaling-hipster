@@ -118,6 +118,8 @@ class CapsulesController extends BaseController {
         // Modifier les champs de la bd avec les nouvelles valeurs
         $capsule->titre = htmlspecialchars(Input::get('titre'));
         $capsule->contenu = htmlspecialchars(Input::get('contenu'));
+        $capsule->categorie_id = Input::get('categorie_id');
+
 
         try
         {
