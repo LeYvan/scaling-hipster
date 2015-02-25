@@ -64,7 +64,7 @@ class CapsulesController extends BaseController {
             try
                 {
                   $capsule->save();
-                  return Redirect::to('/capsule/')->with('evenement', $params = array('message' => 'Insertion réussie', 'reussi' => true));
+                  return Redirect::to('/capsules/')->with('evenement', $params = array('message' => 'Insertion réussie', 'reussi' => true));
                 }
                 catch (Exception $e)
                 {
