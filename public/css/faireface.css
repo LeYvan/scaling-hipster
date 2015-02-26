@@ -232,6 +232,14 @@ body
 {
 	margin-bottom: 0;
 }
+.alerte-panel h2
+{
+	margin-top: 0;
+}
+.auteur
+{
+	font-style: italic;
+}
 @media(min-width: 768px){
 	#divInfoSms
 	{

@@ -4,23 +4,35 @@ class CapsulesController extends BaseController {
     public function lister($etiquette = null)
     {
         $catCourante = null;
+
+        setlocale(LC_ALL, 'fr_CA');
+
         // Set titre page générée
         $proprietesPage = array('titre' => 'Capsules');
         $proprietesPage['contenu'] = '';
 
         if ($etiquette)
         {
-            $capsules = Capsule::where('categorie_id',$etiquette)->orderBy('created_at', 'desc')->get();
+            $catCourante = CategorieSinistre::where('etiquette',$etiquette)->first();
+            $capsules = Capsule::where('categorie_id',$catCourante->id)
+                ->orderBy('created_at', 'desc')->paginate(10);
         }
         else
         {
-            $capsules = Capsule::orderBy('created_at', 'desc')->get();
+            $capsules = Capsule::orderBy('created_at', 'desc')->paginate(10);
         }
+
+        $lstCategories = CategorieSinistre::lists('etiquette', 'id');
+        $categories = CategorieSinistre::all();
+
         return 
             View::make('faireface', $proprietesPage)            
             ->nest ('contenu',
                     'capsules.lister',
-                    array('capsules' => $capsules));
+                    array('capsules' => $capsules,
+                          'lstCategories' => $lstCategories,
+                          'categories' => $categories,
+                          'catCourante' => $catCourante));
     }
 
     public function ajouterGet()

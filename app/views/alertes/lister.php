@@ -1,7 +1,5 @@
       <div id="title-sinistres" class="">
         <h1>Alertes - Historique</h1>
-        <div class="row">
-</div>
       </div>
 
           <div class="row liste-navigation">
@@ -70,16 +68,6 @@
 
                 <?php
                 $currDate = substr($alerte->created_at,0,10); 
-
-                if ($lastAlerteDate == null || 
-                    $currDate != $lastAlerteDate) {
-                  $lastAlerteDate = $currDate;
-                  ?>
-                  <div>
-                    <h3><?=date("l j F", strtotime($currDate))?></small></h3>
-                  </div>
-                  <?php
-                }
                 ?>
 
             <div class="panel panel-default">
@@ -112,8 +100,9 @@
                           <div class="col-sm-4">
                             <a class="map-alerte" href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
                           </div>
-                          <div class="col-sm-8">
-                            <h4>@<?=$alerte->utilisateur()->nom?>: </h4>
+                          <div class="col-sm-8 alerte-panel">
+                            <h2><?=strftime("%e %B %Y", strtotime($currDate))?></h2>
+                            <p class="auteur">Par <?=$alerte->utilisateur()->nom?></p>
                             <p><?=$alerte->contenu?></p>
                             
                             <div class="personnes-ressources">
@@ -145,11 +134,6 @@
                 </div>
               </div>
             </div>
-
-
-            <div>
-            </div>
-
             <?php } ?>
             </div>
 
