@@ -101,19 +101,19 @@
       return null;
   }
 
-  var afficherInfoSms = readCookie("divInfoSms");
+  // var afficherInfoSms = readCookie("divInfoSms");
 
-  if (afficherInfoSms == null) {
-    afficherInfoSms=true;
-  }
+  // if (afficherInfoSms == null) {
+  //   afficherInfoSms=true;
+  // }
 
-  if (afficherInfoSms == "false") {
-    $('#divInfoSms').hide();
-  } else {
-    $('#divInfoSms').click(function(){
-      createCookie("divInfoSms","false",360);
-    });
-  }
+  // if (afficherInfoSms == "false") {
+  //   $('#divInfoSms').hide();
+  // } else {
+  //   $('#divInfoSms').click(function(){
+  //     createCookie("divInfoSms","false",360);
+  //   });
+  // }
 
 
 }( window.ff_pub_alerte = window.ff_pub_alerte || {}, jQuery ));

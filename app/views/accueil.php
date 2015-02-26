@@ -60,14 +60,12 @@
 									<p class="tout-lire pull-right"><a href="/capsules">Tout lire</a></p>
 								</div>
 								<div class="panel-body">
-									<div class="list-group">
+									<div class="list-group fill">
 										<?php foreach($capsules as $capsule):?>
-											<li class="list-group-item fill">
-
+											<li class="list-group-item">
 												<h4 class="list-group-item-heading"><?php echo Str::words($capsule->titre,4);?></h4>
 												<p class="list-group-item-text"><?php echo Str::words($capsule->contenu,6);?></p>
-												<p><a href="#">Lire la suite</a> <span class="label label-info"><?php echo $capsule->categorie()->etiquette;?></span></p>
-												
+												<p><a href="#">Lire la suite</a> <!-- <span class="label label-info"><?php echo $capsule->categorie()->etiquette;?></span> --></p>
 											</li>
 										<?php endforeach;?>
 									</div>
