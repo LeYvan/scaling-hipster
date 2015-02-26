@@ -1,12 +1,6 @@
       <div id="title-sinistres" class="">
         <h1>Alertes - Historique</h1>
         <div class="row">
-    <div class="col-md-8 col-md-offset-2" id="divInfoSms">
-      <div class="alert alert-info alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
-        <h4>Information!</h4>Vous pouvez inscrire votre numéro de téléphone cellulaire pour recevoir les alertes de faireface.ca par SMS. Vous n'avez qu'à ajouter l'information dans votre profile, atteignable en cliquant sur votre nom en haut à droite de la page.
-      </div>
-  </div>
 </div>
       </div>
 
@@ -58,9 +52,13 @@
           ?>
 
           <div class="row">
-
-            <div class="col-md-3 col-md-push-9">
-
+            <div class="col-md-3 col-md-push-9" id="divInfoSms">
+              <div class="alert alert-info" role="alert">
+                <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close" ><span aria-hidden="true">&times;</span></button> -->
+                <h4>Le saviez-vous?</h4>
+                <p>Vous pouvez inscrire votre numéro de téléphone cellulaire pour recevoir les alertes de faireface.ca par SMS.</p>
+                <p>Vous n'avez qu'à ajouter l'information dans votre profile, atteignable en cliquant sur votre nom en haut à droite de la page.</p>
+              </div>
             </div>
 
             <div class="col-md-9 col-md-pull-3">
@@ -77,7 +75,7 @@
                     $currDate != $lastAlerteDate) {
                   $lastAlerteDate = $currDate;
                   ?>
-                  <div class="page-header">
+                  <div>
                     <h3><?=date("l j F", strtotime($currDate))?></small></h3>
                   </div>
                   <?php
@@ -85,27 +83,8 @@
                 ?>
 
             <div class="panel panel-default">
-              <div class="panel-heading">
-                <strong>@</strong>
-                <em class=""><?=$alerte->utilisateur()->nom?>: </em>
-                <span class=""><?=$alerte->contenu?></span>
-              </div>
-              <div cass="panel-body">
-                <div>
-                  &nbsp;
-                </div>
+              <div class="panel-body">
                 <div class="row">
-                  <div class="col-md-offset-2 col-md-4">
-                    <div class="panel panel-warning">
-                      <div class="panel-heading">Informations</div>
-                        <ul class="list-group">
-                          <li class="list-group-item"><span class="label label-info"><?= $alerte->categorie()->etiquette ?></span></li>
-                          <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Capsules d'informations</a></li>
-                          <li class="list-group-item"><a href="/a/<?=$alerte->id?>"><span class="glyphicon glyphicon-eye-open"> </span> Voir les détails</a></li>
-                          <li class="list-group-item">Personnes ressources</li>
-                        </ul>
-                    </div>
-                  </div>
                     <?php 
                         $base ='https://maps.googleapis.com/maps/api/staticmap?';
                         $coords = $alerte['lat'] . ',' . $alerte['long'];
@@ -130,27 +109,45 @@
                         } else {
                         ?>
 
-                          <div class="col-md-4">
-                            <div class="panel panel-info">
-                              <div class="panel-heading">Localisation</div>
-                                <div class="panel-body text-center">
-                                  <a href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
-                                </div>
+                          <div class="col-sm-4">
+                            <a class="map-alerte" href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
+                          </div>
+                          <div class="col-sm-8">
+                            <h4>@<?=$alerte->utilisateur()->nom?>: </h4>
+                            <p><?=$alerte->contenu?></p>
+                            
+                            <div class="personnes-ressources">
+                              <h5>Personnes ressources:</h5>
+                              <ul class="list-inline">
+                                <li><a href="#">Ressource #1</a></li>
+                                <li><a href="#">Ressource #2</a></li>
+                                <li><a href="#">Ressource #3</a></li>
+                              </ul>
                             </div>
                           </div>
-                        
-
                         <?php
                         }
 
                     ?>
                   </div>
               </div>
+              <div class="panel-footer panel-footer-divise">
+                <div class="row">
+                  <div class="col-sm-4 division">
+                    <span class="label label-info"><?= $alerte->categorie()->etiquette ?></span>
+                  </div>
+                  <div class="col-sm-4 division">
+                    <a href="#"><span class="glyphicon glyphicon-list-alt"></span> Capsules d'informations</a>
+                  </div>
+                  <div class="col-sm-4 division">
+                    <a href="/a/<?=$alerte->id?>"><span class="glyphicon glyphicon-eye-open"> </span> Voir les détails</a>
+                  </div>
+                </div>
+              </div>
             </div>
 
 
             <div>
-            &nbsp;
             </div>
 
             <?php } ?>
