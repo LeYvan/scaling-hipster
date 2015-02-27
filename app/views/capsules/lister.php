@@ -4,8 +4,40 @@
   <a href="/capsules/ajouter/">Publier une Capsule</a>
 <?php } ?>
 
+  <div class="row liste-navigation">
+
+    <div class="col-sm-4">
+
+      <div class="dropdown">
+
+        <button class="btn btn-primary dropdown-toggle" type="button" id="ddownCategorie" data-toggle="dropdown" aria-expanded="true">
+            <?= !$catCourante ? "Tout les types" : $catCourante->etiquette ?>
+            <span class="caret"></span>
+        </button>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="ddownCategorie">
+          <li role="presentation" class="<?= !$catCourante ? "active" : "" ?>"><a role="menuitem" tabindex="-1" href="/capsules/">Toutes les catégories</a></li>
+          <?php
+          foreach($categories as $categorie)
+          {
+            $active = $categorie == $catCourante ? "active" : "";
+            ?>
+            <li role="presentation" class="<?= $active ?>"><a role="menuitem" tabindex="-1" href="/capsules/categories/<?= $categorie->etiquette ?>/"><?= $categorie->etiquette ?></a></li>
+            <?php
+          }
+          ?>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="col-sm-8 text-right">
+      <?= $capsules->links(); ?>
+    </div>
+  </div>
+
 <?php foreach ($capsules as $capsule) { ?>
-	</br>
 	<div class="well">
 		<b>@<i><?= $capsule->utilisateur()->nom ?></i></b></br><?=$capsule->titre ?>:</br>
     <?= $capsule->contenu?></br>

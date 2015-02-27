@@ -104,6 +104,7 @@ Route::get ('/nouvelles/',                'NouvellesController@lister');
 
 
 Route::get ('/capsules/',                 'CapsulesController@lister');
+Route::get ('/capsules/categories/{etiquette}', 'CapsulesController@lister');
 
 Route::get ('/capsules/catégories/{id}',  'CapsulesController@lister');
 
