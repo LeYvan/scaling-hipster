@@ -54,7 +54,7 @@ Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), fun
   Route::post('/capsules/{id}/supprimer/',  'CapsulesController@suppPost');
   Route::get ('/capsules/{id}/modifier/',   'CapsulesController@modGet');
   Route::post('/capsules/{id}/modifier/',   'CapsulesController@modPost');
-  
+
 });
 //======================================================================================================================
 
@@ -82,7 +82,7 @@ Route::get('/sinistres/categorie/{etiquette}',      // Lister
            'SinistresController@lister');
 
 Route::get('/sinistres/ajouter/',             // Ajouter GET
-          'SinistresController@ajouterGet'); 
+          'SinistresController@ajouterGet');
 
 Route::post('/sinistres/ajouter/',             // Ajouter POST
            'SinistresController@ajouterPost');
@@ -110,3 +110,7 @@ Route::get ('/capsules/catégories/{id}',  'CapsulesController@lister');
 
 Route::post('/connexion/','UtilisateursController@connexion');
 Route::get('/deconnexion/', 'UtilisateursController@deconnexion');
+
+
+Route::get('/ressources/', 'RessourcesController@Lister');
+Route::get('/ressources/categories/{etiquette}', 'RessourcesController@lister');

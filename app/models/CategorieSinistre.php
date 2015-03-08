@@ -8,6 +8,11 @@ class CategorieSinistre extends Eloquent {
   {
     return $this->hasMany('Sinistre');
   }
+
+  public function ressources()
+  {
+    return $this->hasMany('Ressource');
+  }
 }
 
 ?>
