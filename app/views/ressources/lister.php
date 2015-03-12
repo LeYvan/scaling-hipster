@@ -1,5 +1,5 @@
-<h1>ressources</h1>
-
+<h1>Ressources</h1>
+<!-- <div data-spy="scroll" data-target="#menu-cote-ressources"> -->
 <?php if (Auth::check()) { ?>
   <a href="/ressources/ajouter/">Ajouter une ressource</a>
 <?php } ?>
@@ -36,17 +36,31 @@
       <?= $ressources->links(); ?>
     </div>
   </div>
-
-<?php foreach ($ressources as $ressource) { ?>
-
-    <pre>
-      <?php
-        echo print_r($ressource,true)
-      ?>
-    </pre>
-
-<?php } ?>
-
+  <div class="row">
+    <div class="col-md-9">
+<?php foreach ($ressources as $ressource): ?>
+    <div id="ressource<?php echo $ressource->id;?>">
+      <div class="row">
+        <div class="col-md-12">
+          <h1><?php echo $ressource->nom;?></h1>
+          <pre><?php
+              echo print_r($ressource,true)
+            ?></pre>
+        </div>
+      </div>
+    </div>
+<?php endforeach; ?>
+  </div>
+  <div class="col-md-3">
+    <nav id="menu-cote-ressources">
+      <ul class="nav nav-pills nav-stacked" data-offset-top="170" data-spy="affix">
+        <?php foreach ($ressources as $ressource): ?>
+          <li><a href="#ressource<?php echo $ressource->id;?>"><?php echo $ressource->nom;?></a></li>
+        <?php endforeach; ?>
+    </ul>
+    </nav>
+  </div>
+</div>
 <div class="modal fade" id="supprUserModal" tabindex="-1" role="dialog" aria-labelledby="supprUserModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

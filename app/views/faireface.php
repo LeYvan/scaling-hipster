@@ -18,7 +18,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body data-spy="scroll" data-target="#menu-cote-ressources">
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,7 +43,8 @@
             array('titre'=>'Nouvelles', 'href'=>'/nouvelles/'),
             array('titre'=>'Capsules', 'href'=>'/capsules/'),
             array('titre'=>'Plan Familial', 'href'=>'/plan/'),
-            array('titre'=>'Sinistres', 'href'=>'/sinistres/')
+            array('titre'=>'Sinistres', 'href'=>'/sinistres/'),
+            array('titre'=>'Ressources', 'href'=>'/ressources/')
           );
             if (Auth::check() && Auth::User()->niveau == 99)
             {
