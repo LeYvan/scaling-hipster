@@ -1,9 +1,17 @@
 <h1>Ressources</h1>
 <!-- <div data-spy="scroll" data-target="#menu-cote-ressources"> -->
-<?php if (Auth::check()) { ?>
-  <a href="/ressources/ajouter/">Ajouter une ressource</a>
-<?php } ?>
-
+<?php
+  if (Auth::check() && Auth::User()->niveau > 1)
+  {
+  ?>
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="/ressources/ajouter/" role="button">Ajouter une ressource d'urgence</a>
+    </div>
+  </div>
+  <?php
+  }
+?>
   <div class="row liste-navigation">
 
     <div class="col-sm-4">

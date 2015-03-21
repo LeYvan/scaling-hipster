@@ -38,19 +38,20 @@
 
           <?php
             if (Auth::check() && Auth::User()->niveau > 1)
-            { 
+            {
             ?>
             <div class="row">
               <div class="col-md-3">
                 <a class="btn btn-success" href="/alertes/publier/" role="button">Publier une nouvelle alerte</a>
               </div>
             </div>
+            <br/>
             <?php
             }
           ?>
 
           <div class="row">
-            <div class="col-md-3 col-md-push-9" id="divInfoSms">
+            <div class="col-md-3 col-md-push-9">
               <div class="alert alert-info" role="alert">
                 <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close" ><span aria-hidden="true">&times;</span></button> -->
                 <h4>Le saviez-vous?</h4>
@@ -61,19 +62,19 @@
 
             <div class="col-md-9 col-md-pull-3">
             <!-- Début d'un sinistre -->
-            <?php 
-              $lastAlerteDate = null;  
+            <?php
+              $lastAlerteDate = null;
 
               foreach($alertes as $alerte) { ?>
 
                 <?php
-                $currDate = substr($alerte->created_at,0,10); 
+                $currDate = substr($alerte->created_at,0,10);
                 ?>
 
             <div class="panel panel-default">
               <div class="panel-body">
                 <div class="row">
-                    <?php 
+                    <?php
                         $base ='https://maps.googleapis.com/maps/api/staticmap?';
                         $coords = $alerte['lat'] . ',' . $alerte['long'];
                         $center = 'center=' . $coords;
@@ -104,7 +105,7 @@
                             <h2><?=strftime("%e %B %Y", strtotime($currDate))?></h2>
                             <p class="auteur">Par <?=$alerte->utilisateur()->nom?></p>
                             <p><?=$alerte->contenu?></p>
-                            
+
                             <div class="personnes-ressources">
                               <h5>Personnes ressources:</h5>
                               <ul class="list-inline">

@@ -58,7 +58,7 @@
         <ul class="nav navbar-nav navbar-right">
           <?php if(Auth::check()){?>
           <li><a href="/profile/"><?= Auth::user()->nom ?></a></li>
-          <li><a href="/deconnexion/">Déconnexion</a></li>          
+          <li><a href="/deconnexion/">Déconnexion</a></li>
           <?php }else{?>
           <li><a href="#" data-toggle="modal" data-target="#connexionModal">Connexion</a></li>
           <?php }?>
@@ -138,7 +138,7 @@
                       <label class="control-label" for="nomUtilisateur">Nom d'utilisateur</label>
                       <div class="controls">
                         <input id="nomUtilisateur" name="nomUtilisateur" type="text" autofocus="autofocus" placeholder="Nom d'utilisateur" class="form-control" required="required">
-                        
+
                       </div>
                     </div>
 
@@ -147,7 +147,7 @@
                       <label class="control-label" for="motPasse">Mot de passe</label>
                       <div class="controls">
                         <input id="motPasse" name="motPasse" type="password" placeholder="Mot de passe" class="form-control" required="required">
-                        
+
                       </div>
                     </div>
 
@@ -234,5 +234,6 @@
     <script src="/js/modernizr.js"></script>
     <script src="/js/geo.js"></script>
     <script src="/js/alertes.publier.js"></script>
+    <script src="/js/ressources.ajouter.js"></script>
   </body>
 </html>
