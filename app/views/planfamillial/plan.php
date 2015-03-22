@@ -45,9 +45,9 @@
 											</div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="champDate<?php echo $i;?>" class="col-xs-5 col-sm-3 col-md-5 control-label">Date de naissance :</label>
+											<label for="champNaissance<?php echo $i;?>" class="col-xs-5 col-sm-3 col-md-5 control-label">Date de naissance :</label>
 											<div class="col-xs-7 col-sm-9 col-md-7">
-												<input type="date" class="form-control" name="Date<?php echo $i;?>" id="champDate<?php echo $i;?>" placeholder="Date de naissance">
+												<input type="date" class="form-control" name="Naissance<?php echo $i;?>" id="champNaissance<?php echo $i;?>" placeholder="Date de naissance">
 											</div>
 										</div>
 									</div>
@@ -159,17 +159,17 @@
 					<div class="col-md-12">
 						<?php
 						$champs = array(
-							array("label" => "Extincteur", "id" => "extincteur", "placeholder" => "Ex: À la droite du foyer, au rez de chaussée"),
-							array("label" => "Robinet d'entrée d'eau", "id" => "robinet-eau", "placeholder" => "Ex: Au sous-sol, à la gauche de l'établi"),
-							array("label" => "Boîte de disjoncteurs", "id" => "disjoncteurs", "placeholder" => "Ex: En dessous de l'escalier du sous-sol"),
-							array("label" => "Robinet de gaz", "id" => "robinet-gaz", "placeholder" => "Ex: Derrière la cuisinière"),
-							array("label" => "Drain de sol", "id" => "drain", "placeholder" => "Ex: Au pied de l'escalier du sous-sol")
+							array("label" => "Extincteur", "id" => "Dxtincteur", "placeholder" => "Ex: À la droite du foyer, au rez de chaussée"),
+							array("label" => "Robinet d'entrée d'eau", "id" => "Eau", "placeholder" => "Ex: Au sous-sol, à la gauche de l'établi"),
+							array("label" => "Boîte de disjoncteurs", "id" => "Disjoncteurs", "placeholder" => "Ex: En dessous de l'escalier du sous-sol"),
+							array("label" => "Robinet de gaz", "id" => "Gaz", "placeholder" => "Ex: Derrière la cuisinière"),
+							array("label" => "Drain de sol", "id" => "Disjoncteursrain", "placeholder" => "Ex: Au pied de l'escalier du sous-sol")
 						);
 						foreach ($champs as $champ):?>
 							<div class="col-md-12 form-group">
-								<label for="<?php echo $champ['id'];?>" class="col-md-3 control-label"><?php echo $champ['label'];?> :</label>
+								<label for="champ<?php echo $champ['id'];?>" class="col-md-3 control-label"><?php echo $champ['label'];?> :</label>
 								<div class="col-md-9">
-									<textarea class="form-control" name="<?php echo $champ['id'];?>" id="<?php echo $champ['id'];?>" placeholder="<?php echo $champ['placeholder'];?>"></textarea>
+									<textarea class="form-control" name="<?php echo $champ['id'];?>" id="champ<?php echo $champ['id'];?>" placeholder="<?php echo $champ['placeholder'];?>"></textarea>
 								</div>
 							</div>
 						<?php endforeach;?>
@@ -263,13 +263,13 @@
 												<div class="col-md-7 form-group">
 													<label for="champAss<?php echo $champ['short'];?>" class="col-xs-6 col-sm-4 col-md-7 control-label">Numéro de police :</label>
 													<div class="col-xs-6 col-sm-8 col-md-5">
-														<input type="number" class="form-control" name="NomAss<?php echo $champ['short'];?>" id="champNomAss<?php echo $champ['short'];?>" placeholder="Nom de la compagnie" />
+														<input type="number" class="form-control" name="PoliceAss<?php echo $champ['short'];?>" id="champNomAss<?php echo $champ['short'];?>" placeholder="Nom de la compagnie" />
 													</div>
 												</div>
 												<div class="col-md-5 form-group">
 													<label for="champAss<?php echo $champ['short'];?>" class="col-xs-6 col-sm-4 col-md-4 control-label">Téléphone :</label>
 													<div class="col-xs-6 col-sm-8 col-md-8">
-														<input type="text" class="form-control" name="NomAss<?php echo $champ['short'];?>" id="champNomAss<?php echo $champ['short'];?>" placeholder="Nom de la compagnie" />
+														<input type="text" class="form-control" name="TelAss<?php echo $champ['short'];?>" id="champTelAss<?php echo $champ['short'];?>" placeholder="Nom de la compagnie" />
 													</div>
 												</div>
 											</div>
