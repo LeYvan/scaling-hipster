@@ -23,8 +23,8 @@
 		<!-- VOTRE FAMILLE -->
 
 			<div role="tabpanel" class="tab-pane active" id="resume">
-				<!-- <h2>Votre plan famillial</h2> -->
 				<button class="btn btn-primary btn-block hidden-print" type="button" id="btnImprimer"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimer</button>
+				<h2>Votre plan famillial</h2>
 				<div id="resume-contenu"></div>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="famille">
@@ -39,56 +39,56 @@
 									<legend>Membre <?php echo $i;?></legend>
 									<div class="row">
 										<div class="col-md-6 form-group">
-											<label for="champNom<?php echo $i;?>" class="col-md-4 control-label">Nom :</label>
-											<div class="col-md-8">
+											<label for="champNom<?php echo $i;?>" class="col-md-4 col-xs-5 col-sm-3 control-label">Nom :</label>
+											<div class="col-md-8 col-xs-7 col-sm-9">
 												<input type="text" class="form-control" name="Nom<?php echo $i;?>" id="champNom<?php echo $i;?>" placeholder="Nom">
 											</div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="champDate<?php echo $i;?>" class="col-md-5 control-label">Date de naissance :</label>
-											<div class="col-md-7">
-												<input type="email" class="form-control" name="Date<?php echo $i;?>" id="champDate<?php echo $i;?>" placeholder="Date de naissance">
+											<label for="champDate<?php echo $i;?>" class="col-xs-5 col-sm-3 col-md-5 control-label">Date de naissance :</label>
+											<div class="col-xs-7 col-sm-9 col-md-7">
+												<input type="date" class="form-control" name="Date<?php echo $i;?>" id="champDate<?php echo $i;?>" placeholder="Date de naissance">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6 form-group">
-											<label for="champTelephone<?php echo $i;?>" class="col-md-4 control-label">Téléphone :</label>
-											<div class="col-md-8">
-												<input type="email" class="form-control" name="Telephone<?php echo $i;?>" id="champTelephone<?php echo $i;?>" placeholder="Téléphone">
+											<label for="champTelephone<?php echo $i;?>" class="col-md-4 col-xs-5 col-sm-3 control-label">Téléphone :</label>
+											<div class="col-md-8 col-xs-7 col-sm-9">
+												<input type="tel" class="form-control" name="Telephone<?php echo $i;?>" id="champTelephone<?php echo $i;?>" placeholder="Téléphone">
 											</div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="champCellulaire<?php echo $i;?>" class="col-md-5 control-label">Cellulaire :</label>
-											<div class="col-md-7">
-												<input type="email" class="form-control" name="Cellulaire<?php echo $i;?>" id="champCellulaire<?php echo $i;?>" placeholder="Cellulaire">
+											<label for="champCellulaire<?php echo $i;?>" class="col-xs-5 col-sm-3 col-md-5 control-label">Cellulaire :</label>
+											<div class="col-xs-7 col-sm-9 col-md-7">
+												<input type="tel" class="form-control" name="Cellulaire<?php echo $i;?>" id="champCellulaire<?php echo $i;?>" placeholder="Cellulaire">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6 form-group">
-											<label for="champAdresse<?php echo $i;?>" class="col-md-4 control-label">Adresse :</label>
-											<div class="col-md-8">
+											<label for="champAdresse<?php echo $i;?>" class="col-md-4 col-xs-5 col-sm-3 control-label">Adresse :</label>
+											<div class="col-md-8 col-xs-7 col-sm-9">
 												<textarea class="form-control" name="Adresse<?php echo $i;?>" id="champAdresse<?php echo $i;?>" placeholder="Adresse"></textarea>
 											</div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="champCourriel<?php echo $i;?>" class="col-md-5 control-label">Courriel :</label>
-											<div class="col-md-7">
+											<label for="champCourriel<?php echo $i;?>" class="col-xs-5 col-sm-3 col-md-5 control-label">Courriel :</label>
+											<div class="col-xs-7 col-sm-9 col-md-7">
 												<input type="email" class="form-control" name="Courriel<?php echo $i;?>" id="champCourriel<?php echo $i;?>" placeholder="Courriel">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6 form-group">
-											<label for="champLieuFrequente<?php echo $i;?>" class="col-md-4 control-label">Lieu fréquenté :</label>
-											<div class="col-md-8">
+											<label for="champLieuFrequente<?php echo $i;?>" class="col-md-4 col-xs-5 col-sm-3 control-label">Lieu fréquenté :</label>
+											<div class="col-md-8 col-xs-7 col-sm-9">
 												<textarea class="form-control" name="LieuFrequente<?php echo $i;?>" id="champLieuFrequente<?php echo $i;?>" placeholder="Lieu fréquenté"></textarea>
 											</div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="champInformationMedicale<?php echo $i;?>" class="col-md-5 control-label">Information médicale :</label>
-											<div class="col-md-7">
+											<label for="champInformationMedicale<?php echo $i;?>" class="col-xs-5 col-sm-3 col-md-5 control-label">Information médicale :</label>
+											<div class="col-xs-7 col-sm-9 col-md-7">
 												<textarea class="form-control" name="InformationMedicale<?php echo $i;?>" id="champInformationMedicale<?php echo $i;?>" placeholder="Information médicale"></textarea>
 											</div>
 										</div>
@@ -115,29 +115,29 @@
 									<legend>Personne ressource <?php echo $i;?></legend>
 									<div class="row">
 										<div class="col-md-6 form-group">
-											<label for="champRessourceNom<?php echo $i;?>" class="col-md-4 control-label">Nom :</label>
-											<div class="col-md-8">
+											<label for="champRessourceNom<?php echo $i;?>" class="col-md-4 col-sm-2 col-xs-3 control-label">Nom :</label>
+											<div class="col-md-8 col-xs-9 col-sm-10">
 												<input type="text" class="form-control" name="Nom<?php echo $i;?>" id="champRessourceNom<?php echo $i;?>" placeholder="Nom">
 											</div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="champRessourceCourriel<?php echo $i;?>" class="col-md-5 control-label">Courriel :</label>
-											<div class="col-md-7">
-												<input type="email" class="form-control" name="Date<?php echo $i;?>" id="champRessourceCourriel<?php echo $i;?>" placeholder="Courriel">
+											<label for="champRessourceCourriel<?php echo $i;?>" class="col-md-5 col-sm-2 col-xs-3 control-label">Courriel :</label>
+											<div class="col-xs-9 col-md-7 col-sm-10">
+												<input type="date" class="form-control" name="Date<?php echo $i;?>" id="champRessourceCourriel<?php echo $i;?>" placeholder="Courriel">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6 form-group">
-											<label for="champRessourceTelephone<?php echo $i;?>" class="col-md-4 control-label">Téléphone :</label>
-											<div class="col-md-8">
-												<input type="tel" class="form-control" name="Nom<?php echo $i;?>" id="champRessourceTelephone<?php echo $i;?>" placeholder="Téléphone">
+											<label for="champRessourceTelephone<?php echo $i;?>" class="col-md-4 col-sm-2 col-xs-3 control-label">Téléphone :</label>
+											<div class="col-md-8 col-xs-9 col-sm-10">
+												<input type="text" class="form-control" name="Nom<?php echo $i;?>" id="champRessourceTelephone<?php echo $i;?>" placeholder="Téléphone">
 											</div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="champRessourceCellulaire<?php echo $i;?>" class="col-md-5 control-label">Cellulaire :</label>
-											<div class="col-md-7">
-												<input type="tel" class="form-control" name="Date<?php echo $i;?>" id="champRessourceCellulaire<?php echo $i;?>" placeholder="Cellulaire">
+											<label for="champRessourceCellulaire<?php echo $i;?>" class="col-md-5 col-sm-2 col-xs-3 control-label">Cellulaire :</label>
+											<div class="col-xs-9 col-md-7 col-sm-10">
+												<input type="date" class="form-control" name="Date<?php echo $i;?>" id="champRessourceCellulaire<?php echo $i;?>" placeholder="Cellulaire">
 											</div>
 										</div>
 									</div>
@@ -185,22 +185,99 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<?php
-						$champs = array(
-							array("label" => "Urgence", "tel" => "9-1-1"),
-							array("label" => "Info-Santé", "tel" => "811"),
-							array("label" => "Centre antipoison du Québec", "tel" => "1 800 463-5060"),
-							array("label" => "Hydro-Québec", "tel" => "1 800 790-2424"),
-							array("label" => "Gaz métro", "tel" => "1 800 361-8003")
-						);
-						foreach ($champs as $champ):?>
-							<div class="col-sm-6 form-group">
-								<label class="col-sm-7 control-label"><?php echo $champ['label'];?> :</label>
-								<div class="col-sm-5">
-									<p class="form-control-static"><?php echo $champ['tel'];?></p>
+						<div class="row">
+							<div class="col-md-12">
+								<?php
+								$champs = array(
+									array("label" => "Urgence", "tel" => "9-1-1"),
+									array("label" => "Info-Santé", "tel" => "811"),
+									array("label" => "Centre antipoison du Québec", "tel" => "1 800 463-5060"),
+									array("label" => "Hydro-Québec", "tel" => "1 800 790-2424"),
+									array("label" => "Gaz métro", "tel" => "1 800 361-8003")
+								);
+								foreach ($champs as $champ):?>
+									<div class="col-sm-6 form-group">
+										<label class="col-xs-6 control-label"><?php echo $champ['label'];?> :</label>
+										<div class="col-xs-6">
+											<p class="form-control-static"><?php echo $champ['tel'];?></p>
+										</div>
+									</div>
+								<?php endforeach;?>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="col-md-6 form-group">
+									<label for="champArrondissement" class="col-sm-3 col-md-6 col-xs-6 control-label">Arrondissement :</label>
+									<div class="col-xs-6 col-sm-9 col-md-6">
+										<textarea class="form-control" name="Arrondissement" id="champArrondissement" placeholder=""></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-6 form-group">
+									<label for="champClinique" class="col-sm-3 col-md-6 col-xs-6 control-label">Clinique médicale :</label>
+									<div class="col-xs-6 col-sm-9 col-md-6">
+										<input type="tel" class="form-control" name="Clinique" id="champClinique" placeholder="Téléphone" />
+									</div>
 								</div>
 							</div>
-						<?php endforeach;?>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="col-md-6 form-group">
+									<label for="champPharmacie" class="col-sm-3 col-md-6 col-xs-6 control-label">Pharmacie :</label>
+									<div class="col-xs-6 col-sm-9 col-md-6">
+										<input type="tel" class="form-control" name="Pharmacie" id="champPharmacie" placeholder="Téléphone" />
+									</div>
+								</div>
+								<div class="col-md-6 form-group">
+									<label for="champVétérinaire" class="col-sm-3 col-md-6 col-xs-6 control-label">Vétérinaire :</label>
+									<div class="col-xs-6 col-sm-9 col-md-6">
+										<input type="tel" class="form-control" name="Veterinaire" id="champVétérinaire" placeholder="Téléphone" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<?php
+								$champs = array(
+									array("label" => "habitation", "short" => "Habitation"),
+									array("label" => "automobile", "short" => "Automobile")
+								);
+								foreach ($champs as $champ):?>
+									<fieldset>
+										<legend>Assurance <?php echo $champ['label'];?></legend>
+										<div class="row">
+											<div class="col-md-12">								
+												<div class="col-md-12 form-group">
+													<label for="champAss<?php echo $champ['short'];?>" class="col-xs-6 col-sm-4 col-md-4 control-label">Nom de la compagnie :</label>
+													<div class="col-xs-6 col-sm-8 col-md-8">
+														<input type="text" class="form-control" name="NomAss<?php echo $champ['short'];?>" id="champNomAss<?php echo $champ['short'];?>" placeholder="Nom de la compagnie" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">								
+												<div class="col-md-7 form-group">
+													<label for="champAss<?php echo $champ['short'];?>" class="col-xs-6 col-sm-4 col-md-7 control-label">Numéro de police :</label>
+													<div class="col-xs-6 col-sm-8 col-md-5">
+														<input type="number" class="form-control" name="NomAss<?php echo $champ['short'];?>" id="champNomAss<?php echo $champ['short'];?>" placeholder="Nom de la compagnie" />
+													</div>
+												</div>
+												<div class="col-md-5 form-group">
+													<label for="champAss<?php echo $champ['short'];?>" class="col-xs-6 col-sm-4 col-md-4 control-label">Téléphone :</label>
+													<div class="col-xs-6 col-sm-8 col-md-8">
+														<input type="text" class="form-control" name="NomAss<?php echo $champ['short'];?>" id="champNomAss<?php echo $champ['short'];?>" placeholder="Nom de la compagnie" />
+													</div>
+												</div>
+											</div>
+										</div>
+									</fieldset>
+								<?php endforeach;?>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -223,14 +300,14 @@
 								<fieldset>
 									<legend><?php echo $champ["legend"];?></legend>
 									<div class="col-md-6 form-group">
-										<label class="col-md-4 control-label">Adresse :</label>
-										<div class="col-md-8">
+										<label class="col-md-4 col-xs-5 control-label">Adresse :</label>
+										<div class="col-md-8 col-xs-7">
 											<textarea class="form-control" name="Adresse<?php echo $champ['short'];?>" id="champAdresse<?php echo $champ['short'];?>" placeholder="Adresse"></textarea>
 										</div>
 									</div>
 									<div class="col-md-6 form-group">
-										<label class="col-md-4 control-label">Téléphone :</label>
-										<div class="col-md-8">
+										<label class="col-md-4 col-xs-5 control-label">Téléphone :</label>
+										<div class="col-md-8 col-xs-7">
 											<input type="tel" class="form-control" name="Telephone<?php echo $champ['short'];?>" id="champTelephone<?php echo $champ['short'];?>" placeholder="Téléphone" />
 										</div>
 									</div>

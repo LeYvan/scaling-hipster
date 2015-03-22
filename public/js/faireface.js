@@ -4,11 +4,11 @@ ff.fillResume = function (e) {
   $('#resume-contenu :input').replaceWith(function (){
     var id = $(this).attr('id');
     $(this).removeAttr('id');
-    return '<p class="form-control-static">'+$('#'+id).val()+'</p>'
+    return '<p class="form-control-static">'+$('#'+id).val().replace( /\r?\n/g, "<br />" );+'</p>'
   });
-  // $('#resume-contenu h2').replaceWith(function(){
-  //   return '<h3>'+$(this).text()+'</h3>';
-  // });
+  $('#resume-contenu h2').replaceWith(function(){
+    return '<h3>'+$(this).text()+'</h3>';
+  });
 
   // e.target; // newly activated tab
   // e.relatedTarget; // previous active tab
