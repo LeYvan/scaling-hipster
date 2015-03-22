@@ -1,3 +1,24 @@
+var ff = {};
+ff.fillResume = function (e) {
+  $('#resume-contenu').empty().append($('.tab-pane:not(#resume)>*').clone());
+  $('#resume col-md-')
+  $('#resume :input').replaceWith(function (){
+    var id = $(this).attr('id');
+    $(this).removeAttr('id');
+    return '<p class="form-control-static">'+$('#'+id).val()+'</p>'
+  });
+  // $('#resume-contenu h2').replaceWith(function(){
+  //   return '<h3>'+$(this).text()+'</h3>';
+  // });
+
+  // e.target; // newly activated tab
+  // e.relatedTarget; // previous active tab
+}
+
+$(document).ready(function(){
+  ff.fillResume();
+});
+
 $('#connexionModal').on('shown.bs.modal', function (event) {
   $('#nomUtilisateur').focus();
 });
@@ -43,3 +64,9 @@ $('#cmdUnsub').click(function () {
   event.preventDefault();
   window.location = '/profile/unsub/';
 });
+
+$('#btnImprimer').click(function () {
+  window.print();
+})
+
+$('a[data-toggle="tab"][href="#resume"]').on('show.bs.tab', function (e){ff.fillResume(e)});
