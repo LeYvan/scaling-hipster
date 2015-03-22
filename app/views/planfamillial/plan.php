@@ -1,6 +1,9 @@
 <h1 class="hidden-print">Plan famillial</h1>
-
-<form class="form-horizontal">
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     !!!  À FAIRE: mettre l'attribut « method » et mettre l'attribut « action »  !!!
+     !!!                 s'ils sont nécessaires S.V.P. Merci :-)                 !!!
+     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<form class="form-horizontal" name="PlanFamillial" id="frmPlanFamillial">
 	<div role="tabpanel">
 		<!-- Nav tabs -->
 		<nav class="hidden-print">
@@ -21,6 +24,7 @@
 
 			<div role="tabpanel" class="tab-pane active" id="resume">
 				<!-- <h2>Votre plan famillial</h2> -->
+				<button class="btn btn-primary btn-block hidden-print" type="button" id="btnImprimer"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimer</button>
 				<div id="resume-contenu"></div>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="famille">
@@ -177,7 +181,7 @@
 
 			<div role="tabpanel" class="tab-pane" id="numeros">
 				<div class="tab-header">
-					<h2>Personnes ressources</h2>
+					<h2>Téléphones importants</h2>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
@@ -190,9 +194,9 @@
 							array("label" => "Gaz métro", "tel" => "1 800 361-8003")
 						);
 						foreach ($champs as $champ):?>
-							<div class="col-md-6 form-group">
-								<label class="col-md-7 control-label"><?php echo $champ['label'];?> :</label>
-								<div class="col-md-5">
+							<div class="col-sm-6 form-group">
+								<label class="col-sm-7 control-label"><?php echo $champ['label'];?> :</label>
+								<div class="col-sm-5">
 									<p class="form-control-static"><?php echo $champ['tel'];?></p>
 								</div>
 							</div>
@@ -207,7 +211,38 @@
 				<div class="tab-header">
 					<h2>Lieux de rassemblement</h2>
 				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<?php
+						$champs = array(
+							array("legend" => "Dans le quartier", "short" => "Quartier"),
+							array("legend" => "Hors de votre quartier", "short" => "HorsQuartier")
+						);
+						foreach ($champs as $champ):?>
+							<div class="col-md-12">
+								<fieldset>
+									<legend><?php echo $champ["legend"];?></legend>
+									<div class="col-md-6 form-group">
+										<label class="col-md-4 control-label">Adresse :</label>
+										<div class="col-md-8">
+											<textarea class="form-control" name="Adresse<?php echo $champ['short'];?>" id="champAdresse<?php echo $champ['short'];?>" placeholder="Adresse"></textarea>
+										</div>
+									</div>
+									<div class="col-md-6 form-group">
+										<label class="col-md-4 control-label">Téléphone :</label>
+										<div class="col-md-8">
+											<input type="tel" class="form-control" name="Telephone<?php echo $champ['short'];?>" id="champTelephone<?php echo $champ['short'];?>" placeholder="Téléphone" />
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						<?php endforeach;?>
+					</div>
+				</div>
 			</div>
 		</div>
+	</div>
+	<div class="text-right">
+		<button type="submit" class="btn btn-primary">Sauvegarder</button>
 	</div>
 </form>

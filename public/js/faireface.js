@@ -1,8 +1,7 @@
 var ff = {};
 ff.fillResume = function (e) {
   $('#resume-contenu').empty().append($('.tab-pane:not(#resume)>*').clone());
-  $('#resume col-md-')
-  $('#resume :input').replaceWith(function (){
+  $('#resume-contenu :input').replaceWith(function (){
     var id = $(this).attr('id');
     $(this).removeAttr('id');
     return '<p class="form-control-static">'+$('#'+id).val()+'</p>'
@@ -70,3 +69,19 @@ $('#btnImprimer').click(function () {
 })
 
 $('a[data-toggle="tab"][href="#resume"]').on('show.bs.tab', function (e){ff.fillResume(e)});
+
+$('#frmPlanFamillial').on( "submit", function(event){
+  var chaineSerialisee = $( this ).serialize(); // Défini une variable qui contient la sérialisation
+  event.preventDefault(); // Empêche le formulaire de s'envoyer par lui-même
+
+/***************************************\
+|**             À FAIRE :             **|
+|** Envoyer la chaîne sérialisée vers **|
+|**           l'application           **|
+|**                                   **|
+|**   Aller voir ce qu'il y a faire   **|
+|**                                   **|
+|**              Merci :)             **|
+\***************************************/
+
+});
