@@ -120,7 +120,7 @@
                         } else {
                         ?>
                           <div class="thumbnail">
-                            <a href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
+                            <a target="_BLANK" href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
                           </div>
                         <?php
                         }
