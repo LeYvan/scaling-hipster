@@ -30,7 +30,8 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">
-          <img alt="Brand" src="/images/faireface.png" height="20" />
+          <img class="hidden-sm" alt="FaireFace" src="/images/faireface.png" height="20" />
+          <img class="visible-sm-block" alt="FaireFace" src="/images/faireface-sm.png" height="20" />
         </a>
       </div>
 
