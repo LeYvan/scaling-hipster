@@ -31,6 +31,9 @@ Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), fun
   Route::post('/sinistres/modifier/{id}',       // Modifier POST
               'SinistresController@modifierPost');
 
+  Route::post('/ressources/{id}/supp/',           // Supprimer POST
+              'RessourcesController@supprimer');
+
   Route::post('/sinistres/{id}/supp/',           // Supprimer POST
               'SinistresController@supprimer');
 

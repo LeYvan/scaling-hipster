@@ -42,36 +42,62 @@
     <div id="ressource<?php echo $ressource->id;?>">
       <div class="row">
         <div class="col-md-12">
-          <h1><?php echo $ressource->nom;?></h1>
-          <pre><?php
-              echo print_r($ressource,true)
-            ?></pre>
+          <div>
+            <?php
+            if (Auth::check() && Auth::User()->niveau > 1)
+            { 
+              ?>
+            <span class="pull-right">
+              <a class="btn btn-danger" href="#" data-nom="<?=$ressource->nom?>" data-ressource-id="<?= $ressource->id?>" type="button" data-toggle="modal" data-target="#supprRessourceModal">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer
+              </a>
+            </span>
+            <?php }?>
+            <h1><?php echo $ressource->nom;?></h1>
+          </div>
+          <p><?= $ressource->description;?></p>
+          <address>
+            <strong><?= $ressource->nom;?></strong><br />
+            123, rue du fer<br />
+            <abbr title="Téléphone">Tél.</abbr> : (418) 254-6011<br />
+            St-Face, Québec<br />
+            V4G 1N4
+          </address>
         </div>
       </div>
     </div>
 <?php endforeach; ?>
   </div>
   <div class="col-md-3">
-    <nav id="menu-cote-ressources">
-      <ul class="nav nav-pills nav-stacked" data-offset-top="170" data-spy="affix">
+    <nav id="menu-cote-ressources" data-offset-top="170" data-spy="affix">
+      <ul class="nav nav-pills nav-stacked">
         <?php foreach ($ressources as $ressource): ?>
           <li><a href="#ressource<?php echo $ressource->id;?>"><?php echo $ressource->nom;?></a></li>
         <?php endforeach; ?>
-    </ul>
+      </ul>
     </nav>
   </div>
 </div>
-<div class="modal fade" id="supprUserModal" tabindex="-1" role="dialog" aria-labelledby="supprUserModalLabel" aria-hidden="true">
+
+<!-- Fenêtre modal de confirmation de suppressin de sinistre -->
+<div class="modal fade" id="supprRessourceModal" tabindex="-1" role="dialog" aria-labelledby="supprRessourceModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="supprUserModalLabel">Supprimer l'utilisateur</h4>
+        <h4 class="modal-title" id="supprRessourceModalLabel">Supprimer la ressource</h4>
       </div>
       <div class="modal-body">
-        <div id="user-id"></div>
-
+          <?= Form::open(array('action'=>'RessourcesController@supprimer','method' => 'post', 'id' => 'frmSupprRessource')) ?>
+            <input type="hidden" name="id" id="id" />
+            <p>Voulez-vous vraiment supprimer "<span id="suppMsg"></span>"?</p>
+            <div class="text-right">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            </div>
+        <?= Form::close() ?>
       </div>
     </div>
   </div>
 </div>
+<!-- Fin fenêtre modal de confirmation de suppressin de sinistre -->
