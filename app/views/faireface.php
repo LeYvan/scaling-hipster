@@ -236,5 +236,6 @@
     <script src="/js/geo.js"></script>
     <script src="/js/alertes.publier.js"></script>
     <script src="/js/ressources.ajouter.js"></script>
+    <script src="/js/plan-familial.js"></script>
   </body>
 </html>

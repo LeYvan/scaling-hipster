@@ -109,7 +109,8 @@ Route::get ('/capsules/categories/{etiquette}', 'CapsulesController@lister');
 Route::get ('/capsules/catégories/{id}',  'CapsulesController@lister');
 
 Route::get ('/plan/',  'PlanFamillialController@afficher');
-
+Route::post ('/plan/sauvegarder/',  'PlanFamillialController@sauvegarder');
+Route::post ('/plan/recuperer/',  'PlanFamillialController@recuperer');
 
 Route::post('/connexion/','UtilisateursController@connexion');
 Route::get('/deconnexion/', 'UtilisateursController@deconnexion');

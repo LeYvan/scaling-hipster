@@ -3,7 +3,8 @@
      !!!  À FAIRE: mettre l'attribut « method » et mettre l'attribut « action »  !!!
      !!!                 s'ils sont nécessaires S.V.P. Merci :-)                 !!!
      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<form class="form-horizontal" name="PlanFamillial" id="frmPlanFamillial">
+<form method="post" action="/plan/sauvegarder" class="form-horizontal" name="PlanFamillial" id="frmPlanFamillial">
+
 	<div role="tabpanel">
 		<!-- Nav tabs -->
 		<nav class="hidden-print">
@@ -23,7 +24,12 @@
 		<!-- VOTRE FAMILLE -->
 
 			<div role="tabpanel" class="tab-pane active" id="resume">
-				<button class="btn btn-primary btn-block hidden-print" type="button" id="btnImprimer"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimer</button>
+				<br/>
+				<div class="row">
+					<div class="col-md-2">
+						<button class="btn btn-primary btn-block hidden-print" type="button" id="btnImprimer"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimer</button>
+					</div>
+				</div>
 				<h2>Votre plan famillial</h2>
 				<div id="resume-contenu"></div>
 			</div>
@@ -249,7 +255,7 @@
 									<fieldset>
 										<legend>Assurance <?php echo $champ['label'];?></legend>
 										<div class="row">
-											<div class="col-md-12">								
+											<div class="col-md-12">
 												<div class="col-md-12 form-group">
 													<label for="champAss<?php echo $champ['short'];?>" class="col-xs-6 col-sm-4 col-md-4 control-label">Nom de la compagnie :</label>
 													<div class="col-xs-6 col-sm-8 col-md-8">
@@ -259,7 +265,7 @@
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-12">								
+											<div class="col-md-12">
 												<div class="col-md-7 form-group">
 													<label for="champAss<?php echo $champ['short'];?>" class="col-xs-6 col-sm-4 col-md-7 control-label">Numéro de police :</label>
 													<div class="col-xs-6 col-sm-8 col-md-5">
@@ -320,6 +326,6 @@
 		</div>
 	</div>
 	<div class="text-right">
-		<button type="submit" class="btn btn-primary">Sauvegarder</button>
+		<button id="btnSauvegarder" type="submit" class="btn btn-primary">Sauvegarder</button>
 	</div>
 </form>
