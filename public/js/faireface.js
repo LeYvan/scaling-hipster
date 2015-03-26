@@ -85,3 +85,19 @@ $('#frmPlanFamillial').on( "submit", function(event){
 \***************************************/
 
 });
+
+$(document).ready(function(){
+
+  $("img").each(function (i,e) {
+    if (e.naturalHeight === 0) {
+
+          var imgSrc = '/images/' + (Math.floor(Math.random() * 10) + 1) + '.jpg?'+Math.random();
+
+          $(this).attr("src", imgSrc);
+    }
+
+  });
+
+
+
+});
