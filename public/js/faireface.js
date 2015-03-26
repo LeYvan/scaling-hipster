@@ -49,6 +49,15 @@ $('#supprSinistreModal').on('show.bs.modal', function (event) {
 
 });
 
+$('#supprRessourceModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  var id = button.data('ressource-id');
+  var nom = button.data('nom');
+  document.getElementById('id').value = id;
+  document.getElementById('suppMsg').innerHTML = nom;
+
+});
+
 $('#supprElementModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
   var id = button.data('element-id');
