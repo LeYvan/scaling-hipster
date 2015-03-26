@@ -248,7 +248,10 @@ body
 {
   text-align: center;
 }
-
+.supprimer-primary, .supprimer-primary:hover, .supprimer-primary:focus
+{
+  color:#fff;
+}
 @media(min-width: 768px){
 	#divInfoSms
 	{

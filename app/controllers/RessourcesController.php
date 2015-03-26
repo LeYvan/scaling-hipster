@@ -32,6 +32,24 @@ class RessourcesController extends BaseController {
                           'categories' => $categories,
                           'catCourante' => $catCourante));
     }
+    public function supprimer()
+    {
+              // Set titre page générée
+      $proprietesPage = array('titre' => 'Ressource - Suppression');
+
+      try {
+        $ressource = Ressource::findOrFail(Input::get("id"));
+        $nom = $ressource->nom;
+
+        $message = '<p>Supression de "' . $nom . '" réussie.</p>';
+
+        $ressource->delete($message);
+
+        return $this->afficherSucces($message);
+      } catch (Exception $e) {
+        return $this->afficherErreur("Ressource introuvable. (" . var_dump(Input::get()) . ")");
+      }
+    }
 
     public function AjouterGet()
     {
