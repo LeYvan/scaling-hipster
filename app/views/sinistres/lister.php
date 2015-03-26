@@ -60,6 +60,17 @@
                     ?>
                     <div class="col-sm-8 col-md-8 col-lg-9">
                       <p><?= $sinistre->rapport ?></p>
+                      <div class="well well-sm">
+                        <h4>Ressources d'urgence <span class="label label-default label-sm"> <?= $sinistre->categorie()->etiquette ?></span></h4>
+                        <ul class="list-inline">
+                        <?php
+                        foreach($ressources[$sinistre->categorie_id] as  $ressource)
+                        {
+                          ?> <li> <a href="#"><?=$ressource->nom?></a> </li> <?php
+                        }
+                        ?>
+                        </ul>
+                      </div>
                       <div class="row">
                     <?php
                       foreach($sinistre->elements() as $element)
@@ -68,15 +79,15 @@
                       <div class="col-xs-3 col-sm-2 col-md-2">
                         <a href="#" class="thumbnail" data-toggle="modal" data-target="#mediaModal">
                         <?php
-     
+
                           if ($element->type == 'image')
                           {
                             $rand1 = rand(400,600);
                             $rand2 = array($rand1*1334/750, $rand1*750/1334,$rand1*16/9,$rand1*9/16,$rand1*4/3,$rand1*3/4);
                             //print("<img alt=\"Image envoyée par un utilisateur\" src=\"http://www.placecage.com/".$rand1."/".$rand2[rand(0,5)]."\">");
                             print("<img alt=\"Image envoyée par un utilisateur\" src=\"/uploads/" . $element->fichier . "\"/>");
-                          } 
-                          else 
+                          }
+                          else
                           {
                             ?>
                             <video width="100%" controls>
@@ -95,8 +106,8 @@
                       </div>
                      </div>
                         <div class="col-xs-4 col-md-4 col-lg-3 col-xs-offset-4 col-sm-offset-0">
-                          
-                    <?php 
+
+                    <?php
                         $base ='https://maps.googleapis.com/maps/api/staticmap?';
                         $coords = $sinistre['geo-x'] . ',' . $sinistre['geo-y'];
                         $center = 'center=' . $coords;
@@ -125,12 +136,12 @@
                         <?php
                         }
                     ?>
-                                              
+
                         </div>
                 </div>
                         <?php
                         if (Auth::check() && Auth::User()->niveau > 1)
-                        { 
+                        {
                         ?>
                         <div>
                           <div class="btn-group" role="group" aria-label="Administration">
@@ -172,7 +183,7 @@
           </div>
           <!-- Fin Fenêtre modal de visionnement d'images -->
 
-          
+
 
           <!-- Fenêtre modal de confirmation de suppressin de sinistre -->
           <div class="modal fade" id="supprSinistreModal" tabindex="-1" role="dialog" aria-labelledby="supprSinistreModalLabel" aria-hidden="true">
