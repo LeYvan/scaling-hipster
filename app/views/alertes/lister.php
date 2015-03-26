@@ -109,9 +109,12 @@
                             <div class="personnes-ressources">
                               <h5>Personnes ressources:</h5>
                               <ul class="list-inline">
-                                <li><a href="#">Ressource #1</a></li>
-                                <li><a href="#">Ressource #2</a></li>
-                                <li><a href="#">Ressource #3</a></li>
+                              <?php
+                              foreach($ressources[$alerte->categorie_id] as  $ressource)
+                              {
+                                ?> <li> <a href="#"><?=$ressource->nom?></a> </li> <?php
+                              }
+                              ?>
                               </ul>
                             </div>
                           </div>
@@ -146,3 +149,7 @@
 
         </div>
       </div>
+
+<?php
+
+?>

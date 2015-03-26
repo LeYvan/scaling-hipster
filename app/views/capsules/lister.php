@@ -41,7 +41,17 @@
 	<div class="well">
 		<b>@<i><?= $capsule->utilisateur()->nom ?></i></b></br><?=$capsule->titre ?>:</br>
     <?= $capsule->contenu?></br>
-		<?php if (Auth::check() && Auth::user()->niveau == 1) { ?>
+
+    <ul class="list-inline">
+    <?php
+    foreach($ressources[$capsule->categorie_id] as  $ressource)
+    {
+      ?> <li> <a href="#"><?=$ressource->nom?></a> </li> <?php
+    }
+    ?>
+    </ul>
+
+		<?php if (Auth::check() && Auth::user()->niveau > 1) { ?>
 			<a class="btn btn-primary" href="/capsules/<?= $capsule->id?>/modifier/" type="button">
         	   <span class="glyphicon glyphicon-edit"></span>  Modifier
             </a>
@@ -60,7 +70,7 @@
         <h4 class="modal-title" id="supprUserModalLabel">Supprimer l'utilisateur</h4>
       </div>
       <div class="modal-body">
-        <div id="user-id"></div> 
+        <div id="user-id"></div>
           <?= Form::open(array('action'=>'CapsulesController@suppPost','method' => 'post', 'id' => 'frmSupprUser')) ?>
             <input type="hidden" name="id" id="id" />
             <p>Voulez-vous vraiment supprimer cette capsule de "<span id="suppMsg"></span>"?</p>

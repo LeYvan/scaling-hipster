@@ -25,14 +25,21 @@ class CapsulesController extends BaseController {
         $lstCategories = CategorieSinistre::lists('etiquette', 'id');
         $categories = CategorieSinistre::all();
 
-        return 
-            View::make('faireface', $proprietesPage)            
+        $ressources = array ();
+        foreach($categories as $categorie)
+        {
+          $ressources[$categorie->id] = Ressource::where('categorie_id',$categorie->id)->get();
+        }
+
+        return
+            View::make('faireface', $proprietesPage)
             ->nest ('contenu',
                     'capsules.lister',
                     array('capsules' => $capsules,
                           'lstCategories' => $lstCategories,
                           'categories' => $categories,
-                          'catCourante' => $catCourante));
+                          'catCourante' => $catCourante,
+                          'ressources' => $ressources));
     }
 
     public function ajouterGet()
@@ -42,12 +49,12 @@ class CapsulesController extends BaseController {
         // Get all categories
         $categories = CategorieSinistre::lists('etiquette','id');
 
-        // Mettre la vue... 
-        return 
+        // Mettre la vue...
+        return
             View::make('faireface', $proprietesPage)
             ->nest ('contenu',
                     'capsules.nouveau',
-                    array('categories' => $categories));  
+                    array('categories' => $categories));
     }
 
     public function ajouterPost()
@@ -56,12 +63,12 @@ class CapsulesController extends BaseController {
         $valide = true;
         $message = '';
 
-        if (!(Input::has('titre') && Input::has('contenu') && Input::has('categorie_id'))) 
+        if (!(Input::has('titre') && Input::has('contenu') && Input::has('categorie_id')))
         {
             return $this->afficherErreurWithInput("Données de la capules invalide pour insertion.");
         }
 
-        if (!Auth::check()) 
+        if (!Auth::check())
         {
             return $this->afficherErreurWithInput("Vous devez être connecté pour crée une capsule.");
         }
@@ -100,8 +107,8 @@ class CapsulesController extends BaseController {
 
         $capsule = Capsule::where('id',$id)->firstOrFail();
 
-        // Mettre la vue... 
-        return 
+        // Mettre la vue...
+        return
             View::make('faireface', $proprietesPage)
             ->nest ('contenu',
                     'capsules.nouveau',
@@ -119,7 +126,7 @@ class CapsulesController extends BaseController {
         {
             return $this->afficherErreur("Il y a des champs manquants");
         }
-        if (!Auth::check()) 
+        if (!Auth::check())
         {
             return $this->afficherErreurWithInput("Vous devez être connecté pour modifier une capsule.");
         }
@@ -155,7 +162,7 @@ class CapsulesController extends BaseController {
             // Allez chercher la capsule avec le id transmit
             $capsule = Capsule::findOrFail(Input::get("id"));
 
-            // Allez chercher le nom de l'utilisateur et le titre de la capsule            
+            // Allez chercher le nom de l'utilisateur et le titre de la capsule
             $nom = $capsule->utilisateur()->nom;
             $titre = $capsule->titre;
 
