@@ -75,7 +75,7 @@
       alert(categorie);
     };
 
-    
+
 
   function createCookie(name, value, days) {
       var expires;
@@ -116,52 +116,52 @@
   // }
 
 
+  $( "#trouverAdresseModel" ).on('shown.bs.modal', function(){
+      $('#_adresse').focus();
+  });
+
+  $('#cmdAdresse').click(function() {
+    event.preventDefault();
+    $('#trouverAdresseModel').modal('show');
+  });
+
+
+  $('#cmdCancelAdresse').click(function() {
+    event.preventDefault();
+    $('#trouverAdresseModel').modal('hide');
+  });
+
+  $('#cmdSelAdresse').click(function() {
+    event.preventDefault();
+
+    $('#lat').val(ff_pub_alerte.coords.coords.latitude);
+    $('#long').val(ff_pub_alerte.coords.coords.longitude);
+
+    $('#trouverAdresseModel').modal('hide');
+  });
+
+  $(function(){
+
+      $("#categorieSel .dropdown-menu li a").click(function(){
+
+        $("#categorieSel .btn:first-child").text($(this).text());
+        $("#categorieSel .btn:first-child").val($(this).text());
+
+        $('#categorie_id').val($(this).data('id'));
+     });
+
+  });
+
+  $('#cmdEnvoyer').click(function() {
+
+    if(true) {
+      // rien
+    }
+    else {
+        // on envoie rien
+        event.preventDefault();
+    }
+
+  });
+
 }( window.ff_pub_alerte = window.ff_pub_alerte || {}, jQuery ));
-
-$( "#trouverAdresseModel" ).on('shown.bs.modal', function(){
-    $('#_adresse').focus();
-});
-
-$('#cmdAdresse').click(function() {
-  event.preventDefault();
-  $('#trouverAdresseModel').modal('show');
-});
-
-
-$('#cmdCancelAdresse').click(function() {
-  event.preventDefault();
-  $('#trouverAdresseModel').modal('hide');
-});
-
-$('#cmdSelAdresse').click(function() {
-  event.preventDefault();
-
-  $('#lat').val(ff_pub_alerte.coords.coords.latitude);
-  $('#long').val(ff_pub_alerte.coords.coords.longitude);
-
-  $('#trouverAdresseModel').modal('hide');
-});
-
-$(function(){
-
-    $("#categorieSel .dropdown-menu li a").click(function(){
-
-      $("#categorieSel .btn:first-child").text($(this).text());
-      $("#categorieSel .btn:first-child").val($(this).text());
-
-      $('#categorie_id').val($(this).data('id'));
-   });
-
-});
-
-$('#cmdEnvoyer').click(function() {
-
-  if(true) {
-    // rien
-  }
-  else {
-      // on envoie rien
-      event.preventDefault();
-  }
-
-});

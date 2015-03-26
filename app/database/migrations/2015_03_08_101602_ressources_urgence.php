@@ -34,7 +34,7 @@ class RessourcesUrgence extends Migration {
 			$table->increments('id');
 
 			$table->string('utilisateur_id')->references('id')->on('utilisateurs');
-			$table->string('json');
+			$table->longText('json');
 
 			$table->timestamps();
 			$table->softDeletes();
