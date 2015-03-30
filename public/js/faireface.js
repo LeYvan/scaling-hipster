@@ -1,3 +1,23 @@
+var ff = {};
+ff.fillResume = function (e) {
+  $('#resume-contenu').empty().append($('.tab-pane:not(#resume)>*').clone());
+  $('#resume-contenu :input').replaceWith(function (){
+    var id = $(this).attr('id');
+    $(this).removeAttr('id');
+    return '<p class="form-control-static">'+$('#'+id).val().replace( /\r?\n/g, "<br />" );+'</p>'
+  });
+  $('#resume-contenu h2').replaceWith(function(){
+    return '<h3>'+$(this).text()+'</h3>';
+  });
+
+  // e.target; // newly activated tab
+  // e.relatedTarget; // previous active tab
+}
+
+$(document).ready(function(){
+  ff.fillResume();
+});
+
 $('#connexionModal').on('shown.bs.modal', function (event) {
   $('#nomUtilisateur').focus();
 });
@@ -29,6 +49,15 @@ $('#supprSinistreModal').on('show.bs.modal', function (event) {
 
 });
 
+$('#supprRessourceModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  var id = button.data('ressource-id');
+  var nom = button.data('nom');
+  document.getElementById('id').value = id;
+  document.getElementById('suppMsg').innerHTML = nom;
+
+});
+
 $('#supprElementModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
   var id = button.data('element-id');
@@ -42,4 +71,42 @@ $('#supprElementModal').on('show.bs.modal', function (event) {
 $('#cmdUnsub').click(function () {
   event.preventDefault();
   window.location = '/profile/unsub/';
+});
+
+$('#btnImprimer').click(function () {
+  window.print();
+})
+
+$('a[data-toggle="tab"][href="#resume"]').on('show.bs.tab', function (e){ff.fillResume(e)});
+
+$('#frmPlanFamillial').on( "submit", function(event){
+  var serialisation = JSON.stringify($( this ).serializeArray()); // Défini une variable qui contient la sérialisation
+  event.preventDefault(); // Empêche le formulaire de s'envoyer par lui-même
+
+/***************************************\
+|**             À FAIRE :             **|
+|** Envoyer la chaîne sérialisée vers **|
+|**           l'application           **|
+|**                                   **|
+|**   Aller voir ce qu'il y a faire   **|
+|**                                   **|
+|**              Merci :)             **|
+\***************************************/
+
+});
+
+$(document).ready(function(){
+
+  $("img").each(function (i,e) {
+    if (e.naturalHeight === 0) {
+
+          var imgSrc = '/images/' + (Math.floor(Math.random() * 10) + 1) + '.jpg?'+Math.random();
+
+          $(this).attr("src", imgSrc);
+    }
+
+  });
+
+
+
 });

@@ -31,6 +31,9 @@ Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), fun
   Route::post('/sinistres/modifier/{id}',       // Modifier POST
               'SinistresController@modifierPost');
 
+  Route::post('/ressources/{id}/supp/',           // Supprimer POST
+              'RessourcesController@supprimer');
+
   Route::post('/sinistres/{id}/supp/',           // Supprimer POST
               'SinistresController@supprimer');
 
@@ -54,7 +57,7 @@ Route::group(array('before' => 'auth|admin', 'before' => 'auth|conseiller'), fun
   Route::post('/capsules/{id}/supprimer/',  'CapsulesController@suppPost');
   Route::get ('/capsules/{id}/modifier/',   'CapsulesController@modGet');
   Route::post('/capsules/{id}/modifier/',   'CapsulesController@modPost');
-  
+
 });
 //======================================================================================================================
 
@@ -82,7 +85,7 @@ Route::get('/sinistres/categorie/{etiquette}',      // Lister
            'SinistresController@lister');
 
 Route::get('/sinistres/ajouter/',             // Ajouter GET
-          'SinistresController@ajouterGet'); 
+          'SinistresController@ajouterGet');
 
 Route::post('/sinistres/ajouter/',             // Ajouter POST
            'SinistresController@ajouterPost');
@@ -108,5 +111,20 @@ Route::get ('/capsules/categories/{etiquette}', 'CapsulesController@lister');
 
 Route::get ('/capsules/catégories/{id}',  'CapsulesController@lister');
 
+Route::get ('/plan/',  'PlanFamillialController@afficher');
+Route::post ('/plan/sauvegarder/',  'PlanFamillialController@sauvegarder');
+Route::post ('/plan/recuperer/',  'PlanFamillialController@recuperer');
+
 Route::post('/connexion/','UtilisateursController@connexion');
 Route::get('/deconnexion/', 'UtilisateursController@deconnexion');
+
+
+
+Route::get('/ressources/', 'RessourcesController@Lister');
+Route::get('/ressources/categories/{etiquette}', 'RessourcesController@lister');
+
+Route::get('/ressources/ajouter/', 'RessourcesController@AjouterGet');
+Route::post('/ressources/ajouter/', 'RessourcesController@AjouterPost');
+
+Route::get('/ressources/{id}/modifier/', 'RessourcesController@ModifierGet');
+Route::post('/ressources/{id}/modifier/', 'RessourcesController@ModifierPost');

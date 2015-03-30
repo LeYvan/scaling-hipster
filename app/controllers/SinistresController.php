@@ -17,7 +17,7 @@ class SinistresController extends BaseController {
           // var_dump($catCourante);
           // Get sinistres de categorie_id
           $sinistres = Sinistre::where('categorie_id',$catCourante->id)->orderBy('created_at', 'desc')->paginate(10);
-        } 
+        }
         else
         {
           $sinistres = Sinistre::orderBy('created_at', 'desc')->paginate(10);
@@ -27,15 +27,22 @@ class SinistresController extends BaseController {
         $lstCategories = CategorieSinistre::lists('etiquette', 'id');
         $categories = CategorieSinistre::all();
 
+        $ressources = array ();
+        foreach($categories as $categorie)
+        {
+          $ressources[$categorie->id] = Ressource::where('categorie_id',$categorie->id)->get();
+        }
+
         // Enboite vue sinistres dans vue design
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'sinistres.lister',
                     array('sinistres' => $sinistres,
                           'lstCategories' => $lstCategories,
                           'categories' => $categories,
-                          'catCourante' => $catCourante));
+                          'catCourante' => $catCourante,
+                          'ressources' => $ressources));
     }
 
     public function ajouterGet()
@@ -45,7 +52,7 @@ class SinistresController extends BaseController {
 
         // Get all categories
         $categories = CategorieSinistre::lists('etiquette','id');
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'sinistres.ajouter',
@@ -92,11 +99,11 @@ class SinistresController extends BaseController {
         {
           if (is_null($fichier) || !$fichier->isValid()) break;
 
-          $ext = substr($fichier->getMimeType(),strpos($fichier->getMimeType(),"/")+1);  
+          $ext = substr($fichier->getMimeType(),strpos($fichier->getMimeType(),"/")+1);
 
           $dossierLocal = md5($sinistre->titre);
           $fichierLocal = md5($fichier->getClientOriginalName()) . '.' . $ext;
-          
+
           $element = new ElementSinistre;
           $element->fichier = $fichierLocal;
           $element->type = '';
@@ -153,7 +160,7 @@ class SinistresController extends BaseController {
 
 
         // Enboite vue sinistres dans vue design
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'sinistres.modifier',

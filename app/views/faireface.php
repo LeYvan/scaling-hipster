@@ -18,7 +18,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body data-spy="scroll" data-target="#menu-cote-ressources">
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -30,7 +30,8 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">
-          <img alt="Brand" src="/images/faireface.png" height="20" />
+          <img class="hidden-sm" alt="FaireFace" src="/images/faireface.png" height="20" />
+          <img class="visible-sm-block" alt="FaireFace" src="/images/faireface-sm.png" height="20" />
         </a>
       </div>
 
@@ -43,7 +44,8 @@
             array('titre'=>'Nouvelles', 'href'=>'/nouvelles/'),
             array('titre'=>'Capsules', 'href'=>'/capsules/'),
             array('titre'=>'Plan Familial', 'href'=>'/plan/'),
-            array('titre'=>'Sinistres', 'href'=>'/sinistres/')
+            array('titre'=>'Sinistres', 'href'=>'/sinistres/'),
+            array('titre'=>'Ressources', 'href'=>'/ressources/')
           );
             if (Auth::check() && Auth::User()->niveau == 99)
             {
@@ -57,7 +59,7 @@
         <ul class="nav navbar-nav navbar-right">
           <?php if(Auth::check()){?>
           <li><a href="/profile/"><?= Auth::user()->nom ?></a></li>
-          <li><a href="/deconnexion/">Déconnexion</a></li>          
+          <li><a href="/deconnexion/">Déconnexion</a></li>
           <?php }else{?>
           <li><a href="#" data-toggle="modal" data-target="#connexionModal">Connexion</a></li>
           <?php }?>
@@ -137,7 +139,7 @@
                       <label class="control-label" for="nomUtilisateur">Nom d'utilisateur</label>
                       <div class="controls">
                         <input id="nomUtilisateur" name="nomUtilisateur" type="text" autofocus="autofocus" placeholder="Nom d'utilisateur" class="form-control" required="required">
-                        
+
                       </div>
                     </div>
 
@@ -146,7 +148,7 @@
                       <label class="control-label" for="motPasse">Mot de passe</label>
                       <div class="controls">
                         <input id="motPasse" name="motPasse" type="password" placeholder="Mot de passe" class="form-control" required="required">
-                        
+
                       </div>
                     </div>
 
@@ -233,5 +235,7 @@
     <script src="/js/modernizr.js"></script>
     <script src="/js/geo.js"></script>
     <script src="/js/alertes.publier.js"></script>
+    <script src="/js/ressources.ajouter.js"></script>
+    <script src="/js/plan-familial.js"></script>
   </body>
 </html>

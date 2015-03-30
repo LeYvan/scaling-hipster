@@ -14,7 +14,7 @@ class AlertesController extends BaseController {
             $catCourante = CategorieSinistre::where('etiquette',$etiquette)->first();
             $alertes = Alerte::where('categorie_id',$catCourante->id)
                                 ->orderBy('created_at', 'desc')->paginate(10);
-        } 
+        }
         else
         {
             //$alertes = Alerte::orderBy('created_at', 'desc')->paginate(10);
@@ -26,15 +26,23 @@ class AlertesController extends BaseController {
         $lstCategories = CategorieSinistre::lists('etiquette', 'id');
         $categories = CategorieSinistre::all();
 
+
+        $ressources = array ();
+        foreach($categories as $categorie)
+        {
+          $ressources[$categorie->id] = Ressource::where('categorie_id',$categorie->id)->get();
+        }
+
         // Enboite vue sinistres dans vue design
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'alertes.lister',
                     array('alertes' => $alertes,
                           'lstCategories' => $lstCategories,
                           'categories' => $categories,
-                          'catCourante' => $catCourante));
+                          'catCourante' => $catCourante,
+                          'ressources' => $ressources));
     }
 
     public function publierGet()
@@ -42,7 +50,7 @@ class AlertesController extends BaseController {
         $proprietesPage = array('titre' => 'Alertes');
         $categories = CategorieSinistre::all();
 
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'alertes.publier',
@@ -90,7 +98,7 @@ class AlertesController extends BaseController {
             return $this->afficherErreurWithInput($message);
         }
 
-        
+
     }
 
     public function details($id)
@@ -102,7 +110,7 @@ class AlertesController extends BaseController {
         $alerte = Alerte::where('id',$id)->firstOrFail();
 
         // Enboite vue formulaire dans vue design
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'alertes.details',
