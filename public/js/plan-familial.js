@@ -31,7 +31,7 @@
 
     $(data).each(function(i,e){
       if (e.value != undefined) {
-        $("[name='"+e.name+"'").val(e.value);
+        $("[name='"+e.name+"']").val(e.value);
       }
     });
 
