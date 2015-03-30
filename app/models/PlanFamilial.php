@@ -1,6 +1,6 @@
 <?php
 
-class PlanFamillial extends Eloquent {
+class PlanFamilial extends Eloquent {
   use SoftDeletingTrait;
 
   protected $table = 'planFamillials';
