@@ -1,13 +1,13 @@
 <?php
-class PlanFamillialController extends BaseController {
+class PlanFamilialController extends BaseController {
 
 	public function afficher()
 	{
   		$message = array(
-  			'titre' => 'Plan famillial',
+  			'titre' => 'Plan Familial',
   			'jumbo' => false
   		);
-  		return View::make('faireface', $message)->nest('contenu','planfamillial.plan');
+  		return View::make('faireface', $message)->nest('contenu','planFamilial.plan');
   	}
 
 		public function sauvegarder()
@@ -37,12 +37,12 @@ class PlanFamillialController extends BaseController {
 
 					if (Auth::check())
 					{
-						$plan = PlanFamillial::where('utilisateur_id',Auth::user()->id)->first();
+						$plan = PlanFamilial::where('utilisateur_id',Auth::user()->id)->first();
 					}
 
 					if ($plan == null)
 					{
-						$plan = new PlanFamillial;
+						$plan = new PlanFamilial;
 					}
 
 					$plan->utilisateur_id = Auth::user()->id;
@@ -73,7 +73,7 @@ class PlanFamillialController extends BaseController {
 
 			if (Auth::check())
 			{
-				$plan = PlanFamillial::where('utilisateur_id',Auth::user()->id)->first();
+				$plan = PlanFamilial::where('utilisateur_id',Auth::user()->id)->first();
 			}
 
 

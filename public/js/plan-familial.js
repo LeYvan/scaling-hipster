@@ -44,10 +44,10 @@
   planFamilial.onSauvegarderClick = function(e){
     event.preventDefault();
 
-    var url = $('#frmPlanFamillial').attr('action');
+    var url = $('#frmPlanFamilial').attr('action');
 
 
-    var wholeData = $('#frmPlanFamillial').serializeArray();
+    var wholeData = $('#frmPlanFamilial').serializeArray();
 
     var strData = 'json=' + JSON.stringify(wholeData);
 
