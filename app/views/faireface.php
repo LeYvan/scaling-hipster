@@ -20,7 +20,7 @@
   </head>
   <body data-spy="scroll" data-target="#menu-cote-ressources">
   <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
+    <div class="container container-small">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-faireface-navbar-collapse-1">
@@ -45,14 +45,15 @@
             array('titre'=>'Capsules', 'href'=>'/capsules/'),
             array('titre'=>'Plan Familial', 'href'=>'/plan/'),
             array('titre'=>'Sinistres', 'href'=>'/sinistres/'),
-            array('titre'=>'Ressources', 'href'=>'/ressources/')
+            array('titre'=>'Ressources', 'href'=>'/ressources/'),
+            array('titre'=>'Aide', 'href'=>'/aide/')
           );
             if (Auth::check() && Auth::User()->niveau == 99)
             {
               array_push($menu, array('titre'=>'Utilisateurs', 'href'=>'/utilisateurs/'));
             }
           foreach ($menu as $element) {?>
-            <li <?= $titre == $element['titre']?'class="active"':''?>><a href="<?= $element['href'] ?>"><?= $element['titre'] ?></a></li>
+            <li <?= $_SERVER['REQUEST_URI'] == $element['href']?'class="active"':''?>><a href="<?= $element['href'] ?>"><?= $element['titre'] ?></a></li>
           <?php }
 ?>
         </ul>
@@ -114,7 +115,7 @@
     <?php echo $contenu ?>
     <footer class="text-center">
       <div>Faire<i>Face</i>, une application formidable.</div>
-      <div>©&#8239;Équipe Tamia, 2015</div>
+      <div>© Équipe Tamia, 2015</div>
     </footer>
   </div>
     <!-- Fenêtre modal de visionnement d'images -->
@@ -139,7 +140,6 @@
                       <label class="control-label" for="nomUtilisateur">Nom d'utilisateur</label>
                       <div class="controls">
                         <input id="nomUtilisateur" name="nomUtilisateur" type="text" autofocus="autofocus" placeholder="Nom d'utilisateur" class="form-control" required="required">
-
                       </div>
                     </div>
 

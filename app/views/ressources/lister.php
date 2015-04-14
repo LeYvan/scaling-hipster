@@ -102,7 +102,7 @@
 <?php endforeach; ?>
   </div>
   <div class="col-md-3">
-    <nav id="menu-cote-ressources" data-offset-top="190" data-spy="affix">
+    <nav id="menu-cote-ressources" data-offset-top="170" data-spy="affix">
       <ul class="nav nav-pills nav-stacked">
         <?php foreach ($ressources as $ressource): ?>
           <li><a href="#ressource<?php echo $ressource->id;?>"><?php echo $ressource->nom;?></a></li>

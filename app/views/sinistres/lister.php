@@ -209,4 +209,3 @@
           <!-- Fin fenêtre modal de confirmation de suppressin de sinistre -->
 
         </div>
-      </div>
