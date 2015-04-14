@@ -128,3 +128,6 @@ Route::post('/ressources/ajouter/', 'RessourcesController@AjouterPost');
 
 Route::get('/ressources/{id}/modifier/', 'RessourcesController@ModifierGet');
 Route::post('/ressources/{id}/modifier/', 'RessourcesController@ModifierPost');
+
+Route::get('/aide/', 'AideController@Afficher');
+

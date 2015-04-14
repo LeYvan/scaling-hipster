@@ -257,6 +257,10 @@ body
 	{
 		margin-top: 55px;
 	}
+  .container-small {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 .affix
 {
@@ -423,7 +427,12 @@ body
   {
   }
 }
-.container-small {
-  padding-left: 10px;
-  padding-right: 10px;
+.qa
+{
+  list-style-type: none;
+  padding-left: 0;
+}
+.question
+{
+  font-weight: bold;
 }
