@@ -62,3 +62,14 @@
 
 </fieldset>
 <?= Form::close() ?>
+
+
+<div class="row">
+    <div class="alert alert-info" role="alert">
+      <h4>Aide en Ligne</h4>
+      <p>
+        Nous avons un formulaire pour modifier son nom, son email et le numéro de téléphone pour s’abonner aux alertes.
+        Si on est déjà inscrit, on a un bouton pour se désabonner des alertes.
+      </p>
+    </div>
+</div>

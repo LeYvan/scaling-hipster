@@ -327,5 +327,22 @@
 	</div>
 	<div class="text-right">
 		<button id="btnSauvegarder" type="submit" class="btn btn-primary">Sauvegarder</button>
+		<p></p>
 	</div>
 </form>
+
+<div class="row">
+    <div class="alert alert-info" role="alert">
+      <h4>Aide en Ligne</h4>
+      <p>
+      	Nous avons un résumé (tout) du plan familial qui comprend 5 sections et qui est imprimable en format pdf.
+		Nous avons des liens vers chaque section sur la page pour pouvoir les remplir. Les différentes sections sont :<br>
+		Famille; la liste des membres de la famille.<br>
+		Personnes ressources; personne à contacter en cas d’urgence.<br>
+		Maison; emplacement des différents objets importants en cas de problème (extincteur, robinet d’entrée d’eau, robinet de gaz, etc.)<br>
+		Téléphones; les numéros d’urgence tels que 911, info-santé, etc.<br>
+		Rassemblement; les lieux de rassemblement dans le quartier et hors du quartier.<br>
+		Pour enregistrer le plan, il faut être connecté.
+      </p>
+    </div>
+</div>

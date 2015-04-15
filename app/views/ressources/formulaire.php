@@ -102,3 +102,15 @@
 
 
 <?= Form::close();?>
+
+<div class="row">
+    <div class="alert alert-info" role="alert">
+      <h4>Aide en Ligne</h4>
+      <p>
+       Ajout :
+        Pour ajouter une personne ressource, il faut informer tous les champs. 
+        Donner une catégorie, un nom, un téléphone, un email, un url et une brève description. Ensuite on peut cliquer 
+        sur Enregistrer pour terminer la création ou sur Réinitialiser pour recommencer.
+      </p>
+    </div>
+</div>

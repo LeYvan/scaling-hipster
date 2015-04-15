@@ -57,6 +57,15 @@
                 <h4>Le saviez-vous?</h4>
                 <p>Vous pouvez inscrire votre numéro de téléphone cellulaire pour recevoir les alertes de faireface.ca par SMS.</p>
                 <p>Vous n'avez qu'à ajouter l'information dans votre profile, atteignable en cliquant sur votre nom en haut à droite de la page.</p>
+                <br/>
+                <h4>Aide en Ligne</h4>
+                <p>
+                  Nous avons la liste de toutes les alertes publiées sur le site.
+                 Chaque alerte possède un emplacement, une date, un auteur, du contenu,
+                 un type et les personnes ressources à contacter pour ce type d’alerte.
+                 Nous pouvons également afficher la liste en fonction des types d’alertes.
+                </p>
+                <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les alertes, il peut en ajouter,ou en supprimer.</p>
               </div>
             </div>
 
@@ -140,6 +149,7 @@
             </div>
             <?php } ?>
             </div>
+          </div>
 
             <!-- Fin d'un sinistre -->
 

@@ -108,6 +108,17 @@
   echo Form::close();
 ?>
 
+<div class="row">
+    <div class="alert alert-info" role="alert">
+      <h4>Aide en Ligne</h4>
+      <p>
+       Modification : Pour la modification; à partir de la liste des sinistres,
+       on clique sur le bouton modifier qui nous envoie vers un formulaire avec les champs pré remplis
+       par le sinistre qu’on veut modifier. On modifie les champs voulus et on enregistre en cliquant sur Envoyer.
+      </p>
+    </div>
+</div>
+
           <!-- Fenêtre modal de visionnement d'images -->
           <div class="modal fade" id="mediaModal" tabindex="-1" role="dialog" aria-labelledby="mediaModalLabel" aria-hidden="true">
             <div class="modal-dialog">
