@@ -79,7 +79,7 @@ $('#btnImprimer').click(function () {
 
 $('a[data-toggle="tab"][href="#resume"]').on('show.bs.tab', function (e){ff.fillResume(e)});
 
-$('#frmPlanFamillial').on( "submit", function(event){
+$('#frmPlanFamilial').on( "submit", function(event){
   var serialisation = JSON.stringify($( this ).serializeArray()); // Défini une variable qui contient la sérialisation
   event.preventDefault(); // Empêche le formulaire de s'envoyer par lui-même
 

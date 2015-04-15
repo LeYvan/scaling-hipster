@@ -40,7 +40,7 @@
                         <div class="panel panel-info">
                           <div class="panel-heading">Localisation</div>
                             <div class="panel-body">
-                              <a href="<?=$href?>"><img alt="Voir dans google maps." src="<?=$url?>"></a>
+                              <a href="<?=$href?>" target="_BLANK"><img alt="Voir dans google maps." src="<?=$url?>"></a>
                             </div>
                         </div>
                       </div>

@@ -31,7 +31,7 @@
 
     $(data).each(function(i,e){
       if (e.value != undefined) {
-        $("[name='"+e.name+"'").val(e.value);
+        $("[name='"+e.name+"']").val(e.value);
       }
     });
 
@@ -44,10 +44,10 @@
   planFamilial.onSauvegarderClick = function(e){
     event.preventDefault();
 
-    var url = $('#frmPlanFamillial').attr('action');
+    var url = $('#frmPlanFamilial').attr('action');
 
 
-    var wholeData = $('#frmPlanFamillial').serializeArray();
+    var wholeData = $('#frmPlanFamilial').serializeArray();
 
     var strData = 'json=' + JSON.stringify(wholeData);
 

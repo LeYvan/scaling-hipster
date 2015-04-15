@@ -1,9 +1,9 @@
-<h1 class="hidden-print">Plan famillial</h1>
+<h1 class="hidden-print">Plan Familial</h1>
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      !!!  À FAIRE: mettre l'attribut « method » et mettre l'attribut « action »  !!!
      !!!                 s'ils sont nécessaires S.V.P. Merci :-)                 !!!
      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<form method="post" action="/plan/sauvegarder" class="form-horizontal" name="PlanFamillial" id="frmPlanFamillial">
+<form method="post" action="/plan/sauvegarder" class="form-horizontal" name="PlanFamilial" id="frmPlanFamilial">
 
 	<div role="tabpanel">
 		<!-- Nav tabs -->
@@ -30,7 +30,7 @@
 						<button class="btn btn-primary btn-block hidden-print" type="button" id="btnImprimer"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimer</button>
 					</div>
 				</div>
-				<h2>Votre plan famillial</h2>
+				<h2>Votre plan Familial</h2>
 				<div id="resume-contenu"></div>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="famille">
