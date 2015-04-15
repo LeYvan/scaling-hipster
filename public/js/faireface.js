@@ -82,31 +82,27 @@ $('a[data-toggle="tab"][href="#resume"]').on('show.bs.tab', function (e){ff.fill
 $('#frmPlanFamilial').on( "submit", function(event){
   var serialisation = JSON.stringify($( this ).serializeArray()); // Défini une variable qui contient la sérialisation
   event.preventDefault(); // Empêche le formulaire de s'envoyer par lui-même
-
-/***************************************\
-|**             À FAIRE :             **|
-|** Envoyer la chaîne sérialisée vers **|
-|**           l'application           **|
-|**                                   **|
-|**   Aller voir ce qu'il y a faire   **|
-|**                                   **|
-|**              Merci :)             **|
-\***************************************/
-
 });
 
 $(document).ready(function(){
+    setTimeout( function(){
+      $("img").each(function (i,e) {
+        if (e.naturalHeight === 0) {
+              var imgSrc = '/images/' + (Math.floor(Math.random() * 10) + 1) + '.jpg';
+              $(this).attr("src", imgSrc);
+        }
+      });
+    }, 2000 );
 
-  $("img").each(function (i,e) {
-    if (e.naturalHeight === 0) {
+    jQuery.validator.addMethod("telephone", function(value, element) {
+        var phoneRegEx = /^[0-9()-]+$/;
+        return this.optional(element) || phoneRegEx.test(value);
+    }, "N'entrez que des chiffres et des tirets '-'.");
 
-          var imgSrc = '/images/' + (Math.floor(Math.random() * 10) + 1) + '.jpg';
-
-          $(this).attr("src", imgSrc);
-    }
-
-  });
-
-
-
+    $("#frmNouvelle").validate();
+    $("#frmCapsule").validate();
+    $("#frmSinistreAjouter").validate();
+    $("#frmRessource").validate();
+    $("#frmUtiisateur").validate();
+    $("#frmProfile").validate();
 });

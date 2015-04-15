@@ -13,7 +13,7 @@ class UtilisateursController extends BaseController {
         $utilisateurs = Utilisateur::paginate(20);
 
         // Enboite vue sinistres dans vue design
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'utilisateurs.lister',
@@ -29,7 +29,7 @@ class UtilisateursController extends BaseController {
         $Utilisateur = Utilisateur::where('id',$id)->firstOrFail();
 
         // Enboite vue formulaire dans vue design
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'utilisateurs.formulaire',
@@ -52,7 +52,7 @@ class UtilisateursController extends BaseController {
       $Utilisateur = Utilisateur::where('id',$user->id)->firstOrFail();
 
       // Enboite vue formulaire dans vue design
-      return 
+      return
         View::make('faireface', $proprietesPage)
           ->nest('contenu',
                  'utilisateurs.profile',
@@ -62,8 +62,9 @@ class UtilisateursController extends BaseController {
     public function profilePost($id)
     {
       if (!(Input::has('nom') &&
-          Input::has('email') &&
-          Input::has('sms'))){
+          Input::has('email'))
+          )
+      {
 
         return $this->afficherErreur("Données invalides.");
       }
@@ -86,7 +87,6 @@ class UtilisateursController extends BaseController {
 
       if (!(Input::has('nom') &&
           Input::has('email') &&
-          Input::has('sms') &&
           Input::has('niveau'))){
 
         return $this->afficherErreur("Introuvable");
@@ -143,7 +143,7 @@ class UtilisateursController extends BaseController {
 
           if(!is_null($user))
           {
-            $Utilisateur = new Utilisateur;      
+            $Utilisateur = new Utilisateur;
 
             $Utilisateur->nomUtilisateur = $login;
             $Utilisateur->nom = $nom;
@@ -160,7 +160,7 @@ class UtilisateursController extends BaseController {
             {
               return $this->afficherErreur("Nom d'utilisateur déjà utilisé.");
             }
-            
+
           }
           else
           {
@@ -169,15 +169,15 @@ class UtilisateursController extends BaseController {
         }
         else
         {
-          return $this->afficherErreur("Tous les champs sont obligatoires");         
+          return $this->afficherErreur("Tous les champs sont obligatoires");
         }
       }
       else
       {
         return $this->afficherErreur("Il manque des champs");
-      }      
+      }
 
-      return 
+      return
         View::make('faireface', $proprietesPage)
           ->nest('contenu',
                  'succes');
@@ -191,7 +191,7 @@ class UtilisateursController extends BaseController {
         // $params = array("reussi" => true, "message" => 'Connexion réussie!');
         return $this->afficherSucces('Connexion réussie');
       } else {
-        // $params = array("reussi" => false, "message" => 'La connexion a échouée!');    
+        // $params = array("reussi" => false, "message" => 'La connexion a échouée!');
         return $this->afficherErreur('La connexion a échouée!');
       }
     }

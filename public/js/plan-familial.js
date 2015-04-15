@@ -44,6 +44,19 @@
   planFamilial.onSauvegarderClick = function(e){
     event.preventDefault();
 
+    var validator = $('#frmPlanFamilial').validate({
+
+    });
+
+    $('input:visible, textarea:visible').each(function(i,e){
+      e.focus();
+      validator.element(e);
+    });
+
+    if (!validator.valid() || $('input:visible.error').length > 0) {
+      return;
+    }
+
     var url = $('#frmPlanFamilial').attr('action');
 
 

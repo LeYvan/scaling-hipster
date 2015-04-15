@@ -61,13 +61,13 @@
 										<div class="col-md-6 form-group">
 											<label for="champTelephone<?php echo $i;?>" class="col-md-4 col-xs-5 col-sm-3 control-label">Téléphone :</label>
 											<div class="col-md-8 col-xs-7 col-sm-9">
-												<input type="tel" class="form-control" name="Telephone<?php echo $i;?>" id="champTelephone<?php echo $i;?>" placeholder="Téléphone">
+												<input type="text" class="form-control telephone" name="Telephone<?php echo $i;?>" id="champTelephone<?php echo $i;?>" placeholder="Téléphone">
 											</div>
 										</div>
 										<div class="col-md-6 form-group">
 											<label for="champCellulaire<?php echo $i;?>" class="col-xs-5 col-sm-3 col-md-5 control-label">Cellulaire :</label>
 											<div class="col-xs-7 col-sm-9 col-md-7">
-												<input type="tel" class="form-control" name="Cellulaire<?php echo $i;?>" id="champCellulaire<?php echo $i;?>" placeholder="Cellulaire">
+												<input type="text" class="form-control telephone" name="Cellulaire<?php echo $i;?>" id="champCellulaire<?php echo $i;?>" placeholder="Cellulaire">
 											</div>
 										</div>
 									</div>
@@ -129,7 +129,7 @@
 										<div class="col-md-6 form-group">
 											<label for="champRessourceCourriel<?php echo $i;?>" class="col-md-5 col-sm-2 col-xs-3 control-label">Courriel :</label>
 											<div class="col-xs-9 col-md-7 col-sm-10">
-												<input type="date" class="form-control" name="Date<?php echo $i;?>" id="champRessourceCourriel<?php echo $i;?>" placeholder="Courriel">
+												<input type="email" class="form-control" name="Date<?php echo $i;?>" id="champRessourceCourriel<?php echo $i;?>" placeholder="Courriel">
 											</div>
 										</div>
 									</div>
@@ -137,13 +137,13 @@
 										<div class="col-md-6 form-group">
 											<label for="champRessourceTelephone<?php echo $i;?>" class="col-md-4 col-sm-2 col-xs-3 control-label">Téléphone :</label>
 											<div class="col-md-8 col-xs-9 col-sm-10">
-												<input type="text" class="form-control" name="Nom<?php echo $i;?>" id="champRessourceTelephone<?php echo $i;?>" placeholder="Téléphone">
+												<input type="text" class="form-control telephone" name="Nom<?php echo $i;?>" id="champRessourceTelephone<?php echo $i;?>" placeholder="Téléphone">
 											</div>
 										</div>
 										<div class="col-md-6 form-group">
 											<label for="champRessourceCellulaire<?php echo $i;?>" class="col-md-5 col-sm-2 col-xs-3 control-label">Cellulaire :</label>
 											<div class="col-xs-9 col-md-7 col-sm-10">
-												<input type="date" class="form-control" name="Date<?php echo $i;?>" id="champRessourceCellulaire<?php echo $i;?>" placeholder="Cellulaire">
+												<input type="text" class="form-control telephone" name="Date<?php echo $i;?>" id="champRessourceCellulaire<?php echo $i;?>" placeholder="Cellulaire">
 											</div>
 										</div>
 									</div>
@@ -223,7 +223,7 @@
 								<div class="col-md-6 form-group">
 									<label for="champClinique" class="col-sm-3 col-md-6 col-xs-6 control-label">Clinique médicale :</label>
 									<div class="col-xs-6 col-sm-9 col-md-6">
-										<input type="tel" class="form-control" name="Clinique" id="champClinique" placeholder="Téléphone" />
+										<input type="text" class="form-control telephone" name="Clinique" id="champClinique" placeholder="Téléphone" />
 									</div>
 								</div>
 							</div>
@@ -233,13 +233,13 @@
 								<div class="col-md-6 form-group">
 									<label for="champPharmacie" class="col-sm-3 col-md-6 col-xs-6 control-label">Pharmacie :</label>
 									<div class="col-xs-6 col-sm-9 col-md-6">
-										<input type="tel" class="form-control" name="Pharmacie" id="champPharmacie" placeholder="Téléphone" />
+										<input type="text" class="form-control telephone" name="Pharmacie" id="champPharmacie" placeholder="Téléphone" />
 									</div>
 								</div>
 								<div class="col-md-6 form-group">
 									<label for="champVétérinaire" class="col-sm-3 col-md-6 col-xs-6 control-label">Vétérinaire :</label>
 									<div class="col-xs-6 col-sm-9 col-md-6">
-										<input type="tel" class="form-control" name="Veterinaire" id="champVétérinaire" placeholder="Téléphone" />
+										<input type="text" class="form-control telephone" name="Veterinaire" id="champVétérinaire" placeholder="Téléphone" />
 									</div>
 								</div>
 							</div>
@@ -275,7 +275,7 @@
 												<div class="col-md-5 form-group">
 													<label for="champAss<?php echo $champ['short'];?>" class="col-xs-6 col-sm-4 col-md-4 control-label">Téléphone :</label>
 													<div class="col-xs-6 col-sm-8 col-md-8">
-														<input type="text" class="form-control" name="TelAss<?php echo $champ['short'];?>" id="champTelAss<?php echo $champ['short'];?>" placeholder="Nom de la compagnie" />
+														<input type="text" class="form-control telephone" name="TelAss<?php echo $champ['short'];?>" id="champTelAss<?php echo $champ['short'];?>" placeholder="Nom de la compagnie" />
 													</div>
 												</div>
 											</div>
@@ -314,7 +314,7 @@
 									<div class="col-md-6 form-group">
 										<label class="col-md-4 col-xs-5 control-label">Téléphone :</label>
 										<div class="col-md-8 col-xs-7">
-											<input type="tel" class="form-control" name="Telephone<?php echo $champ['short'];?>" id="champTelephone<?php echo $champ['short'];?>" placeholder="Téléphone" />
+											<input type="text" class="form-control telephone" name="Telephone<?php echo $champ['short'];?>" id="champTelephone<?php echo $champ['short'];?>" placeholder="Téléphone" />
 										</div>
 									</div>
 								</fieldset>
@@ -332,17 +332,20 @@
 </form>
 
 <div class="row">
-    <div class="alert alert-info" role="alert">
-      <h4>Aide en Ligne</h4>
-      <p>
-      	Nous avons un résumé (tout) du plan familial qui comprend 5 sections et qui est imprimable en format pdf.
-		Nous avons des liens vers chaque section sur la page pour pouvoir les remplir. Les différentes sections sont :<br>
-		Famille; la liste des membres de la famille.<br>
-		Personnes ressources; personne à contacter en cas d’urgence.<br>
-		Maison; emplacement des différents objets importants en cas de problème (extincteur, robinet d’entrée d’eau, robinet de gaz, etc.)<br>
-		Téléphones; les numéros d’urgence tels que 911, info-santé, etc.<br>
-		Rassemblement; les lieux de rassemblement dans le quartier et hors du quartier.<br>
-		Pour enregistrer le plan, il faut être connecté.
-      </p>
-    </div>
+		<div class="col-md-8 col-md-offset-2 ">
+			<div class="alert alert-info" role="alert">
+				<h4>Aide en Ligne</h4>
+				<p>
+					Nous avons un résumé (tout) du plan familial qui comprend 5 sections et qui est imprimable en format pdf.
+			Nous avons des liens vers chaque section sur la page pour pouvoir les remplir. Les différentes sections sont :<br>
+			Famille; la liste des membres de la famille.<br>
+			Personnes ressources; personne à contacter en cas d’urgence.<br>
+			Maison; emplacement des différents objets importants en cas de problème (extincteur, robinet d’entrée d’eau, robinet de gaz, etc.)<br>
+			Téléphones; les numéros d’urgence tels que 911, info-santé, etc.<br>
+			Rassemblement; les lieux de rassemblement dans le quartier et hors du quartier.<br>
+			Pour enregistrer le plan, il faut être connecté.
+				</p>
+			</div>
+		</div>
+
 </div>

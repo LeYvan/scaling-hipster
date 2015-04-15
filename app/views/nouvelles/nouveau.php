@@ -4,30 +4,29 @@
 <?php
 	if (isset($nouvelle->id) && $nouvelle->id != null)
 	{
-		echo Form::model($nouvelle, array('url' => array('/nouvelles',$nouvelle->id,'modifier'), 'class'=>'form-horizontal'));
+		echo Form::model($nouvelle, array('url' => array('/nouvelles',$nouvelle->id,'modifier'), 'class'=>'form-horizontal',"id"=>"frmNouvelle"));
 		echo "<legend>Modifier la nouvelle</legend>";
 	}
 	else
 	{
-		echo Form::model(new Nouvelle, array('url' => '/nouvelles/ajouter/'));
+		echo Form::model(new Nouvelle, array('url' => '/nouvelles/ajouter/', 'class'=>'form-horizontal',"id"=>"frmNouvelle"));
 		echo "<legend>Ajouter la nouvelle</legend>";
 	}
 ?>
 
-<fieldset>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="titre">Titre de la nouvelle :</label>  
+  <label class="col-md-4 control-label" for="titre">Titre de la nouvelle :</label>
   <div class="col-md-5">
-      <?= Form::text('titre',Input::old('titre'),array('class'=>'form-control input-md')) ?>
+      <?= Form::text('titre',Input::old('titre'),array('class'=>'form-control input-md',"required"=>"required")) ?>
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="contenu">Contenu :</label>  
+  <label class="col-md-4 control-label" for="contenu">Contenu :</label>
   <div class="col-md-5">
-    <?= Form::text('contenu',Input::old('contenu'),array('class'=>'form-control input-md')) ?>
+    <?= Form::text('contenu',Input::old('contenu'),array('class'=>'form-control input-md',"required"=>"required")) ?>
   </div>
 </div>
 
@@ -49,7 +48,6 @@
   </div>
 </div>
 
-</fieldset>
 <?= Form::close() ?>
 
 <div class="row">
@@ -60,7 +58,7 @@
       	Il faut donner un titre et le contenu, l’utilisateur connecté est directement considéré comme l’auteur.
       </p>
       <p>
-      	Modification : Pour la modification; à partir de la liste des nouvelles, 
+      	Modification : Pour la modification; à partir de la liste des nouvelles,
       	on clique sur le bouton modifier qui nous envoie vers un formulaire avec les champs pré remplis par la nouvelle qu’on veut modifier.
       	On modifie les champs voulus et on enregistre en cliquant sur Modifier.</p>
     </div>

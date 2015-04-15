@@ -150,6 +150,13 @@
         $('#categorie_id').val($(this).data('id'));
      });
 
+
+       $('#frmPublier').validate();
+
+       // Ce click simulé sélectionne la première catégorie d'alertes.
+       $('#categorieSel a[data-id]:first').click();
+
+
   });
 
   $('#cmdEnvoyer').click(function() {
@@ -163,5 +170,6 @@
     }
 
   });
+
 
 }( window.ff_pub_alerte = window.ff_pub_alerte || {}, jQuery ));

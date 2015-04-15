@@ -7,7 +7,7 @@
 
       </div>
 
-<?= Form::model(new Sinistre, array('url' => '/alertes/publier/','files' => true,'class'=>"form-horizontal")) ?>
+<?= Form::model(new Sinistre, array('url' => '/alertes/publier/','files' => true,'class'=>"form-horizontal","id"=>"frmPublier")) ?>
 <input type="hidden" id="categorie_id" name="categorie_id" />
 <fieldset>
 <legend>Publier</legend>
@@ -39,26 +39,26 @@
 <!-- Textarea -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="contenu">Contenu</label>
-  <div class="col-md-6">                     
-    <textarea class="form-control" id="contenu" name="contenu">Contenu de l'alerte.</textarea>
+  <div class="col-md-6">
+    <textarea class="form-control" id="contenu" name="contenu" required="required">Contenu de l'alerte.</textarea>
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="lat">Latitude</label>  
+  <label class="col-md-4 control-label" for="lat">Latitude</label>
   <div class="col-md-4">
-  <input id="lat" name="lat" type="text" placeholder="40.0" class="form-control input-md">
-    
+  <input id="lat" name="lat" type="number" placeholder="40.0" class="form-control input-md"  required="required">
+
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="long">Longitude</label>  
+  <label class="col-md-4 control-label" for="long">Longitude</label>
   <div class="col-md-4">
-  <input id="long" name="long" type="text" placeholder="50.0" class="form-control input-md">
-    
+  <input id="long" name="long" type="number" placeholder="50.0" class="form-control input-md"  required="required">
+
   </div>
 </div>
 
@@ -75,18 +75,18 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="rayon">Rayon (Km)</label>  
+  <label class="col-md-4 control-label" for="rayon">Rayon (Km)</label>
   <div class="col-md-4">
-  <input id="rayon" name="rayon" type="text" placeholder="5.0" class="form-control input-md">
-    
+  <input id="rayon" name="rayon" type="number" placeholder="5.0" class="form-control input-md"  required="required">
+
   </div>
 </div>
 
 <!-- Button -->
 <div class="form-group">
-  
+
   <div class="col-md-4">
-    
+
   </div>
 </div>
 
@@ -108,7 +108,7 @@
       <p>
         Ajout : Pour l’ajout d’une alerte, il faut donner les informations concernant l’alerte.
         Il faut donner une catégorie, un contenu, l’adresse (longitude et latitude) et un rayon en fonction de l’adresse,
-        l’utilisateur connecté est directement considéré comme l’auteur. Ensuite on peut enregistrer l’alerte ou réinitialiser 
+        l’utilisateur connecté est directement considéré comme l’auteur. Ensuite on peut enregistrer l’alerte ou réinitialiser
         le formulaire pour recommencer l’ajout.
       </p>
     </div>
@@ -130,7 +130,7 @@
 
                     <!-- Adresse -->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="adresse">Adresse</label>  
+                      <label class="col-md-4 control-label" for="adresse">Adresse</label>
                       <div class="col-md-8">
                         <input id="_adresse" name="_adresse" type="text" placeholder="Entrez une adresse pour chercher" class="form-control input-md">
                       </div>
@@ -138,7 +138,7 @@
 
                     <!-- Preview -->
                     <div id="adressePreview" class="form-group">
-                      <label class="col-md-4 control-label" for="adresse">Carte</label>  
+                      <label class="col-md-4 control-label" for="adresse">Carte</label>
                       <div class="col-md-8">
                         <img id="imgPreview" src="/images/chargement.gif">
                       </div>

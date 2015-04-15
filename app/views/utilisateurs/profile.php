@@ -1,5 +1,5 @@
 <h1>Profile</h1>
-<?= Form::model($utilisateur, array('url' => array('/profile',$utilisateur->id), 'class'=>'form-horizontal')) ?>
+<?= Form::model($utilisateur, array('url' => array('/profile',$utilisateur->id), 'class'=>'form-horizontal', "id"=>"frmProfile")) ?>
 <fieldset>
 
 <!-- Form Name -->
@@ -7,39 +7,39 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Nom">Votre nom complet :</label>  
+  <label class="col-md-4 control-label" for="Nom">Votre nom complet :</label>
   <div class="col-md-5">
   <!-- <input id="Nom" name="Nom" type="text" placeholder="Votre nom complet" class="form-control input-md" required=""> -->
-    <?= Form::text('nom',Input::old('nom'),array('class'=>'form-control input-md')) ?>
+    <?= Form::text('nom',Input::old('nom'),array('class'=>'form-control input-md',"required"=>"required")) ?>
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Email">Votre adresse courriel :</label>  
+  <label class="col-md-4 control-label" for="Email">Votre adresse courriel :</label>
   <div class="col-md-5">
-  <?= Form::text('email',Input::old('email'),array('class'=>'form-control input-md')) ?>
-    
+  <?= Form::email('email',Input::old('email'),array('class'=>'form-control input-md',"required"=>"required")) ?>
+
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Email">Téléphone (pour alertes SMS) :</label>  
+  <label class="col-md-4 control-label" for="Email">Téléphone (pour alertes SMS) :</label>
   <div class="col-md-5">
     <div class="row">
       <div class="col-md-6">
         <?= Form::text('sms',Input::old('sms'),array('class'=>'form-control input-md')) ?>
-        <p class="help-block">Dix chiffres, sans espaces, sans symboles. Uniquement des chiffres (10). </p> 
+        <p class="help-block">Dix chiffres, sans espaces, sans symboles. Uniquement des chiffres (10). </p>
       </div>
       <div class="col-md-6">
-        <?php 
+        <?php
         if ($utilisateur->sms != "") {
           ?>
-          <button id="cmdUnsub" class="btn btn-primary">Se désabonner</button>  
+          <button id="cmdUnsub" class="btn btn-primary">Se désabonner</button>
           <?php
-        } 
-        else 
+        }
+        else
         {
           ?>
           &nbsp;
@@ -48,7 +48,7 @@
         ?>
       </div>
     </div>
-  
+
   </div>
 </div>
 
@@ -65,6 +65,7 @@
 
 
 <div class="row">
+  <div class="col-md-8 col-md-offset-2">
     <div class="alert alert-info" role="alert">
       <h4>Aide en Ligne</h4>
       <p>
@@ -72,4 +73,5 @@
         Si on est déjà inscrit, on a un bouton pour se désabonner des alertes.
       </p>
     </div>
+  </div>
 </div>
