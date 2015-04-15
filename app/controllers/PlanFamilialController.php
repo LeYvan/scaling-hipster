@@ -7,7 +7,7 @@ class PlanFamilialController extends BaseController {
   			'titre' => 'Plan Familial',
   			'jumbo' => false
   		);
-  		return View::make('faireface', $message)->nest('contenu','planFamilial.plan');
+  		return View::make('faireface', $message)->nest('contenu','planfamilial.plan');
   	}
 
 		public function sauvegarder()
