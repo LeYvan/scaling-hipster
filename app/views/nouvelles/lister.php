@@ -41,3 +41,17 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+    <div class="alert alert-info" role="alert">
+      <h4>Aide en Ligne</h4>
+      <p>
+         Nous avons la liste de toutes les nouvelles publiées sur le site.
+         Chaque nouvelle possède un auteur, un titre et un contenu.
+         Nous affichons l’auteur et le contenu. Tout utilisateur connecté peut en ajouter.
+      </p>
+         
+      <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les nouvelles, il peut
+         en modifier ou en supprimer.</p>
+    </div>
+</div>

@@ -35,6 +35,18 @@
         </tbody>
     </table>
 <!-- </div> -->
+
+    <div class="row">
+    <div class="alert alert-info" role="alert">
+      <h4>Aide en Ligne</h4>
+      <p>
+        Cette section est seulement réservée aux administrateurs. On y retrouve la liste de tous les utilisateurs classés par niveau.
+        L’administrateur peut modifier toutes les informations d’un utilisateur. À partir de la liste, on clique sur Modifier qui nous
+        envoie vers un formulaire avec les champs pré remplis par l’utilisateur qu’on veut modifier. On modifie les champs voulus 
+        et on enregistre. Il peut également supprimer des utilisateurs.
+      </p>
+    </div>
+</div>
     <div class="modal fade" id="supprUserModal" tabindex="-1" role="dialog" aria-labelledby="supprUserModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">

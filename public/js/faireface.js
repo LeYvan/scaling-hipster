@@ -100,7 +100,7 @@ $(document).ready(function(){
   $("img").each(function (i,e) {
     if (e.naturalHeight === 0) {
 
-          var imgSrc = '/images/' + (Math.floor(Math.random() * 10) + 1) + '.jpg?'+Math.random();
+          var imgSrc = '/images/' + (Math.floor(Math.random() * 10) + 1) + '.jpg';
 
           $(this).attr("src", imgSrc);
     }

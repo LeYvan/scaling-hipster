@@ -112,6 +112,21 @@
   </div>
 </div>
 
+<div class="row">
+    <div class="alert alert-info" role="alert">
+      <h4>Aide en Ligne</h4>
+      <p>
+       Nous avons la liste de toutes les personnes ressources avec leur courriel,
+       site internet, téléphone et une brève description. Nous pouvons également afficher
+       la liste en fonction des types de sinistre. Sur chaque sinistre nous avons un lien pour 
+       retourner en haut de la page. La liste est également présente à droite de la page et 
+       on peut cliquer sur une ressource et se retrouver à ses informations.</p>
+
+      <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les ressources, il peut en ajouter, en modifier ou en supprimer.
+
+      </p>
+    </div>
+</div>
 <!-- Fenêtre modal de confirmation de suppressin de sinistre -->
 <div class="modal fade" id="supprRessourceModal" tabindex="-1" role="dialog" aria-labelledby="supprRessourceModalLabel" aria-hidden="true">
   <div class="modal-dialog">

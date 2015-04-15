@@ -102,6 +102,18 @@
 </fieldset>
 <?= Form::close();?>
 
+<div class="row">
+    <div class="alert alert-info" role="alert">
+      <h4>Aide en Ligne</h4>
+      <p>
+        Ajout : Pour l’ajout d’une alerte, il faut donner les informations concernant l’alerte.
+        Il faut donner une catégorie, un contenu, l’adresse (longitude et latitude) et un rayon en fonction de l’adresse,
+        l’utilisateur connecté est directement considéré comme l’auteur. Ensuite on peut enregistrer l’alerte ou réinitialiser 
+        le formulaire pour recommencer l’ajout.
+      </p>
+    </div>
+</div>
+
           <!-- Fenêtre modal de confirmation de suppressin de sinistre -->
           <div class="modal fade" id="trouverAdresseModel" tabindex="-1" role="dialog" aria-labelledby="lblTrouverAdresseModel" aria-hidden="true">
             <div class="modal-dialog">
