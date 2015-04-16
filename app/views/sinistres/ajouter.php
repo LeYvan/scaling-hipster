@@ -1,12 +1,12 @@
-<?= Form::model(new Sinistre, array('url' => '/sinistres/ajouter/','files' => true)) ?>
+<?= Form::model(new Sinistre, array('url' => '/sinistres/ajouter/','files' => true, "id"=>"frmSinistreAjouter")) ?>
 <script type="text/javascript">
 </script>
 <fieldset>
 <!-- Text input-->
 <div class="form-group">
-  <label class="control-label" for="titre">Titre du rapport</label>  
+  <label class="control-label" for="titre">Titre du rapport</label>
   <div class="controls">
-  <input value="<?=Input::old('titre')?>" id="titre" name="titre" type="text" placeholder="Titre du sinistre" class="form-control" required=""/>
+  <input value="<?=Input::old('titre')?>" id="titre" name="titre" type="text" placeholder="Titre du sinistre" class="form-control" required="required"/>
   <!-- <span class="help-block">Un titre concis contenant le type et le lieu du sinistre.</span>   -->
   </div>
 </div>
@@ -22,8 +22,8 @@
 <!-- Textarea -->
 <div class="form-group">
   <label class="control-label" for="rapport">Le contenu du rapport.</label>
-  <div class="controls">                     
-    <textarea class="form-control" id="rapport" name="rapport" rows="10"><?=Input::old('rapport')?></textarea>
+  <div class="controls">
+    <textarea class="form-control" id="rapport" name="rapport" rows="10" required="required"><?=Input::old('rapport')?></textarea>
   </div>
 </div>
 

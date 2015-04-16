@@ -22,6 +22,8 @@
        $("#categorieSel .btn:first-child").val(categorie_id);
      }
 
+     $('#categorieSel a[data-id]:first').click();
+
   });
 
 }( window.ff_ressources = window.ff_ressources || {}, jQuery ));

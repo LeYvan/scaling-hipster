@@ -13,7 +13,7 @@ class UtilisateursController extends BaseController {
         $utilisateurs = Utilisateur::paginate(20);
 
         // Enboite vue sinistres dans vue design
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'utilisateurs.lister',
@@ -29,7 +29,7 @@ class UtilisateursController extends BaseController {
         $Utilisateur = Utilisateur::where('id',$id)->firstOrFail();
 
         // Enboite vue formulaire dans vue design
-        return 
+        return
           View::make('faireface', $proprietesPage)
             ->nest('contenu',
                    'utilisateurs.formulaire',
@@ -52,20 +52,73 @@ class UtilisateursController extends BaseController {
       $Utilisateur = Utilisateur::where('id',$user->id)->firstOrFail();
 
       // Enboite vue formulaire dans vue design
-      return 
+      return
         View::make('faireface', $proprietesPage)
           ->nest('contenu',
                  'utilisateurs.profile',
                   array('utilisateur' => $Utilisateur));
     }
 
+    private function validateProfile($checkSms)
+    {
+      if (Input::has('nom') &&
+          strlen(Input::get('nom')) > 0)
+      {
+        if (Input::has('email') &&
+            strlen(Input::get('email')) > 0)
+        {
+          $regex = '/^[0-9()-]+$/';
+          $match = preg_match($regex, Input::get('sms'), $matches, PREG_OFFSET_CAPTURE);
+
+          if (Input::has('sms') &&
+              $match == 1)
+          {
+            return true;
+          }
+          else
+          {
+            if ($checkSms)
+            {
+              return false;
+            }
+            else
+            {
+              if (Input::has('sms') &&
+                  $match == false)
+              {
+                return "Le numéro de tléphone doit contenir des chiffres et des '-' uniquement";
+              }
+              else
+              {
+                return true;
+              }
+
+            }
+          }
+        }
+        else
+        {
+          return "Le email doit contenir un '@' et un '.'";
+        }
+      }
+      else
+      {
+        return "Le nom est requis.";
+      }
+
+      return false;
+    }
+
+    private function checkNieau()
+    {
+      return Input::has('niveau') && strlen(Input::get('niveau')) > 0;
+    }
+
     public function profilePost($id)
     {
-      if (!(Input::has('nom') &&
-          Input::has('email') &&
-          Input::has('sms'))){
-
-        return $this->afficherErreur("Données invalides.");
+      if ($this->validateProfile(false) !== true)
+      {
+        return $this->afficherErreur($this->validateProfile(false));
       }
 
       $Utilisateur = Utilisateur::findOrFail($id);
@@ -84,12 +137,9 @@ class UtilisateursController extends BaseController {
             // Set titre page générée
       $proprietesPage = array('titre' => 'Utilisateur - Modifier');
 
-      if (!(Input::has('nom') &&
-          Input::has('email') &&
-          Input::has('sms') &&
-          Input::has('niveau'))){
-
-        return $this->afficherErreur("Introuvable");
+      if ($this->validateProfile(false) !== true)
+      {
+        return $this->afficherErreur($this->validateProfile(false));
       }
 
       $Utilisateur = Utilisateur::findOrFail($id);
@@ -137,13 +187,15 @@ class UtilisateursController extends BaseController {
         $mdp = Input::get('txtMotPasse');
         $email = Input::get('txtEmail');
 
+
+
         if ($nom != "" && $login !="" && $mdp != "" && $email != "")
         {
           $user = Utilisateur::where('nomUtilisateur',Input::get('txtUtilisateur'))->get();
 
           if(!is_null($user))
           {
-            $Utilisateur = new Utilisateur;      
+            $Utilisateur = new Utilisateur;
 
             $Utilisateur->nomUtilisateur = $login;
             $Utilisateur->nom = $nom;
@@ -160,7 +212,7 @@ class UtilisateursController extends BaseController {
             {
               return $this->afficherErreur("Nom d'utilisateur déjà utilisé.");
             }
-            
+
           }
           else
           {
@@ -169,15 +221,15 @@ class UtilisateursController extends BaseController {
         }
         else
         {
-          return $this->afficherErreur("Tous les champs sont obligatoires");         
+          return $this->afficherErreur("Tous les champs sont obligatoires");
         }
       }
       else
       {
         return $this->afficherErreur("Il manque des champs");
-      }      
+      }
 
-      return 
+      return
         View::make('faireface', $proprietesPage)
           ->nest('contenu',
                  'succes');
@@ -191,7 +243,7 @@ class UtilisateursController extends BaseController {
         // $params = array("reussi" => true, "message" => 'Connexion réussie!');
         return $this->afficherSucces('Connexion réussie');
       } else {
-        // $params = array("reussi" => false, "message" => 'La connexion a échouée!');    
+        // $params = array("reussi" => false, "message" => 'La connexion a échouée!');
         return $this->afficherErreur('La connexion a échouée!');
       }
     }

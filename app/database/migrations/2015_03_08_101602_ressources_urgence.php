@@ -29,7 +29,7 @@ class RessourcesUrgence extends Migration {
 			$table->softDeletes();
 		});
 
-		Schema::create('planFamillials',function($table)
+		Schema::create('planFamilials',function($table)
 		{
 			$table->increments('id');
 
@@ -49,7 +49,7 @@ class RessourcesUrgence extends Migration {
 	public function down()
 	{
 		Schema::drop('ressources');
-		Schema::drop('planFamillials');
+		Schema::drop('planFamilials');
 	}
 
 }

@@ -102,10 +102,10 @@ body
 }
 /*.jumbotron
 {
-	margin-bottom:0; 
+	margin-bottom:0;
 }*/
 
-.geoPosImageScroll 
+.geoPosImageScroll
 {
 	display: block;
 	overflow: hidden;
@@ -422,4 +422,11 @@ body
   fieldset
   {
   }
+}
+
+
+label.error {
+	margin-top: 0.5em;
+	color: red;
+	font-size: 0.75em;
 }

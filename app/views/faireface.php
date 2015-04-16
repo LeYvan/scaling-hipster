@@ -225,6 +225,9 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/additional-methods.min.js"></script>
+    <script src="/js/localization/messages_fr.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAWDDvWulCh3nBVbzPuGjy_yZ26PePG23k"></script>
