@@ -103,6 +103,7 @@
 <?= Form::close();?>
 
 <div class="row">
+  <div class="col-md-8 col-md-offset-2">
     <div class="alert alert-info" role="alert">
       <h4>Aide en Ligne</h4>
       <p>
@@ -112,6 +113,7 @@
         le formulaire pour recommencer l’ajout.
       </p>
     </div>
+  </div>
 </div>
 
           <!-- Fenêtre modal de confirmation de suppressin de sinistre -->
