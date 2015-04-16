@@ -3,23 +3,37 @@
 <?php if (Auth::check()) { ?>
   <a href="/nouvelles/ajouter/">Publier une nouvelle</a>
 <?php } ?>
-
+<div class="row">
+  <div class="col-md-9">
 <?php foreach ($nouvelles as $nouvelle) { ?>
-  </br>
-  <div class="well">
-    <b>@<i><?= $nouvelle->utilisateur()->nom ?></i></b>: <?=$nouvelle->contenu ?>
+  <article class="panel">
+    <h1 class="h3"><?=$nouvelle->titre ?></h1>
+    <p>par : <strong><?= $nouvelle->utilisateur()->nom ?></strong></p>
+    <?=$nouvelle->contenu?>
 
     <?php if (Auth::check() && (Auth::user()->niveau == 1 || Auth::user()->niveau == 99)) { ?>
-      <a class="btn btn-primary" href="/nouvelles/<?= $nouvelle->id?>/modifier/" type="button">
-             <span class="glyphicon glyphicon-edit"></span>  Modifier
-            </a>
-            <a class="btn btn-danger" href="#" data-user-id="<?=$nouvelle->id?>" data-user-name="<?=$nouvelle->utilisateur()->nom?>" type="button" data-toggle="modal" data-target="#supprUserModal">
-             <span class="glyphicon glyphicon-remove"></span>  Supprimer
-            </a>
+    <footer>
+      <div class="text-right">
+        <a class="btn btn-primary" href="/nouvelles/<?= $nouvelle->id?>/modifier/" type="button">
+         <span class="glyphicon glyphicon-edit"></span>  Modifier
+        </a>
+        <a class="btn btn-danger" href="#" data-user-id="<?=$nouvelle->id?>" data-user-name="<?=$nouvelle->utilisateur()->nom?>" type="button" data-toggle="modal" data-target="#supprUserModal">
+         <span class="glyphicon glyphicon-remove"></span>  Supprimer
+        </a>
+      </div>
+    </footer>
     <?php } ?>
-  </div>
+  </article>
 <?php } ?>
-
+  </div>
+  <div class="col-md-3">
+    <div class="alert alert-info alert-batard" role="alert">
+      <h4>Aide en Ligne</h4>
+      <p>Nous avons la liste de toutes les nouvelles publiées sur le site. Chaque nouvelle possède un auteur, un titre et un contenu. Nous affichons l’auteur et le contenu. Tout utilisateur connecté peut en ajouter.</p>
+      <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les nouvelles, il peut en modifier ou en supprimer.</p>
+    </div>
+  </div>
+</div>
 <div class="modal fade" id="supprUserModal" tabindex="-1" role="dialog" aria-labelledby="supprUserModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -40,18 +54,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="row">
-    <div class="alert alert-info" role="alert">
-      <h4>Aide en Ligne</h4>
-      <p>
-         Nous avons la liste de toutes les nouvelles publiées sur le site.
-         Chaque nouvelle possède un auteur, un titre et un contenu.
-         Nous affichons l’auteur et le contenu. Tout utilisateur connecté peut en ajouter.
-      </p>
-         
-      <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les nouvelles, il peut
-         en modifier ou en supprimer.</p>
-    </div>
 </div>
