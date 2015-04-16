@@ -122,6 +122,7 @@
 </div>
 
 <div class="row">
+  <div class="col-md-9">
     <div class="alert alert-info" role="alert">
       <h4>Aide en Ligne</h4>
       <p>
@@ -135,6 +136,7 @@
 
       </p>
     </div>
+  </div>
 </div>
 <!-- Fenêtre modal de confirmation de suppressin de sinistre -->
 <div class="modal fade" id="supprRessourceModal" tabindex="-1" role="dialog" aria-labelledby="supprRessourceModalLabel" aria-hidden="true">
