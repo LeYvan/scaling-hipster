@@ -37,37 +37,42 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8 col-lg-9">
-<?php foreach ($capsules as $capsule) { ?>
-	<article class="well">
-		<h1 class="h2"><?=$capsule->titre ?></h1>
-    <?= $capsule->contenu?>
+    <div class="col-md-9 col-lg-9">
+      <?php foreach ($capsules as $capsule) { ?>
+      	<article class="panel panel-default">
+          <div class="panel-heading">
+      		  <h1 class="h2"><?=$capsule->titre ?></h1>
+          </div>
+          <div class="panel-body">
+            <?= $capsule->contenu?>
 
-    <h2 class="h3">Ressources suggérées</h2>
-    <ul>
-    <?php
-    foreach($ressources[$capsule->categorie_id] as  $ressource)
-    {
-      ?><li><a href="#"><?=$ressource->nom?></a></li><?php
-    }
-    ?>
-    </ul>
-
-		<?php if (Auth::check() && Auth::user()->niveau > 1) { ?>
-      <div class="text-right">
-  			<a class="btn btn-primary" href="/capsules/<?= $capsule->id?>/modifier/" type="button">
-    	   <span class="glyphicon glyphicon-edit"></span>  Modifier
-        </a>
-        <a class="btn btn-danger" href="#" data-user-id="<?=$capsule->id?>" data-user-name="<?=$capsule->utilisateur()->nom?>" type="button" data-toggle="modal" data-target="#supprUserModal">
-    	   <span class="glyphicon glyphicon-remove"></span>  Supprimer
-        </a>
-      </div>
-		<?php } ?>
-	</article>
-<?php } ?>
-</div>
-  <div class="col-md-4 col-lg-3">
-    <div class="alert alert-info" role="alert">
+            <h2 class="h3">Ressources suggérées</h2>
+            <ul>
+            <?php
+            foreach($ressources[$capsule->categorie_id] as  $ressource)
+            {
+              ?><li><a href="<?=$ressource->url?>" target="BLANK"><?=$ressource->nom?></a></li><?php
+            }
+            ?>
+            </ul>
+          </div>
+      		<?php if (Auth::check() && Auth::user()->niveau > 1) { ?>
+          <div class="panel-footer">
+            <div class="text-right">
+        			<a class="btn btn-primary" href="/capsules/<?= $capsule->id?>/modifier/" type="button">
+          	   <span class="glyphicon glyphicon-edit"></span>  Modifier
+              </a>
+              <a class="btn btn-danger" href="#" data-user-id="<?=$capsule->id?>" data-user-name="<?=$capsule->utilisateur()->nom?>" type="button" data-toggle="modal" data-target="#supprUserModal">
+          	   <span class="glyphicon glyphicon-remove"></span>  Supprimer
+              </a>
+            </div>
+          </div>
+		    <?php } ?>
+	     </article>
+      <?php } ?>
+    </div>
+  <div class="col-md-3 col-lg-3">
+    <div class="alert alert-info alert-batard" role="alert">
       <h4>Aide en Ligne</h4>
       <p>
          Nous avons la liste de toutes les capsules publiées sur le site. Chaque capsule possède un auteur, un titre et un contenu.
