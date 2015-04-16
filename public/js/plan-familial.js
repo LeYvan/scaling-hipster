@@ -67,13 +67,18 @@
     $.post(url,strData)
       .done(function(data){
         if (data.success === true) {
-          alert(data.message);
+
+          $('#alerts').empty();
+          $('#alerts').append('<div class="alert alert-success alert-dismissible" role="alert">\r\n<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>\r\n           <p>\r\n          		<strong>Succes! </strong> Les informations sont enregistrées.\r\n            </p>\r\n          </div>');
+
         } else {
-          alert('Impossible de sauvegarder: ' + data.message + '.');
+          $('#alerts').empty();
+          $('#alerts').append('<div class="alert alert-danger alert-dismissible" role="alert">\r\n<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>\r\n           <p>\r\n          		<strong>Erreur! </strong> Les informations ne sont pas enregistrées.\r\n            </p>\r\n          </div>');
         }
       })
       .fail(function(){
-        alert('erreur');
+        $('#alerts').empty();
+        $('#alerts').append('<div class="alert alert-danger alert-dismissible" role="alert">\r\n<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>\r\n           <p>\r\n          		<strong>Erreur! </strong> Impossible de contacté le serveur.\r\n            </p>\r\n          </div>');
       });
   };
 

@@ -1,8 +1,9 @@
 <h1 class="hidden-print">Plan Familial</h1>
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     !!!  À FAIRE: mettre l'attribut « method » et mettre l'attribut « action »  !!!
-     !!!                 s'ils sont nécessaires S.V.P. Merci :-)                 !!!
-     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+<div id="alerts">
+
+</div>
+
 <form method="post" action="/plan/sauvegarder" class="form-horizontal" name="PlanFamilial" id="frmPlanFamilial">
 
 	<div role="tabpanel">

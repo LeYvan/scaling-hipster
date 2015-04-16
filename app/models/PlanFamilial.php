@@ -3,7 +3,7 @@
 class PlanFamilial extends Eloquent {
   use SoftDeletingTrait;
 
-  protected $table = 'planFamillials';
+  protected $table = 'planFamilials';
 
   public function utilisateur()
   {
