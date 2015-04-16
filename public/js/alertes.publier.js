@@ -151,7 +151,7 @@
      });
 
 
-       $('#frmPublier').validate();
+       
 
        // Ce click simulé sélectionne la première catégorie d'alertes.
        $('#categorieSel a[data-id]:first').click();

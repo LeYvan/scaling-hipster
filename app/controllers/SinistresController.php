@@ -178,7 +178,7 @@ class SinistresController extends BaseController {
           Input::has('rapport') &&
           Input::has('categorie_id'))){
 
-        return $this->afficherErreur("Introuvable");
+        return $this->afficherErreur("Tout les champs sont obligatoires!");
       }
 
       $sinistre = Sinistre::findOrFail($id);

@@ -57,6 +57,16 @@ class AlertesController extends BaseController {
                     array('categories' => $categories));
     }
 
+    private function validerPublier()
+    {
+      if (empty($contenu)) return "Le contenu est obligatoire!";
+      if (empty($lat)) return "La latitude est obligatoire!";
+      if (empty($long)) return "La longitude est obligatoire!";
+      if (empty($categorie_id)) return "La catégorie est obligatoire!";
+
+      return "Données invalide (erreure générale)";
+    }
+
     public function publierPost()
     {
         $erreur = false;
@@ -74,7 +84,7 @@ class AlertesController extends BaseController {
         {
             $erreur = true;
             $message = "Données invalides";
-            return $this->afficherErreurWithInput($message);
+            return $this->afficherErreurWithInput($this->validerPublier());
         }
 
         try {

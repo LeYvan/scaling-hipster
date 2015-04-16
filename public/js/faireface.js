@@ -99,6 +99,7 @@ $(document).ready(function(){
         return this.optional(element) || phoneRegEx.test(value);
     }, "N'entrez que des chiffres et des tirets '-'.");
 
+    $('#frmPublier').validate();
     $("#frmNouvelle").validate();
     $("#frmCapsule").validate();
     $("#frmSinistreAjouter").validate();

@@ -65,7 +65,7 @@ class CapsulesController extends BaseController {
 
         if (!(Input::has('titre') && Input::has('contenu') && Input::has('categorie_id')))
         {
-            return $this->afficherErreurWithInput("Données de la capules invalide pour insertion.");
+            return $this->afficherErreurWithInput("Tous les champs sont obligatoires.");
         }
 
         if (!Auth::check())

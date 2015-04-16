@@ -66,6 +66,36 @@ class RessourcesController extends BaseController {
                   array('categories' => $categories));
     }
 
+
+    private function validerAjouter()
+    {
+      if (!Input::has('nom')) return "Le nom est obligatoire.";
+
+      if (Input::has('telephone'))
+      {
+        $regex = '/^[0-9()-]+$/';
+        $match = preg_match($regex, Input::get('telephone'), $matches, PREG_OFFSET_CAPTURE);
+
+        if ($match !== 1)
+        {
+          return "Le numéro de téléphone ne doit contenir que des chiffres et des '-'.";
+        }
+        else
+        {
+          return true;
+        }
+      }
+      else
+      {
+        return "Le téléphone est obligatoire.";
+      }
+
+      if (!Input::has('email')) return "Le courriel est invalide.";
+      if (!Input::has('url')) return "L'url fournit est invalide.";
+      if (!Input::has('description')) return "La description est obligatoire.";
+      if (!Input::has('categorie_id')) return "La catégorie est obligatoire.";
+    }
+
     public function ajouterPost()
     {
         $erreur = false;
@@ -83,11 +113,12 @@ class RessourcesController extends BaseController {
             empty($email) ||
             empty($url) ||
             empty($description) ||
-            empty($categorie_id))
+            empty($categorie_id) ||
+            $this->validerAjouter() !== true)
         {
             $erreur = true;
             $message = "Données invalides";
-            return $this->afficherErreurWithInput($message);
+            return $this->afficherErreurWithInput($this->validerAjouter());
         }
 
         try {
@@ -149,11 +180,12 @@ class RessourcesController extends BaseController {
             empty($email) ||
             empty($url) ||
             empty($description) ||
-            empty($categorie_id))
+            empty($categorie_id) ||
+            $this->validerAjouter() !== true)
         {
             $erreur = true;
             $message = "Données invalides";
-            return $this->afficherErreurWithInput($message);
+            return $this->afficherErreurWithInput($this->validerAjouter());
         }
 
 

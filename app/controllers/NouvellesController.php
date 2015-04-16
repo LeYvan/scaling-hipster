@@ -10,7 +10,7 @@ class NouvellesController extends BaseController {
         $nouvelles = Nouvelle::orderBy('created_at', 'desc')->paginate(10);
 
         // Enboite vue nouvelles dans vue design
-        return 
+        return
             View::make('faireface', $proprietesPage)
             ->nest ('contenu',
                     'nouvelles.lister',
@@ -23,8 +23,8 @@ class NouvellesController extends BaseController {
         // Set titre page générée
         $proprietesPage = array('titre' => 'Nouvelles - Ajout');
 
-        // Mettre la vue... 
-        return 
+        // Mettre la vue...
+        return
             View::make('faireface', $proprietesPage)
             ->nest ('contenu',
                     'nouvelles.nouveau');
@@ -34,7 +34,7 @@ class NouvellesController extends BaseController {
     {
         // Set titre page générée
         $proprietesPage = array('titre' => 'Nouvelles - Ajout');
-        
+
         // Vérifier la présence des différents champs transmis par le formulaire
         if (Input::has('titre') && Input::has('contenu'))
         {
@@ -66,7 +66,7 @@ class NouvellesController extends BaseController {
         }
         else
         {
-          return $this->afficherErreur("Des champs sont manquants");     
+          return $this->afficherErreur("Des champs sont manquants");
         }
     }
 
@@ -79,7 +79,7 @@ class NouvellesController extends BaseController {
         $nouvelle = Nouvelle::where('id',$id)->firstOrFail();
 
         // Emboiter la vue
-        return 
+        return
             View::make('faireface', $proprietesPage)
             ->nest ('contenu',
                     'nouvelles.nouveau',

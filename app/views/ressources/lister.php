@@ -52,9 +52,18 @@
     <?php
       if (Auth::check() && Auth::User()->niveau > 1)
       { ?>
+
       <div class="pull-right">
         <a class="supprimer-primary" href="#" data-nom="<?=$ressource->nom?>" data-ressource-id="<?= $ressource->id?>" type="button" data-toggle="modal" data-target="#supprRessourceModal">
           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer
+        </a>
+      </div>
+      <div class="pull-right clearfix">
+        &nbsp;
+      </div>
+      <div class="pull-right">
+        <a class="supprimer-primary" href="/ressources/<?= $ressource->id?>/modifier/">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Modifier
         </a>
       </div>
     <?php }?>
@@ -118,8 +127,8 @@
       <p>
        Nous avons la liste de toutes les personnes ressources avec leur courriel,
        site internet, téléphone et une brève description. Nous pouvons également afficher
-       la liste en fonction des types de sinistre. Sur chaque sinistre nous avons un lien pour 
-       retourner en haut de la page. La liste est également présente à droite de la page et 
+       la liste en fonction des types de sinistre. Sur chaque sinistre nous avons un lien pour
+       retourner en haut de la page. La liste est également présente à droite de la page et
        on peut cliquer sur une ressource et se retrouver à ses informations.</p>
 
       <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les ressources, il peut en ajouter, en modifier ou en supprimer.

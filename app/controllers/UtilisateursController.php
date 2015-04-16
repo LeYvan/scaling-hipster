@@ -59,14 +59,66 @@ class UtilisateursController extends BaseController {
                   array('utilisateur' => $Utilisateur));
     }
 
+    private function validateProfile($checkSms)
+    {
+      if (Input::has('nom') &&
+          strlen(Input::get('nom')) > 0)
+      {
+        if (Input::has('email') &&
+            strlen(Input::get('email')) > 0)
+        {
+          $regex = '/^[0-9()-]+$/';
+          $match = preg_match($regex, Input::get('sms'), $matches, PREG_OFFSET_CAPTURE);
+
+          if (Input::has('sms') &&
+              $match == 1)
+          {
+            return true;
+          }
+          else
+          {
+            if ($checkSms)
+            {
+              return false;
+            }
+            else
+            {
+              if (Input::has('sms') &&
+                  $match == false)
+              {
+                return "Le numéro de tléphone doit contenir des chiffres et des '-' uniquement";
+              }
+              else
+              {
+                return true;
+              }
+
+            }
+          }
+        }
+        else
+        {
+          return "Le email doit contenir un '@' et un '.'";
+        }
+      }
+      else
+      {
+        return "Le nom est requis.";
+      }
+
+      return false;
+    }
+
+    private function checkNieau()
+    {
+      return Input::has('niveau') && strlen(Input::get('niveau')) > 0;
+    }
+
     public function profilePost($id)
     {
-      if (!(Input::has('nom') &&
-          Input::has('email'))
-          )
+      if ($this->validateProfile(false) !== true)
       {
-
-        return $this->afficherErreur("Données invalides.");
+        return $this->afficherErreur($this->validateProfile(false));
       }
 
       $Utilisateur = Utilisateur::findOrFail($id);
@@ -85,11 +137,9 @@ class UtilisateursController extends BaseController {
             // Set titre page générée
       $proprietesPage = array('titre' => 'Utilisateur - Modifier');
 
-      if (!(Input::has('nom') &&
-          Input::has('email') &&
-          Input::has('niveau'))){
-
-        return $this->afficherErreur("Introuvable");
+      if ($this->validateProfile(false) !== true)
+      {
+        return $this->afficherErreur($this->validateProfile(false));
       }
 
       $Utilisateur = Utilisateur::findOrFail($id);
@@ -136,6 +186,8 @@ class UtilisateursController extends BaseController {
         $login = Input::get('txtUtilisateur');
         $mdp = Input::get('txtMotPasse');
         $email = Input::get('txtEmail');
+
+
 
         if ($nom != "" && $login !="" && $mdp != "" && $email != "")
         {
