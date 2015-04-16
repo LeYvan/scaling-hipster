@@ -36,43 +36,49 @@
       <?= $capsules->links(); ?>
     </div>
   </div>
-
+  <div class="row">
+    <div class="col-md-8 col-lg-9">
 <?php foreach ($capsules as $capsule) { ?>
-	<div class="well">
-		<b>@<i><?= $capsule->utilisateur()->nom ?></i></b></br><?=$capsule->titre ?>:</br>
-    <?= $capsule->contenu?></br>
+	<article class="well">
+		<h1 class="h2"><?=$capsule->titre ?></h1>
+    <?= $capsule->contenu?>
 
-    <ul class="list-inline">
+    <h2 class="h3">Ressources suggérées</h2>
+    <ul>
     <?php
     foreach($ressources[$capsule->categorie_id] as  $ressource)
     {
-      ?> <li> <a href="#"><?=$ressource->nom?></a> </li> <?php
+      ?><li><a href="#"><?=$ressource->nom?></a></li><?php
     }
     ?>
     </ul>
 
 		<?php if (Auth::check() && Auth::user()->niveau > 1) { ?>
-			<a class="btn btn-primary" href="/capsules/<?= $capsule->id?>/modifier/" type="button">
-        	   <span class="glyphicon glyphicon-edit"></span>  Modifier
-            </a>
-            <a class="btn btn-danger" href="#" data-user-id="<?=$capsule->id?>" data-user-name="<?=$capsule->utilisateur()->nom?>" type="button" data-toggle="modal" data-target="#supprUserModal">
-        	   <span class="glyphicon glyphicon-remove"></span>  Supprimer
-            </a>
+      <div class="text-right">
+  			<a class="btn btn-primary" href="/capsules/<?= $capsule->id?>/modifier/" type="button">
+    	   <span class="glyphicon glyphicon-edit"></span>  Modifier
+        </a>
+        <a class="btn btn-danger" href="#" data-user-id="<?=$capsule->id?>" data-user-name="<?=$capsule->utilisateur()->nom?>" type="button" data-toggle="modal" data-target="#supprUserModal">
+    	   <span class="glyphicon glyphicon-remove"></span>  Supprimer
+        </a>
+      </div>
 		<?php } ?>
-	</div>
+	</article>
 <?php } ?>
-
-<div class="row">
+</div>
+  <div class="col-md-4 col-lg-3">
     <div class="alert alert-info" role="alert">
       <h4>Aide en Ligne</h4>
       <p>
          Nous avons la liste de toutes les capsules publiées sur le site. Chaque capsule possède un auteur, un titre et un contenu.
          Nous affichons l’auteur le titre, le contenu et les personnes ressources correspondantes au type de la capsule.
          Tout utilisateur connecté peut en ajouter.
+      </p>
          
       <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les capsules, il peut
        en modifier ou en supprimer.</p>
     </div>
+  </div>
 </div>
 
 <div class="modal fade" id="supprUserModal" tabindex="-1" role="dialog" aria-labelledby="supprUserModalLabel" aria-hidden="true">
