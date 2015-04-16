@@ -144,22 +144,21 @@
                         {
                         ?>
                         <div>
-                          <div class="btn-group" role="group" aria-label="Administration">
                             <a class="btn btn-primary" href="/sinistres/modifier/<?= $sinistre->id ?>" type="button">
                              <span class="glyphicon glyphicon-edit"></span>  Modifier
                             </a>
                             <a class="btn btn-danger" href="#" data-titre="<?=$sinistre->titre?>" data-sinistre-id="<?= $sinistre->id?>" type="button" data-toggle="modal" data-target="#supprSinistreModal">
                              <span class="glyphicon glyphicon-remove"></span>  Supprimer
                             </a>
-                          </div>
                         </div>
                         <?php
                         }
                       ?>
+                </div>
               </div>
-            </div>
             <?php } ?>
             </div>
+          </div>
             <!-- Fin d'un sinistre -->
 
           <div class="text-center">
@@ -230,6 +229,3 @@
             </div>
           </div>
           <!-- Fin fenêtre modal de confirmation de suppressin de sinistre -->
-
-        </div>
-      </div>

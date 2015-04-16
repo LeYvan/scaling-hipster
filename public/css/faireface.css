@@ -424,7 +424,11 @@ body
   }
 }
 
-
+.row>.alert.alert-info
+{
+  margin-left: 30px;
+  margin-right: 30px;
+}
 label.error {
 	margin-top: 0.5em;
 	color: red;

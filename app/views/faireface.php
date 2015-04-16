@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="/css/faireface.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -49,6 +50,7 @@
           );
             if (Auth::check() && Auth::User()->niveau == 99)
             {
+              unset($menu[3]);
               array_push($menu, array('titre'=>'Utilisateurs', 'href'=>'/utilisateurs/'));
             }
           foreach ($menu as $element) {?>
