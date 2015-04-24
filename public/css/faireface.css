@@ -262,6 +262,12 @@ body
 {
 	top:50px;
 }
+@media(min-width: 992px){
+  .alert-batard
+  {
+    margin-left: -15px;
+  }
+}
 @media print {
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
@@ -423,8 +429,23 @@ body
   {
   }
 }
-
-
+.well>:first-child
+{
+  margin-top: 0;
+}
+.well>:last-child
+{
+  margin-bottom: 0;
+}
+.panel-heading .h2
+{
+  margin-top: 10px;
+}
+.row>.alert.alert-info
+{
+  margin-left: 15px;
+  margin-right: 15px;
+}
 label.error {
 	margin-top: 0.5em;
 	color: red;
