@@ -144,22 +144,21 @@
                         {
                         ?>
                         <div>
-                          <div class="btn-group" role="group" aria-label="Administration">
                             <a class="btn btn-primary" href="/sinistres/modifier/<?= $sinistre->id ?>" type="button">
                              <span class="glyphicon glyphicon-edit"></span>  Modifier
                             </a>
                             <a class="btn btn-danger" href="#" data-titre="<?=$sinistre->titre?>" data-sinistre-id="<?= $sinistre->id?>" type="button" data-toggle="modal" data-target="#supprSinistreModal">
                              <span class="glyphicon glyphicon-remove"></span>  Supprimer
                             </a>
-                          </div>
                         </div>
                         <?php
                         }
                       ?>
+                </div>
               </div>
-            </div>
             <?php } ?>
             </div>
+          </div>
             <!-- Fin d'un sinistre -->
 
           <div class="text-center">
@@ -184,29 +183,29 @@
           <!-- Fin Fenêtre modal de visionnement d'images -->
 
           <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="alert alert-info" role="alert">
-                  <h4>Aide en Ligne</h4>
-                  <p>
-                     Nous avons la liste de tous les sinistres publiés sur le site.
-                     Chaque sinistre possède un emplacement, une date, un auteur, du contenu, un type
-                     et les personnes ressources à contacter pour ce type d’alerte.
-                     Il peut y avoir aussi des médias (photos ou vidéos).
-                     Nous pouvons également afficher la liste en fonction des types de sinistre.
-                     Sur chaque sinistre nous avons un lien pour retourner en haut de la page.
-                     Il y a également un formulaire pour ajouter un sinistre mais il faut être connecté (tous les utilisateurs) pour pouvoir en ajouter.
+            <div class="col-md-12">
+              <div class="alert alert-info" role="alert">
+                <h4>Aide en Ligne</h4>
+                <p>
+                   Nous avons la liste de tous les sinistres publiés sur le site.
+                   Chaque sinistre possède un emplacement, une date, un auteur, du contenu, un type
+                   et les personnes ressources à contacter pour ce type d’alerte.
+                   Il peut y avoir aussi des médias (photos ou vidéos).
+                   Nous pouvons également afficher la liste en fonction des types de sinistre.
+                   Sur chaque sinistre nous avons un lien pour retourner en haut de la page.
+                   Il y a également un formulaire pour ajouter un sinistre mais il faut être connecté (tous les utilisateurs) pour pouvoir en ajouter.</p>
 
-                  <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les capsules, il peut
-                   en modifier ou en supprimer.</p>
+                <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les capsules, il peut
+                 en modifier ou en supprimer.</p>
 
-                  <p>
-                    Ajout : Pour reporter un sinistre, il faut donner les informations concernant le sinistre.
-                          Il faut donner une catégorie, un titre, le contenu et on peut également ajouter des fichiers.
-                          La position est détectée automatiquement si on l’autorise.
-                          Ensuite on clique sur Envoyer pour l'enregistrer ou Réinitialiser pour recommencer.
-                  </p>
-                </div>
+                <p>
+                  Ajout : Pour reporter un sinistre, il faut donner les informations concernant le sinistre.
+                        Il faut donner une catégorie, un titre, le contenu et on peut également ajouter des fichiers.
+                        La position est détectée automatiquement si on l’autorise.
+                        Ensuite on clique sur Envoyer pour l'enregistrer ou Réinitialiser pour recommencer.
+                </p>
               </div>
+            </div>
           </div>
 
 
@@ -232,6 +231,5 @@
             </div>
           </div>
           <!-- Fin fenêtre modal de confirmation de suppressin de sinistre -->
-
         </div>
       </div>
