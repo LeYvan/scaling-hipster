@@ -123,6 +123,9 @@
     <footer class="text-center">
       <div>Faire<i>Face</i>, une application formidable.</div>
       <div>©&#8239;Équipe Tamia, 2015</div>
+      <p>
+        <a href="/Aide_en_ligne.pdf" target="aide-en-ligne-pdg">Télécharger le document PDF d'aide en ligne.</a>
+      </p>
     </footer>
   </div>
     <!-- Fenêtre modal de visionnement d'images -->
