@@ -18,7 +18,7 @@
 										<?php foreach($alertes as $alerte):?>
 											<li class="list-group-item">
 												<h4 class="list-group-item-heading"><?php echo $alerte->utilisateur()->nom;?></h4>
-												<p class="list-group-item-text"><?php echo Str::words($alerte->contenu,10);?> <a href="#">Lire la suite</a></p>
+												<p class="list-group-item-text"><?php echo Str::words($alerte->contenu,10);?> <a href="/alertes/">Lire la suite</a></p>
 											</li>
 										<?php endforeach;?>
 									</div>
@@ -40,7 +40,7 @@
 										<?php foreach($nouvelles as $nouvelle):?>
 											<li class="list-group-item">
 												<h4 class="list-group-item-heading"><?php echo Str::words($nouvelle->titre,5);?></h4>
-												<p class="list-group-item-text"><?php echo Str::words($nouvelle->contenu,10);?> <a href="#">Lire la suite</a></p>
+												<p class="list-group-item-text"><?php echo Str::words($nouvelle->contenu,10);?> <a href="/nouvelles/">Lire la suite</a></p>
 											</li>
 										<?php endforeach;?>
 									</div>
@@ -65,7 +65,7 @@
 											<li class="list-group-item">
 												<h4 class="list-group-item-heading"><?php echo Str::words($capsule->titre,4);?></h4>
 												<p class="list-group-item-text"><?php echo Str::words($capsule->contenu,6);?></p>
-												<p><a href="#">Lire la suite</a> <!-- <span class="label label-info"><?php echo $capsule->categorie()->etiquette;?></span> --></p>
+												<p><a href="/capsules/">Lire la suite</a> <!-- <span class="label label-info"><?php echo $capsule->categorie()->etiquette;?></span> --></p>
 											</li>
 										<?php endforeach;?>
 									</div>
@@ -87,7 +87,7 @@
 										<?php foreach($sinistres as $sinistre):?>
 											<li class="list-group-item">
 												<h4 class="list-group-item-heading"><?php echo Str::words($sinistre->titre,5);?></h4>
-												<p class="list-group-item-text"><?php echo Str::words($sinistre->rapport,10);?> <a href="#">Lire la suite</a></p>
+												<p class="list-group-item-text"><?php echo Str::words($sinistre->rapport,10);?> <a href="/sinistres/">Lire la suite</a></p>
 											</li>
 										<?php endforeach;?>
 									</div>

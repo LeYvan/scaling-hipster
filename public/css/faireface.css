@@ -211,7 +211,6 @@ body
 }
 #accueil .panel-faireface .panel-body
 {
-	overflow: auto;
 	height: 242px;
 }
 .panel-footer-divise
