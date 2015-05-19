@@ -82,7 +82,7 @@
       <div class="form-group">
         <label class="col-sm-2 col-md-3 col-lg-2 control-label">Site internet :</label>
         <div class="col-sm-10 col-md-9 col-lg-10">
-          <p class="form-control-static"><?php echo $ressource->url;?></p>
+          <p class="form-control-static"><a target="BLANK" href="<?php echo $ressource->url;?>"><?php echo $ressource->url;?></a></p>
         </div>
       </div>
 

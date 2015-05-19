@@ -12,7 +12,7 @@
               <!-- Début d'un sinistre -->
               <div class="well">
                 <p ><strong>@</strong><em><?=$alerte->utilisateur()->nom?>: </em><?=$alerte->contenu?></p>
-                <?php 
+                <?php
                     $base ='https://maps.googleapis.com/maps/api/staticmap?';
                     $coords = $alerte['lat'] . ',' . $alerte['long'];
                     $center = 'center=' . $coords;
@@ -31,15 +31,15 @@
 
                     if ($alerte['lat'] == 0 && $alerte['long'] == 0) {
                     ?>
-                      <div class="alert alert-warning">Aucune données de localisation fournies.</div>
+                      <div class="alert alert-warning ">Aucune données de localisation fournies.</div>
                     <?php
                     } else {
                     ?>
                     <div class="container row">
-                      <div class="col-md-4">
+                      <div class="col-md-4  ">
                         <div class="panel panel-info">
                           <div class="panel-heading">Localisation</div>
-                            <div class="panel-body">
+                            <div class="panel-body  text-center	">
                               <a href="<?=$href?>" target="_BLANK"><img alt="Voir dans google maps." src="<?=$url?>"></a>
                             </div>
                         </div>

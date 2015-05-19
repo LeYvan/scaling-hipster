@@ -1,7 +1,7 @@
 <h1>Capsules</h1>
 
-<?php if (Auth::check()) { ?>
-  <a href="/capsules/ajouter/">Publier une Capsule</a>
+<?php if (Auth::check() && Auth::User()->niveau > 1) { ?>
+  <a class="btn btn-success" href="/capsules/ajouter/">Publier une Capsule</a>
 <?php } ?>
 
   <div class="row liste-navigation">
@@ -51,7 +51,8 @@
             <?php
             foreach($ressources[$capsule->categorie_id] as  $ressource)
             {
-              ?><li><a href="<?=$ressource->url?>" target="BLANK"><?=$ressource->nom?></a></li><?php
+              $test = $capsule->categorie()->etiquette;
+              ?><li><a href="/ressources/categories/<?=$test?>"><?=$ressource->nom?></a></li><?php
             }
             ?>
             </ul>
@@ -79,7 +80,7 @@
          Nous affichons l’auteur le titre, le contenu et les personnes ressources correspondantes au type de la capsule.
          Tout utilisateur connecté peut en ajouter.
       </p>
-         
+
       <p>Si un administrateur ou un conseillé est connecté, en plus de voir toutes les capsules, il peut
        en modifier ou en supprimer.</p>
     </div>

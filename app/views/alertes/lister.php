@@ -121,7 +121,8 @@
                               <?php
                               foreach($ressources[$alerte->categorie_id] as  $ressource)
                               {
-                                ?> <li> <a href="#"><?=$ressource->nom?></a> </li> <?php
+                                $test = $alerte->categorie()->etiquette;
+                                ?> <li> <a href="/ressources/categories/<?=$test?>"><?=$ressource->nom?></a> </li> <?php
                               }
                               ?>
                               </ul>

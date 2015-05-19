@@ -1,8 +1,9 @@
 <h1>Nouvelles</h1>
 
-<?php if (Auth::check()) { ?>
-  <a href="/nouvelles/ajouter/">Publier une nouvelle</a>
+<?php if (Auth::check() && (Auth::user()->niveau > 1)) { ?>
+  <a class="btn btn-success" href="/nouvelles/ajouter/">Publier une nouvelle</a>
 <?php } ?>
+
 <div class="row">
   <div class="col-md-9">
 <?php foreach ($nouvelles as $nouvelle) { ?>
@@ -11,7 +12,7 @@
     <p>par : <strong><?= $nouvelle->utilisateur()->nom ?></strong></p>
     <?=$nouvelle->contenu?>
 
-    <?php if (Auth::check() && (Auth::user()->niveau == 1 || Auth::user()->niveau == 99)) { ?>
+    <?php if (Auth::check() && (Auth::user()->niveau > 1)) { ?>
     <footer>
       <div class="text-right">
         <a class="btn btn-primary" href="/nouvelles/<?= $nouvelle->id?>/modifier/" type="button">

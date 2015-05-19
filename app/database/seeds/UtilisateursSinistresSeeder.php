@@ -19,7 +19,7 @@ class UtilisateursSinistresSeeder extends Seeder {
 		$hPasse = Hash::make('chien');
 
 	$benchStart = microtime(true);
-        /* 
+        /*
           ============================================
             Table utilisateurs
           ============================================
@@ -41,13 +41,13 @@ class UtilisateursSinistresSeeder extends Seeder {
                                  'nom' => 'Geneviève Tremblay',
                                  'email' => 'gen69@faireface.com',
                                  'niveau' => 2,
-                                 'password' => $hPasse 
+                                 'password' => $hPasse
                                 )
                              );
 
         $utilisateurs[] = Utilisateur::create(array('nomUtilisateur' => 'ticul',
                                  'nom' => 'Stéphane Tremblay',
-                                 'email' => 'stephentabarnaque@faireface.com',
+                                 'email' => 'steph@faireface.com',
                                  'niveau' => 2,
                                  'password' => $hPasse
                                 )
@@ -74,7 +74,7 @@ class UtilisateursSinistresSeeder extends Seeder {
 
         $this->command->info('Table utilisateurs germée! (' . $i . ')');
 
-        /* 
+        /*
           ============================================
             Table categories_sinistres
           ============================================
@@ -142,7 +142,7 @@ class UtilisateursSinistresSeeder extends Seeder {
 
         $this->command->info('Table sinistres germée! (' . $i . ')');
 
-        /* 
+        /*
           ============================================
             Table elements_sinistres
           ============================================
