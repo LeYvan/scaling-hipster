@@ -1,6 +1,6 @@
 <div id="contenu">
     <header>
-        <h1>Faireface.ca</h1>
+        <h1>Faireface</h1>
         <p>Ce fichier décrit la procédure de déploiement de l'application faireface.ca.</p>
         <nav>
             <ol>
@@ -14,7 +14,7 @@
     <article>
         <section>
             <h2 id="info">Informations</h2>
-            <p>Faireface.ca fut développé en PHP à l'aide du framework Laravel.</p>
+            <p>Faireface fut développé en PHP à l'aide du framework Laravel.</p>
             <p>Laravel utilise le gestionnaire de dépendance composer.</p>
             <section>
                 <h3>Configuration (LEMP)</h3>
@@ -86,7 +86,7 @@
             <p><span>Pour ce faire éditer le fichier</span><code>/etc/nginx/site-availables/default</code><span> .</span></p>
             <p><span>Remplacer tout le contenu par:</span>
             <pre>
-    #faireface.ca
+    #faireface
     server {
             listen 80 default_server;
             #listen [::]:80 default_server ipv6only=on;
