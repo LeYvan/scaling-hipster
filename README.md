@@ -84,7 +84,37 @@
             <p>La combinaison Laravel+Nginx nescéssite une configuration particulière.</p>
             <p>Il faut modifier le fichier du site par défaut dans la configuration de nginx.</p>
             <p><span>Pour ce faire éditer le fichier</span><code>/etc/nginx/site-availables/default</code><span> .</span></p>
-            <p><span>Remplacer tout le contenu par la configuration contenu dans </span><a href="https://gist.github.com/LeYvan/1bf0de743d22bf2c8f92" target="gist">ce gist.</a></p>
+            <p><span>Remplacer tout le contenu par:</span>
+            <pre>
+    #faireface.ca
+    server {
+            listen 80 default_server;
+            #listen [::]:80 default_server ipv6only=on;
+     
+            root /usr/share/nginx/faireface/public;
+            index index.php;
+     
+            server_name faireface.ca;
+     
+            client_max_body_size 10m;
+
+            # Envoiver scripts php vers php5-fpm
+            location ~ \.php$ {
+                    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                    fastcgi_pass unix:/var/run/php5-fpm.sock;
+                    fastcgi_index index.php;
+                    include fastcgi_params;
+            }
+     
+            # Sauf si on demande un fichier, on redirige vers index.php de laravel
+            if (!-e $request_filename)
+            {
+                rewrite ^/(.*)$ /index.php?/$1 last;
+                break;
+            }
+    }
+            </pre>.
+            </p>
             <p>Vous devez modifier les chemins pour pointer vers l'emplacement de l'application sur votre machine.</p>
         </section>
         <section>
