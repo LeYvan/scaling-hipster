@@ -1,7 +1,7 @@
 <div id="contenu">
     <header>
         <h1>Faireface</h1>
-        <p>Ce fichier décrit la procédure de déploiement de l'application faireface.ca.</p>
+        <p>Ce fichier décrit la procédure de déploiement de l'application faireface.</p>
         <nav>
             <ol>
                 <li><a href="#info">Informations</a></li>
