@@ -94,7 +94,7 @@
             root /usr/share/nginx/faireface/public;
             index index.php;
      
-            server_name faireface.ca;
+            server_name faireface;
      
             client_max_body_size 10m;
 
